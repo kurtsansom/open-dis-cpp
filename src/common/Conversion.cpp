@@ -1,15 +1,11 @@
-#include <utils/Conversion.h>
-#include <utils/Masks.h>
-
-using namespace DIS;
-
-//const unsigned char Convert::ARTICULATION_PARAMETER_TYPE_METRIC_NUMBER_OF_BITS = 5;
+#include <common/Conversion.h>
+#include <common/Masks.h>
 
 
-int Convert::MakeArticulationParameterType(int typeclass, int typemetric)
+int DIS::Convert::MakeArticulationParameterType(int typeclass, int typemetric)
 {
    // enforce a ceiling on typemetric
-   typemetric = typemetric & ARTICULATION_PARAMETER_TYPE_METRIC_MASK;
+   typemetric = typemetric & DIS::ARTICULATION_PARAMETER_TYPE_METRIC_MASK;
 
    // shift the typeclass bits to the left by the precision amount of typemetric
    // and then add the typemetric bits
@@ -17,13 +13,13 @@ int Convert::MakeArticulationParameterType(int typeclass, int typemetric)
           + typemetric );
 }
 
-int Convert::GetArticulationTypeMetric(int parametertype)
+int DIS::Convert::GetArticulationTypeMetric(int parametertype)
 {
    // wipe off the typeclass bits and return the typemetric bits
-   return( parametertype & ARTICULATION_PARAMETER_TYPE_METRIC_MASK);
+   return( parametertype & DIS::ARTICULATION_PARAMETER_TYPE_METRIC_MASK);
 }
 
-int Convert::GetArticulationTypeClass(int parametertype)
+int DIS::Convert::GetArticulationTypeClass(int parametertype)
 {
    // wipe off the typemetric bits and return the typeclass bits
    return( parametertype >> ARTICULATION_PARAMETER_TYPE_METRIC_NUMBER_OF_BITS );
