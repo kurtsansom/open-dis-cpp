@@ -2,7 +2,7 @@
 #define TRACKJAMTARGET_H
 
 #include <dis6/EntityID.h>
-#include <utils/DataStream.h>
+#include <common/DataStream.h>
 #include <common/msLibMacro.h>
 
 

@@ -1,7 +1,7 @@
 #ifndef ENVIRONMENT_H
 #define ENVIRONMENT_H
 
-#include <utils/DataStream.h>
+#include <common/DataStream.h>
 #include <common/msLibMacro.h>
 
 

@@ -2,7 +2,7 @@
 #define REMOVEENTITYRELIABLEPDU_H
 
 #include <dis7/SimulationManagementWithReliabilityFamilyPdu.h>
-#include <utils/DataStream.h>
+#include <common/DataStream.h>
 #include <common/msLibMacro.h>
 
 

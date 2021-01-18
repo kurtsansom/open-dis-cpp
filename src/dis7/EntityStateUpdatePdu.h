@@ -8,7 +8,7 @@
 #include <dis7/VariableParameter.h>
 #include <vector>
 #include <dis7/EntityInformationFamilyPdu.h>
-#include <utils/DataStream.h>
+#include <common/DataStream.h>
 #include <common/msLibMacro.h>
 
 

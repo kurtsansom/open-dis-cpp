@@ -1,7 +1,7 @@
 #ifndef OBJECTTYPE_H
 #define OBJECTTYPE_H
 
-#include <utils/DataStream.h>
+#include <common/DataStream.h>
 #include <common/msLibMacro.h>
 
 

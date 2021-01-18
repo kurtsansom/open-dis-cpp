@@ -1,7 +1,7 @@
 #ifndef ACOUSTICEMITTER_H
 #define ACOUSTICEMITTER_H
 
-#include <utils/DataStream.h>
+#include <common/DataStream.h>
 #include <common/msLibMacro.h>
 
 

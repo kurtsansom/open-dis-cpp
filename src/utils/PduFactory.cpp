@@ -12,8 +12,8 @@
 #include <dis6/SignalPdu.h>
 #include <dis6/ReceiverPdu.h>
 #include <dis6/TransferControlRequestPdu.h>
-#include <utils/Endian.h>
-#include <utils/PDUType.h>
+#include <common/Endian.h>
+#include <common/PDUType.h>
 
 #include <iostream>
 

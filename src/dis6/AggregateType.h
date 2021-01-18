@@ -1,7 +1,7 @@
 #ifndef AGGREGATETYPE_H
 #define AGGREGATETYPE_H
 
-#include <utils/DataStream.h>
+#include <common/DataStream.h>
 #include <common/msLibMacro.h>
 
 

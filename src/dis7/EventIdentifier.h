@@ -2,7 +2,7 @@
 #define EVENTIDENTIFIER_H
 
 #include <dis7/SimulationAddress.h>
-#include <utils/DataStream.h>
+#include <common/DataStream.h>
 #include <common/msLibMacro.h>
 
 

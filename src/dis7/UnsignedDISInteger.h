@@ -1,7 +1,7 @@
 #ifndef UNSIGNEDDISINTEGER_H
 #define UNSIGNEDDISINTEGER_H
 
-#include <utils/DataStream.h>
+#include <common/DataStream.h>
 #include <common/msLibMacro.h>
 
 

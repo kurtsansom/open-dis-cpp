@@ -1,7 +1,7 @@
 #ifndef AGGREGATEID_H
 #define AGGREGATEID_H
 
-#include <utils/DataStream.h>
+#include <common/DataStream.h>
 #include <common/msLibMacro.h>
 
 

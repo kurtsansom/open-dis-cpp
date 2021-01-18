@@ -8,7 +8,7 @@
 #include <dis6/TwoByteChunk.h>
 #include <vector>
 #include <dis6/MinefieldFamilyPdu.h>
-#include <utils/DataStream.h>
+#include <common/DataStream.h>
 #include <common/msLibMacro.h>
 
 

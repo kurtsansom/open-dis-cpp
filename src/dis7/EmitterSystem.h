@@ -1,7 +1,7 @@
 #ifndef EMITTERSYSTEM_H
 #define EMITTERSYSTEM_H
 
-#include <utils/DataStream.h>
+#include <common/DataStream.h>
 #include <common/msLibMacro.h>
 
 

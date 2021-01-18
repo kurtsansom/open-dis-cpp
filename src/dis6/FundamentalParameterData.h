@@ -1,7 +1,7 @@
 #ifndef FUNDAMENTALPARAMETERDATA_H
 #define FUNDAMENTALPARAMETERDATA_H
 
-#include <utils/DataStream.h>
+#include <common/DataStream.h>
 #include <common/msLibMacro.h>
 
 

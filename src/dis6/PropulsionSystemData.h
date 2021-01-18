@@ -1,7 +1,7 @@
 #ifndef PROPULSIONSYSTEMDATA_H
 #define PROPULSIONSYSTEMDATA_H
 
-#include <utils/DataStream.h>
+#include <common/DataStream.h>
 #include <common/msLibMacro.h>
 
 

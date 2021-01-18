@@ -1,7 +1,7 @@
 #ifndef ATTACHEDPARTS_H
 #define ATTACHEDPARTS_H
 
-#include <utils/DataStream.h>
+#include <common/DataStream.h>
 #include <common/msLibMacro.h>
 
 

@@ -7,7 +7,7 @@
 #include <dis7/StandardVariableSpecification.h>
 #include <vector>
 #include <dis7/WarfareFamilyPdu.h>
-#include <utils/DataStream.h>
+#include <common/DataStream.h>
 #include <common/msLibMacro.h>
 
 

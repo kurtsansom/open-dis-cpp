@@ -74,9 +74,10 @@ endif (OpenDIS_ENABLE_EXAMPLES)
 # include GNUInstallDirs Module to get more generic directory handling
 include(GNUInstallDirs)
 # Configure install target (i.e. what files to install)
-install(TARGETS common_OpenDIS OpenDIS6 EXPORT OpenDIS6Config DESTINATION "${OpenDIS_INSTALL_LIB_DIR}")
+install(TARGETS common_interface common_utils OpenDIS6 EXPORT OpenDIS6Config DESTINATION "${OpenDIS_INSTALL_LIB_DIR}")
 install(EXPORT OpenDIS6Config DESTINATION "${OpenDIS_INSTALL_LIB_DIR}/cmake/OpenDIS6")
-install(TARGETS common_OpenDIS OpenDIS7 EXPORT OpenDIS7Config DESTINATION "${OpenDIS_INSTALL_LIB_DIR}")
+
+install(TARGETS common_interface common_utils OpenDIS7 EXPORT OpenDIS7Config DESTINATION "${OpenDIS_INSTALL_LIB_DIR}")
 install(EXPORT OpenDIS7Config DESTINATION "${OpenDIS_INSTALL_LIB_DIR}/cmake/OpenDIS7")
 
 if (OpenDIS_INSTALL_EXAMPLES)

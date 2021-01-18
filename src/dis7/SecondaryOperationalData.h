@@ -1,7 +1,7 @@
 #ifndef SECONDARYOPERATIONALDATA_H
 #define SECONDARYOPERATIONALDATA_H
 
-#include <utils/DataStream.h>
+#include <common/DataStream.h>
 #include <common/msLibMacro.h>
 
 

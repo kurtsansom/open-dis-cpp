@@ -1,7 +1,7 @@
 #ifndef AGGREGATEMARKING_H
 #define AGGREGATEMARKING_H
 
-#include <utils/DataStream.h>
+#include <common/DataStream.h>
 #include <common/msLibMacro.h>
 
 

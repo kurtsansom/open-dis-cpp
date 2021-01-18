@@ -1,7 +1,7 @@
 #ifndef EIGHTBYTECHUNK_H
 #define EIGHTBYTECHUNK_H
 
-#include <utils/DataStream.h>
+#include <common/DataStream.h>
 #include <common/msLibMacro.h>
 
 

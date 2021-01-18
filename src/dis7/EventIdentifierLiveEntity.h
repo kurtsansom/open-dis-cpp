@@ -1,7 +1,7 @@
 #ifndef EVENTIDENTIFIERLIVEENTITY_H
 #define EVENTIDENTIFIERLIVEENTITY_H
 
-#include <utils/DataStream.h>
+#include <common/DataStream.h>
 #include <common/msLibMacro.h>
 
 

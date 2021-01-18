@@ -2,7 +2,7 @@
 #define SUPPLYQUANTITY_H
 
 #include <dis6/EntityType.h>
-#include <utils/DataStream.h>
+#include <common/DataStream.h>
 #include <common/msLibMacro.h>
 
 

@@ -4,7 +4,7 @@
 #include <dis6/FourByteChunk.h>
 #include <vector>
 #include <dis6/SimulationManagementWithReliabilityFamilyPdu.h>
-#include <utils/DataStream.h>
+#include <common/DataStream.h>
 #include <common/msLibMacro.h>
 
 

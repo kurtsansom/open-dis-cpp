@@ -3,7 +3,7 @@
 
 #include <dis7/Pdu.h>
 #include <vector>
-#include <utils/DataStream.h>
+#include <common/DataStream.h>
 #include <common/msLibMacro.h>
 
 

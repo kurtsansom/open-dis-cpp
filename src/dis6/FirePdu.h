@@ -7,7 +7,7 @@
 #include <dis6/BurstDescriptor.h>
 #include <dis6/Vector3Float.h>
 #include <dis6/WarfareFamilyPdu.h>
-#include <utils/DataStream.h>
+#include <common/DataStream.h>
 #include <common/msLibMacro.h>
 
 

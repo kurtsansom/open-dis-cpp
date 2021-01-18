@@ -1,7 +1,7 @@
 #ifndef APADATA_H
 #define APADATA_H
 
-#include <utils/DataStream.h>
+#include <common/DataStream.h>
 #include <common/msLibMacro.h>
 
 

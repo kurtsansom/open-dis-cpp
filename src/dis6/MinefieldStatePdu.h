@@ -9,7 +9,7 @@
 #include <dis6/EntityType.h>
 #include <vector>
 #include <dis6/MinefieldFamilyPdu.h>
-#include <utils/DataStream.h>
+#include <common/DataStream.h>
 #include <common/msLibMacro.h>
 
 

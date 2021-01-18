@@ -7,7 +7,7 @@
 #include <dis6/SystemID.h>
 #include <dis6/IffFundamentalData.h>
 #include <dis6/DistributedEmissionsFamilyPdu.h>
-#include <utils/DataStream.h>
+#include <common/DataStream.h>
 #include <common/msLibMacro.h>
 
 

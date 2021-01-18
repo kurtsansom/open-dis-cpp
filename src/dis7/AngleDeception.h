@@ -1,7 +1,7 @@
 #ifndef ANGLEDECEPTION_H
 #define ANGLEDECEPTION_H
 
-#include <utils/DataStream.h>
+#include <common/DataStream.h>
 #include <common/msLibMacro.h>
 
 

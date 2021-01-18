@@ -1,7 +1,7 @@
 #ifndef ARTICULATEDPARTS_H
 #define ARTICULATEDPARTS_H
 
-#include <utils/DataStream.h>
+#include <common/DataStream.h>
 #include <common/msLibMacro.h>
 
 

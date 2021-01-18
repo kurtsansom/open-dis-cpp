@@ -1,7 +1,7 @@
 #ifndef STORAGEFUELRELOAD_H
 #define STORAGEFUELRELOAD_H
 
-#include <utils/DataStream.h>
+#include <common/DataStream.h>
 #include <common/msLibMacro.h>
 
 

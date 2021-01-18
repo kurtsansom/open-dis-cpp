@@ -9,7 +9,7 @@
 #include <dis6/Vector3Float.h>
 #include <vector>
 #include <dis6/RadioCommunicationsFamilyPdu.h>
-#include <utils/DataStream.h>
+#include <common/DataStream.h>
 #include <common/msLibMacro.h>
 
 

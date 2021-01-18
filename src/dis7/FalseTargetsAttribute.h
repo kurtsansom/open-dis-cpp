@@ -1,7 +1,7 @@
 #ifndef FALSETARGETSATTRIBUTE_H
 #define FALSETARGETSATTRIBUTE_H
 
-#include <utils/DataStream.h>
+#include <common/DataStream.h>
 #include <common/msLibMacro.h>
 
 

@@ -2,7 +2,7 @@
 #define BEAMANTENNAPATTERN_H
 
 #include <dis7/EulerAngles.h>
-#include <utils/DataStream.h>
+#include <common/DataStream.h>
 #include <common/msLibMacro.h>
 
 

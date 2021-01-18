@@ -1,7 +1,7 @@
 #ifndef RADIOTYPE_H
 #define RADIOTYPE_H
 
-#include <utils/DataStream.h>
+#include <common/DataStream.h>
 #include <common/msLibMacro.h>
 
 

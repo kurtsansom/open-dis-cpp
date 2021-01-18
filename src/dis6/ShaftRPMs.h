@@ -1,7 +1,7 @@
 #ifndef SHAFTRPMS_H
 #define SHAFTRPMS_H
 
-#include <utils/DataStream.h>
+#include <common/DataStream.h>
 #include <common/msLibMacro.h>
 
 
