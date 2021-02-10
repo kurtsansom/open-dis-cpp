@@ -10,7 +10,8 @@ namespace DIS
 {
 // used to convey entity and conflict status information associated with transferring ownership of an entity. Section 6.2.65
 
-// Copyright (c) 2007-2009, MOVES Institute, Naval Postgraduate School. All rights reserved. 
+// Copyright (c) 2007-2012, MOVES Institute, Naval Postgraduate School. All rights reserved. 
+// Licensed under the BSD open source license. See http://www.movesinstitute.org/licenses/bsd.html
 //
 // @author DMcG, jkg
 
@@ -18,13 +19,13 @@ class EXPORT_MACRO OwnershipStatus
 {
 protected:
   /** EntityID */
-  EntityID _entityId; 
+  EntityID _entityId;
 
   /** The ownership and/or ownership conflict status of the entity represented by the Entity ID field. */
-  unsigned char _ownershipStatus; 
+  unsigned char _ownershipStatus;
 
   /** padding */
-  unsigned char _padding; 
+  unsigned char _padding;
 
 
  public:
@@ -34,8 +35,8 @@ protected:
     virtual void marshal(DataStream& dataStream) const;
     virtual void unmarshal(DataStream& dataStream);
 
-    EntityID& getEntityId(); 
-    const EntityID&  getEntityId() const; 
+    EntityID& getEntityId();
+    const EntityID&  getEntityId() const;
     void setEntityId(const EntityID    &pX);
 
     unsigned char getOwnershipStatus() const; 
@@ -45,9 +46,9 @@ protected:
     void setPadding(unsigned char pX); 
 
 
-virtual int getMarshalledSize() const;
+     virtual int getMarshalledSize() const;
 
-     bool operator  ==(const OwnershipStatus& rhs) const;
+     bool operator ==(const OwnershipStatus& rhs) const;
 };
 }
 

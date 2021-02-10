@@ -7,9 +7,10 @@
 
 namespace DIS
 {
-// For each type or location of Storage Fuel, this record shall specify the type, location, fuel measure- ment units, reload quantity and maximum quantity for storage fuel either for the whole entity or a specific storage fuel location (tank). Section 6.2.84.
+// For each type or location of Storage Fuel, this record shall specify the type, location, fuel measure- ment units, reload quantity and maximum quantity for storage fuel either for the whole entity or a specific storage fuel location (tank). Section 6.2.85.
 
-// Copyright (c) 2007-2009, MOVES Institute, Naval Postgraduate School. All rights reserved. 
+// Copyright (c) 2007-2012, MOVES Institute, Naval Postgraduate School. All rights reserved. 
+// Licensed under the BSD open source license. See http://www.movesinstitute.org/licenses/bsd.html
 //
 // @author DMcG, jkg
 
@@ -17,28 +18,28 @@ class EXPORT_MACRO StorageFuelReload
 {
 protected:
   /**  the standard quantity of this fuel type normally loaded at this station/launcher if a station/launcher is specified. If the Station/Launcher field is set to zero, then this is the total quantity of this fuel type that would be present in a standard reload of all appli- cable stations/launchers associated with this entity. */
-  unsigned int _standardQuantity; 
+  unsigned int _standardQuantity;
 
   /** the maximum quantity of this fuel type that this sta- tion/launcher is capable of holding when a station/launcher is specified. This would be the value used when a maximum reload was desired to be set for this station/launcher. If the Station/launcher field is set to zero, then this is the maximum quantity of this fuel type that would be present on this entity at all stations/launchers that can accept this fuel type. */
-  unsigned int _maximumQuantity; 
+  unsigned int _maximumQuantity;
 
   /** the seconds normally required to reload the standard quantity of this fuel type at this specific station/launcher. When the Station/Launcher field is set to zero, this shall be the time it takes to perform a standard quantity reload of this fuel type at all applicable stations/launchers for this entity. */
-  unsigned char _standardQuantityReloadTime; 
+  unsigned char _standardQuantityReloadTime;
 
   /** the seconds normally required to reload the maximum possible quantity of this fuel type at this station/launcher. When the Station/Launcher field is set to zero, this shall be the time it takes to perform a maximum quantity load/reload of this fuel type at all applicable stations/launchers for this entity. */
-  unsigned char _maximumQuantityReloadTime; 
+  unsigned char _maximumQuantityReloadTime;
 
   /** the fuel measurement units. Enumeration */
-  unsigned char _fuelMeasurementUnits; 
+  unsigned char _fuelMeasurementUnits;
 
   /** Fuel type. Enumeration */
-  unsigned char _fuelType; 
+  unsigned char _fuelType;
 
   /** Location of fuel as related to entity. See section 14 of EBV document */
-  unsigned char _fuelLocation; 
+  unsigned char _fuelLocation;
 
   /** padding */
-  unsigned char _padding; 
+  unsigned char _padding;
 
 
  public:
@@ -73,9 +74,9 @@ protected:
     void setPadding(unsigned char pX); 
 
 
-virtual int getMarshalledSize() const;
+     virtual int getMarshalledSize() const;
 
-     bool operator  ==(const StorageFuelReload& rhs) const;
+     bool operator ==(const StorageFuelReload& rhs) const;
 };
 }
 

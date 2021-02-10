@@ -9,7 +9,8 @@ namespace DIS
 {
 // Not used. The PDU Header Record is directly incoroporated into the PDU class. Here for completness only. Section 6.2.66
 
-// Copyright (c) 2007-2009, MOVES Institute, Naval Postgraduate School. All rights reserved. 
+// Copyright (c) 2007-2012, MOVES Institute, Naval Postgraduate School. All rights reserved. 
+// Licensed under the BSD open source license. See http://www.movesinstitute.org/licenses/bsd.html
 //
 // @author DMcG, jkg
 
@@ -17,28 +18,28 @@ class EXPORT_MACRO PduHeader
 {
 protected:
   /** The version of the protocol. 5=DIS-1995, 6=DIS-1998, 7=DIS-2009. */
-  unsigned char _protocolVersion; 
+  unsigned char _protocolVersion;
 
   /** Exercise ID */
-  unsigned char _exerciseID; 
+  unsigned char _exerciseID;
 
   /** Type of pdu, unique for each PDU class */
-  unsigned char _pduType; 
+  unsigned char _pduType;
 
   /** value that refers to the protocol family, eg SimulationManagement, etc */
-  unsigned char _protocolFamily; 
+  unsigned char _protocolFamily;
 
   /** Timestamp value */
-  unsigned int _timestamp; 
+  unsigned int _timestamp;
 
   /** Length, in bytes, of the PDU. Changed name from length to avoid use of Hibernate QL reserved word. */
-  unsigned char _pduLength; 
+  unsigned short _pduLength;
 
   /** PDU Status Record. Described in 6.2.67. This field is not present in earlier DIS versions  */
-  unsigned short _pduStatus; 
+  unsigned char _pduStatus;
 
   /** zero filled array of padding */
-  unsigned char _padding; 
+  unsigned char _padding;
 
 
  public:
@@ -63,19 +64,19 @@ protected:
     unsigned int getTimestamp() const; 
     void setTimestamp(unsigned int pX); 
 
-    unsigned char getPduLength() const; 
-    void setPduLength(unsigned char pX); 
+    unsigned short getPduLength() const; 
+    void setPduLength(unsigned short pX); 
 
-    unsigned short getPduStatus() const; 
-    void setPduStatus(unsigned short pX); 
+    unsigned char getPduStatus() const; 
+    void setPduStatus(unsigned char pX); 
 
     unsigned char getPadding() const; 
     void setPadding(unsigned char pX); 
 
 
-virtual int getMarshalledSize() const;
+     virtual int getMarshalledSize() const;
 
-     bool operator  ==(const PduHeader& rhs) const;
+     bool operator ==(const PduHeader& rhs) const;
 };
 }
 

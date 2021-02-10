@@ -8,9 +8,10 @@
 
 namespace DIS
 {
-// Physical separation of an entity from another entity.  Section 6.2.93.6
+// Physical separation of an entity from another entity.  Section 6.2.94.6
 
-// Copyright (c) 2007-2009, MOVES Institute, Naval Postgraduate School. All rights reserved. 
+// Copyright (c) 2007-2012, MOVES Institute, Naval Postgraduate School. All rights reserved. 
+// Licensed under the BSD open source license. See http://www.movesinstitute.org/licenses/bsd.html
 //
 // @author DMcG, jkg
 
@@ -18,25 +19,25 @@ class EXPORT_MACRO SeparationVP
 {
 protected:
   /** the identification of the Variable Parameter record. Enumeration from EBV */
-  unsigned char _recordType; 
+  unsigned char _recordType;
 
   /** Reason for separation. EBV */
-  unsigned char _reasonForSeparation; 
+  unsigned char _reasonForSeparation;
 
   /** Whether the entity existed prior to separation EBV */
-  unsigned char _preEntityIndicator; 
+  unsigned char _preEntityIndicator;
 
   /** padding */
-  unsigned char _padding1; 
+  unsigned char _padding1;
 
   /** ID of parent */
-  EntityID _parentEntityID; 
+  EntityID _parentEntityID;
 
   /** padding */
-  unsigned short _padding2; 
+  unsigned short _padding2;
 
   /** Station separated from */
-  unsigned int _stationLocation; 
+  unsigned int _stationLocation;
 
 
  public:
@@ -58,8 +59,8 @@ protected:
     unsigned char getPadding1() const; 
     void setPadding1(unsigned char pX); 
 
-    EntityID& getParentEntityID(); 
-    const EntityID&  getParentEntityID() const; 
+    EntityID& getParentEntityID();
+    const EntityID&  getParentEntityID() const;
     void setParentEntityID(const EntityID    &pX);
 
     unsigned short getPadding2() const; 
@@ -69,9 +70,9 @@ protected:
     void setStationLocation(unsigned int pX); 
 
 
-virtual int getMarshalledSize() const;
+     virtual int getMarshalledSize() const;
 
-     bool operator  ==(const SeparationVP& rhs) const;
+     bool operator ==(const SeparationVP& rhs) const;
 };
 }
 

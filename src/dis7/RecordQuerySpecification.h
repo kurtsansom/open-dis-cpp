@@ -9,19 +9,20 @@
 
 namespace DIS
 {
-// The identification of the records being queried 6.2.71
+// The identification of the records being queried 6.2.72
 
-// Copyright (c) 2007-2009, MOVES Institute, Naval Postgraduate School. All rights reserved. 
+// Copyright (c) 2007-2012, MOVES Institute, Naval Postgraduate School. All rights reserved. 
+// Licensed under the BSD open source license. See http://www.movesinstitute.org/licenses/bsd.html
 //
 // @author DMcG, jkg
 
 class EXPORT_MACRO RecordQuerySpecification
 {
 protected:
-  unsigned int _numberOfRecords; 
+  unsigned int _numberOfRecords;
 
   /** variable length list of 32 bit records */
-  std::vector<FourByteChunk> _records; 
+  std::vector<FourByteChunk> _records;
 
 
  public:
@@ -33,14 +34,14 @@ protected:
 
     unsigned int getNumberOfRecords() const; 
 
-    std::vector<FourByteChunk>& getRecords(); 
-    const std::vector<FourByteChunk>& getRecords() const; 
+    std::vector<FourByteChunk>& getRecords();
+    const std::vector<FourByteChunk>& getRecords() const;
     void setRecords(const std::vector<FourByteChunk>&    pX);
 
 
-virtual int getMarshalledSize() const;
+     virtual int getMarshalledSize() const;
 
-     bool operator  ==(const RecordQuerySpecification& rhs) const;
+     bool operator ==(const RecordQuerySpecification& rhs) const;
 };
 }
 

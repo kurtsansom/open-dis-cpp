@@ -7,9 +7,10 @@
 
 namespace DIS
 {
-// The unique designation of an attached or unattached radio in an event or exercise Section 6.2.69
+// The unique designation of an attached or unattached radio in an event or exercise Section 6.2.70
 
-// Copyright (c) 2007-2009, MOVES Institute, Naval Postgraduate School. All rights reserved. 
+// Copyright (c) 2007-2012, MOVES Institute, Naval Postgraduate School. All rights reserved. 
+// Licensed under the BSD open source license. See http://www.movesinstitute.org/licenses/bsd.html
 //
 // @author DMcG, jkg
 
@@ -17,16 +18,16 @@ class EXPORT_MACRO RadioIdentifier
 {
 protected:
   /**  site */
-  unsigned short _siteNumber; 
+  unsigned short _siteNumber;
 
   /** application number */
-  unsigned short _applicationNumber; 
+  unsigned short _applicationNumber;
 
   /**  reference number */
-  unsigned short _referenceNumber; 
+  unsigned short _referenceNumber;
 
   /**  Radio number */
-  unsigned short _radioNumber; 
+  unsigned short _radioNumber;
 
 
  public:
@@ -49,9 +50,9 @@ protected:
     void setRadioNumber(unsigned short pX); 
 
 
-virtual int getMarshalledSize() const;
+     virtual int getMarshalledSize() const;
 
-     bool operator  ==(const RadioIdentifier& rhs) const;
+     bool operator ==(const RadioIdentifier& rhs) const;
 };
 }
 

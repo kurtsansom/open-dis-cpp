@@ -9,7 +9,8 @@ namespace DIS
 {
 // Relates to radios. NOT COMPLETE. Section 6.2.94
 
-// Copyright (c) 2007-2009, MOVES Institute, Naval Postgraduate School. All rights reserved. 
+// Copyright (c) 2007-2012, MOVES Institute, Naval Postgraduate School. All rights reserved. 
+// Licensed under the BSD open source license. See http://www.movesinstitute.org/licenses/bsd.html
 //
 // @author DMcG, jkg
 
@@ -17,10 +18,10 @@ class EXPORT_MACRO VariableTransmitterParameters
 {
 protected:
   /** Type of VTP. Enumeration from EBV */
-  unsigned int _recordType; 
+  unsigned int _recordType;
 
   /** Length, in bytes */
-  unsigned int _recordLength; 
+  unsigned int _recordLength;
 
 
  public:
@@ -37,9 +38,9 @@ protected:
     void setRecordLength(unsigned int pX); 
 
 
-virtual int getMarshalledSize() const;
+     virtual int getMarshalledSize() const;
 
-     bool operator  ==(const VariableTransmitterParameters& rhs) const;
+     bool operator ==(const VariableTransmitterParameters& rhs) const;
 };
 }
 

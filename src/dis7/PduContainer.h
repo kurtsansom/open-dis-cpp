@@ -11,7 +11,8 @@ namespace DIS
 {
 // Used for XML compatability. A container that holds PDUs
 
-// Copyright (c) 2007-2009, MOVES Institute, Naval Postgraduate School. All rights reserved. 
+// Copyright (c) 2007-2012, MOVES Institute, Naval Postgraduate School. All rights reserved. 
+// Licensed under the BSD open source license. See http://www.movesinstitute.org/licenses/bsd.html
 //
 // @author DMcG, jkg
 
@@ -19,10 +20,10 @@ class EXPORT_MACRO PduContainer
 {
 protected:
   /** Number of PDUs in the container list */
-  unsigned int _numberOfPdus; 
+  unsigned int _numberOfPdus;
 
   /** record sets */
-  std::vector<Pdu> _pdus; 
+  std::vector<Pdu> _pdus;
 
 
  public:
@@ -34,14 +35,14 @@ protected:
 
     unsigned int getNumberOfPdus() const; 
 
-    std::vector<Pdu>& getPdus(); 
-    const std::vector<Pdu>& getPdus() const; 
+    std::vector<Pdu>& getPdus();
+    const std::vector<Pdu>& getPdus() const;
     void setPdus(const std::vector<Pdu>&    pX);
 
 
-virtual int getMarshalledSize() const;
+     virtual int getMarshalledSize() const;
 
-     bool operator  ==(const PduContainer& rhs) const;
+     bool operator ==(const PduContainer& rhs) const;
 };
 }
 

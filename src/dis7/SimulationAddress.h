@@ -9,7 +9,8 @@ namespace DIS
 {
 // A Simulation Address record shall consist of the Site Identification number and the Application Identification number. Section 6.2.79 
 
-// Copyright (c) 2007-2009, MOVES Institute, Naval Postgraduate School. All rights reserved. 
+// Copyright (c) 2007-2012, MOVES Institute, Naval Postgraduate School. All rights reserved. 
+// Licensed under the BSD open source license. See http://www.movesinstitute.org/licenses/bsd.html
 //
 // @author DMcG, jkg
 
@@ -17,10 +18,10 @@ class EXPORT_MACRO SimulationAddress
 {
 protected:
   /** A site is defined as a facility, installation, organizational unit or a geographic location that has one or more simulation applications capable of participating in a distributed event.  */
-  unsigned short _site; 
+  unsigned short _site;
 
   /** An application is defined as a software program that is used to generate and process distributed simulation data including live, virtual and constructive data. */
-  unsigned short _application; 
+  unsigned short _application;
 
 
  public:
@@ -37,9 +38,9 @@ protected:
     void setApplication(unsigned short pX); 
 
 
-virtual int getMarshalledSize() const;
+     virtual int getMarshalledSize() const;
 
-     bool operator  ==(const SimulationAddress& rhs) const;
+     bool operator ==(const SimulationAddress& rhs) const;
 };
 }
 

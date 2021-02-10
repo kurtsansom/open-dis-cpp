@@ -12,7 +12,8 @@ namespace DIS
 {
 // Section 7.4.7. Sent after repair complete PDU. COMPLETE
 
-// Copyright (c) 2007-2009, MOVES Institute, Naval Postgraduate School. All rights reserved. 
+// Copyright (c) 2007-2012, MOVES Institute, Naval Postgraduate School. All rights reserved. 
+// Licensed under the BSD open source license. See http://www.movesinstitute.org/licenses/bsd.html
 //
 // @author DMcG, jkg
 
@@ -20,19 +21,19 @@ class EXPORT_MACRO RepairResponsePdu : public LogisticsFamilyPdu
 {
 protected:
   /** Entity that requested repairs.  See 6.2.28 */
-  EntityID _receivingEntityID; 
+  EntityID _receivingEntityID;
 
   /** Entity that is repairing.  See 6.2.28 */
-  EntityID _repairingEntityID; 
+  EntityID _repairingEntityID;
 
   /** Result of repair operation */
-  unsigned char _repairResult; 
+  unsigned char _repairResult;
 
   /** padding */
-  short _padding1; 
+  short _padding1;
 
   /** padding */
-  char _padding2; 
+  char _padding2;
 
 
  public:
@@ -42,12 +43,12 @@ protected:
     virtual void marshal(DataStream& dataStream) const;
     virtual void unmarshal(DataStream& dataStream);
 
-    EntityID& getReceivingEntityID(); 
-    const EntityID&  getReceivingEntityID() const; 
+    EntityID& getReceivingEntityID();
+    const EntityID&  getReceivingEntityID() const;
     void setReceivingEntityID(const EntityID    &pX);
 
-    EntityID& getRepairingEntityID(); 
-    const EntityID&  getRepairingEntityID() const; 
+    EntityID& getRepairingEntityID();
+    const EntityID&  getRepairingEntityID() const;
     void setRepairingEntityID(const EntityID    &pX);
 
     unsigned char getRepairResult() const; 
@@ -60,9 +61,9 @@ protected:
     void setPadding2(char pX); 
 
 
-virtual int getMarshalledSize() const;
+     virtual int getMarshalledSize() const;
 
-     bool operator  ==(const RepairResponsePdu& rhs) const;
+     bool operator ==(const RepairResponsePdu& rhs) const;
 };
 }
 

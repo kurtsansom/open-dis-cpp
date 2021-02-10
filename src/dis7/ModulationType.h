@@ -9,24 +9,25 @@ namespace DIS
 {
 // Information about the type of modulation used for radio transmission. 6.2.59 
 
-// Copyright (c) 2007-2009, MOVES Institute, Naval Postgraduate School. All rights reserved. 
+// Copyright (c) 2007-2012, MOVES Institute, Naval Postgraduate School. All rights reserved. 
+// Licensed under the BSD open source license. See http://www.movesinstitute.org/licenses/bsd.html
 //
 // @author DMcG, jkg
 
 class EXPORT_MACRO ModulationType
 {
 protected:
-  /** This field shall indicate the spread spectrum technique or combination of spread spectrum techniques in use. Bt field. */
-  unsigned short _spreadSpectrum; 
+  /** This field shall indicate the spread spectrum technique or combination of spread spectrum techniques in use. Bit field. 0=freq hopping, 1=psuedo noise, time hopping=2, reamining bits unused */
+  unsigned short _spreadSpectrum;
 
   /** the major classification of the modulation type.  */
-  unsigned short _majorModulation; 
+  unsigned short _majorModulation;
 
   /** provide certain detailed information depending upon the major modulation type */
-  unsigned short _detail; 
+  unsigned short _detail;
 
   /** the radio system associated with this Transmitter PDU and shall be used as the basis to interpret other fields whose values depend on a specific radio system. */
-  unsigned short _radioSystem; 
+  unsigned short _radioSystem;
 
 
  public:
@@ -49,9 +50,9 @@ protected:
     void setRadioSystem(unsigned short pX); 
 
 
-virtual int getMarshalledSize() const;
+     virtual int getMarshalledSize() const;
 
-     bool operator  ==(const ModulationType& rhs) const;
+     bool operator ==(const ModulationType& rhs) const;
 };
 }
 

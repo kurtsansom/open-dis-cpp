@@ -9,7 +9,8 @@ namespace DIS
 {
 // Three double precision floating point values, x, y, and z. Used for world coordinates Section 6.2.97.
 
-// Copyright (c) 2007-2009, MOVES Institute, Naval Postgraduate School. All rights reserved. 
+// Copyright (c) 2007-2012, MOVES Institute, Naval Postgraduate School. All rights reserved. 
+// Licensed under the BSD open source license. See http://www.movesinstitute.org/licenses/bsd.html
 //
 // @author DMcG, jkg
 
@@ -17,13 +18,13 @@ class EXPORT_MACRO Vector3Double
 {
 protected:
   /** X value */
-  double _x; 
+  double _x;
 
   /** y Value */
-  double _y; 
+  double _y;
 
   /** Z value */
-  double _z; 
+  double _z;
 
 
  public:
@@ -43,9 +44,9 @@ protected:
     void setZ(double pX); 
 
 
-virtual int getMarshalledSize() const;
+     virtual int getMarshalledSize() const;
 
-     bool operator  ==(const Vector3Double& rhs) const;
+     bool operator ==(const Vector3Double& rhs) const;
 };
 }
 

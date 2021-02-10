@@ -12,7 +12,8 @@ namespace DIS
 {
 // Section 5.3.12: Abstract superclass for reliable simulation management PDUs
 
-// Copyright (c) 2007-2009, MOVES Institute, Naval Postgraduate School. All rights reserved. 
+// Copyright (c) 2007-2012, MOVES Institute, Naval Postgraduate School. All rights reserved. 
+// Licensed under the BSD open source license. See http://www.movesinstitute.org/licenses/bsd.html
 //
 // @author DMcG, jkg
 
@@ -20,10 +21,10 @@ class EXPORT_MACRO SimulationManagementWithReliabilityFamilyPdu : public Pdu
 {
 protected:
   /** Object originatig the request */
-  EntityID _originatingEntityID; 
+  EntityID _originatingEntityID;
 
   /** Object with which this point object is associated */
-  EntityID _receivingEntityID; 
+  EntityID _receivingEntityID;
 
 
  public:
@@ -33,18 +34,18 @@ protected:
     virtual void marshal(DataStream& dataStream) const;
     virtual void unmarshal(DataStream& dataStream);
 
-    EntityID& getOriginatingEntityID(); 
-    const EntityID&  getOriginatingEntityID() const; 
+    EntityID& getOriginatingEntityID();
+    const EntityID&  getOriginatingEntityID() const;
     void setOriginatingEntityID(const EntityID    &pX);
 
-    EntityID& getReceivingEntityID(); 
-    const EntityID&  getReceivingEntityID() const; 
+    EntityID& getReceivingEntityID();
+    const EntityID&  getReceivingEntityID() const;
     void setReceivingEntityID(const EntityID    &pX);
 
 
-virtual int getMarshalledSize() const;
+     virtual int getMarshalledSize() const;
 
-     bool operator  ==(const SimulationManagementWithReliabilityFamilyPdu& rhs) const;
+     bool operator ==(const SimulationManagementWithReliabilityFamilyPdu& rhs) const;
 };
 }
 

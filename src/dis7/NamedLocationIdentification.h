@@ -9,18 +9,19 @@ namespace DIS
 {
 // Information about the discrete positional relationship of the part entity with respect to the its host entity Section 6.2.62 
 
-// Copyright (c) 2007-2009, MOVES Institute, Naval Postgraduate School. All rights reserved. 
+// Copyright (c) 2007-2012, MOVES Institute, Naval Postgraduate School. All rights reserved. 
+// Licensed under the BSD open source license. See http://www.movesinstitute.org/licenses/bsd.html
 //
 // @author DMcG, jkg
 
 class EXPORT_MACRO NamedLocationIdentification
 {
 protected:
-  /** the station name within the host at which the part entity is located. If the part entity is On Station, this field shall specify the representation of the part’s location data fields. This field shall be specified by a 16-bit enumeration  */
-  unsigned short _stationName; 
+  /** the station name within the host at which the part entity is located. If the part entity is On Station, this field shall specify the representation of the part's location data fields. This field shall be specified by a 16-bit enumeration  */
+  unsigned short _stationName;
 
   /** the number of the particular wing station, cargo hold etc., at which the part is attached.  */
-  unsigned short _stationNumber; 
+  unsigned short _stationNumber;
 
 
  public:
@@ -37,9 +38,9 @@ protected:
     void setStationNumber(unsigned short pX); 
 
 
-virtual int getMarshalledSize() const;
+     virtual int getMarshalledSize() const;
 
-     bool operator  ==(const NamedLocationIdentification& rhs) const;
+     bool operator ==(const NamedLocationIdentification& rhs) const;
 };
 }
 

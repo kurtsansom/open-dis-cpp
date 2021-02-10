@@ -9,7 +9,8 @@ namespace DIS
 {
 // Three floating point values, x, y, and z. Section 6.2.95
 
-// Copyright (c) 2007-2009, MOVES Institute, Naval Postgraduate School. All rights reserved. 
+// Copyright (c) 2007-2012, MOVES Institute, Naval Postgraduate School. All rights reserved. 
+// Licensed under the BSD open source license. See http://www.movesinstitute.org/licenses/bsd.html
 //
 // @author DMcG, jkg
 
@@ -17,13 +18,13 @@ class EXPORT_MACRO Vector3Float
 {
 protected:
   /** X value */
-  float _x; 
+  float _x;
 
   /** y Value */
-  float _y; 
+  float _y;
 
   /** Z value */
-  float _z; 
+  float _z;
 
 
  public:

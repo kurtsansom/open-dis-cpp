@@ -13,7 +13,8 @@ namespace DIS
 {
 // Section 7.5.5. Stop or freeze an enity (or exercise). COMPLETE
 
-// Copyright (c) 2007-2009, MOVES Institute, Naval Postgraduate School. All rights reserved. 
+// Copyright (c) 2007-2012, MOVES Institute, Naval Postgraduate School. All rights reserved. 
+// Licensed under the BSD open source license. See http://www.movesinstitute.org/licenses/bsd.html
 //
 // @author DMcG, jkg
 
@@ -27,19 +28,19 @@ protected:
   EntityID _receivingID; 
 
   /** real-world(UTC) time at which the entity shall stop or freeze in the exercise */
-  ClockTime _realWorldTime; 
+  ClockTime _realWorldTime;
 
   /** Reason the simulation was stopped or frozen (see section 7 of SISO-REF-010) represented by an 8-bit enumeration */
-  unsigned char _reason; 
+  unsigned char _reason;
 
   /** Internal behavior of the entity(or simulation) and its appearance while frozen to the other participants */
-  unsigned char _frozenBehavior; 
+  unsigned char _frozenBehavior;
 
   /** padding */
-  short _padding1; 
+  short _padding1;
 
   /** Request ID that is unique */
-  unsigned int _requestID; 
+  unsigned int _requestID;
 
 
  public:
@@ -57,8 +58,8 @@ protected:
     const EntityID&  getReceivingID() const; 
     void setReceivingID(const EntityID    &pX);
 
-    ClockTime& getRealWorldTime(); 
-    const ClockTime&  getRealWorldTime() const; 
+    ClockTime& getRealWorldTime();
+    const ClockTime&  getRealWorldTime() const;
     void setRealWorldTime(const ClockTime    &pX);
 
     unsigned char getReason() const; 
@@ -74,9 +75,9 @@ protected:
     void setRequestID(unsigned int pX); 
 
 
-virtual int getMarshalledSize() const;
+     virtual int getMarshalledSize() const;
 
-     bool operator  ==(const StopFreezePdu& rhs) const;
+     bool operator ==(const StopFreezePdu& rhs) const;
 };
 }
 

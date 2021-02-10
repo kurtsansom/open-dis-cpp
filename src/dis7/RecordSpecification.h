@@ -9,9 +9,10 @@
 
 namespace DIS
 {
-// This record shall specify the number of record sets contained in the Record Specification record and the record details. Section 6.2.72.
+// This record shall specify the number of record sets contained in the Record Specification record and the record details. Section 6.2.73.
 
-// Copyright (c) 2007-2009, MOVES Institute, Naval Postgraduate School. All rights reserved. 
+// Copyright (c) 2007-2012, MOVES Institute, Naval Postgraduate School. All rights reserved. 
+// Licensed under the BSD open source license. See http://www.movesinstitute.org/licenses/bsd.html
 //
 // @author DMcG, jkg
 
@@ -19,10 +20,10 @@ class EXPORT_MACRO RecordSpecification
 {
 protected:
   /** The number of record sets */
-  unsigned int _numberOfRecordSets; 
+  unsigned int _numberOfRecordSets;
 
   /** variable length list record specifications. */
-  std::vector<RecordSpecificationElement> _recordSets; 
+  RecordSpecificationElement _recordSets;
 
 
  public:
@@ -33,15 +34,16 @@ protected:
     virtual void unmarshal(DataStream& dataStream);
 
     unsigned int getNumberOfRecordSets() const; 
+    void setNumberOfRecordSets(unsigned int pX); 
 
-    std::vector<RecordSpecificationElement>& getRecordSets(); 
-    const std::vector<RecordSpecificationElement>& getRecordSets() const; 
-    void setRecordSets(const std::vector<RecordSpecificationElement>&    pX);
+    RecordSpecificationElement& getRecordSets();
+    const RecordSpecificationElement&  getRecordSets() const;
+    void setRecordSets(const RecordSpecificationElement    &pX);
 
 
-virtual int getMarshalledSize() const;
+     virtual int getMarshalledSize() const;
 
-     bool operator  ==(const RecordSpecification& rhs) const;
+     bool operator ==(const RecordSpecification& rhs) const;
 };
 }
 

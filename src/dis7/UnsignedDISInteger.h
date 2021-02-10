@@ -9,7 +9,8 @@ namespace DIS
 {
 // container class not in specification
 
-// Copyright (c) 2007-2009, MOVES Institute, Naval Postgraduate School. All rights reserved. 
+// Copyright (c) 2007-2012, MOVES Institute, Naval Postgraduate School. All rights reserved. 
+// Licensed under the BSD open source license. See http://www.movesinstitute.org/licenses/bsd.html
 //
 // @author DMcG, jkg
 
@@ -17,7 +18,7 @@ class EXPORT_MACRO UnsignedDISInteger
 {
 protected:
   /** unsigned integer */
-  unsigned int _val; 
+  unsigned int _val;
 
 
  public:
@@ -31,9 +32,9 @@ protected:
     void setVal(unsigned int pX); 
 
 
-virtual int getMarshalledSize() const;
+     virtual int getMarshalledSize() const;
 
-     bool operator  ==(const UnsignedDISInteger& rhs) const;
+     bool operator ==(const UnsignedDISInteger& rhs) const;
 };
 }
 

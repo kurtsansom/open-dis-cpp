@@ -17,7 +17,8 @@ namespace DIS
 {
 // information about the complete minefield. The minefield presence, perimiter, etc. Section 7.9.2 COMPLETE
 
-// Copyright (c) 2007-2009, MOVES Institute, Naval Postgraduate School. All rights reserved. 
+// Copyright (c) 2007-2012, MOVES Institute, Naval Postgraduate School. All rights reserved. 
+// Licensed under the BSD open source license. See http://www.movesinstitute.org/licenses/bsd.html
 //
 // @author DMcG, jkg
 
@@ -25,40 +26,40 @@ class EXPORT_MACRO MinefieldStatePdu : public MinefieldFamilyPdu
 {
 protected:
   /** Minefield ID */
-  MinefieldIdentifier _minefieldID; 
+  MinefieldIdentifier _minefieldID;
 
   /** Minefield sequence */
-  unsigned short _minefieldSequence; 
+  unsigned short _minefieldSequence;
 
   /** force ID */
-  unsigned char _forceID; 
+  unsigned char _forceID;
 
   /** Number of permieter points */
-  unsigned char _numberOfPerimeterPoints; 
+  unsigned char _numberOfPerimeterPoints;
 
   /** type of minefield */
-  EntityType _minefieldType; 
+  EntityType _minefieldType;
 
   /** how many mine types */
-  unsigned short _numberOfMineTypes; 
+  unsigned short _numberOfMineTypes;
 
   /** location of center of minefield in world coords */
-  Vector3Double _minefieldLocation; 
+  Vector3Double _minefieldLocation;
 
   /** orientation of minefield */
-  EulerAngles _minefieldOrientation; 
+  EulerAngles _minefieldOrientation;
 
   /** appearance bitflags */
-  unsigned short _appearance; 
+  unsigned short _appearance;
 
   /** protocolMode. First two bits are the protocol mode, 14 bits reserved. */
-  unsigned short _protocolMode; 
+  unsigned short _protocolMode;
 
   /** perimeter points for the minefield */
-  std::vector<Vector2Float> _perimeterPoints; 
+  std::vector<Vector2Float> _perimeterPoints;
 
   /** Type of mines */
-  std::vector<EntityType> _mineType; 
+  std::vector<EntityType> _mineType;
 
 
  public:
@@ -68,8 +69,8 @@ protected:
     virtual void marshal(DataStream& dataStream) const;
     virtual void unmarshal(DataStream& dataStream);
 
-    MinefieldIdentifier& getMinefieldID(); 
-    const MinefieldIdentifier&  getMinefieldID() const; 
+    MinefieldIdentifier& getMinefieldID();
+    const MinefieldIdentifier&  getMinefieldID() const;
     void setMinefieldID(const MinefieldIdentifier    &pX);
 
     unsigned short getMinefieldSequence() const; 
@@ -80,18 +81,18 @@ protected:
 
     unsigned char getNumberOfPerimeterPoints() const; 
 
-    EntityType& getMinefieldType(); 
-    const EntityType&  getMinefieldType() const; 
+    EntityType& getMinefieldType();
+    const EntityType&  getMinefieldType() const;
     void setMinefieldType(const EntityType    &pX);
 
     unsigned short getNumberOfMineTypes() const; 
 
-    Vector3Double& getMinefieldLocation(); 
-    const Vector3Double&  getMinefieldLocation() const; 
+    Vector3Double& getMinefieldLocation();
+    const Vector3Double&  getMinefieldLocation() const;
     void setMinefieldLocation(const Vector3Double    &pX);
 
-    EulerAngles& getMinefieldOrientation(); 
-    const EulerAngles&  getMinefieldOrientation() const; 
+    EulerAngles& getMinefieldOrientation();
+    const EulerAngles&  getMinefieldOrientation() const;
     void setMinefieldOrientation(const EulerAngles    &pX);
 
     unsigned short getAppearance() const; 
@@ -100,18 +101,18 @@ protected:
     unsigned short getProtocolMode() const; 
     void setProtocolMode(unsigned short pX); 
 
-    std::vector<Vector2Float>& getPerimeterPoints(); 
-    const std::vector<Vector2Float>& getPerimeterPoints() const; 
+    std::vector<Vector2Float>& getPerimeterPoints();
+    const std::vector<Vector2Float>& getPerimeterPoints() const;
     void setPerimeterPoints(const std::vector<Vector2Float>&    pX);
 
-    std::vector<EntityType>& getMineType(); 
-    const std::vector<EntityType>& getMineType() const; 
+    std::vector<EntityType>& getMineType();
+    const std::vector<EntityType>& getMineType() const;
     void setMineType(const std::vector<EntityType>&    pX);
 
 
-virtual int getMarshalledSize() const;
+     virtual int getMarshalledSize() const;
 
-     bool operator  ==(const MinefieldStatePdu& rhs) const;
+     bool operator ==(const MinefieldStatePdu& rhs) const;
 };
 }
 

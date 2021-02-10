@@ -12,7 +12,8 @@ namespace DIS
 {
 // Section 7.5 Abstract superclass for PDUs relating to the simulation itself. COMPLETE
 
-// Copyright (c) 2007-2009, MOVES Institute, Naval Postgraduate School. All rights reserved. 
+// Copyright (c) 2007-2012, MOVES Institute, Naval Postgraduate School. All rights reserved. 
+// Licensed under the BSD open source license. See http://www.movesinstitute.org/licenses/bsd.html
 //
 // @author DMcG, jkg
 
@@ -20,10 +21,10 @@ class EXPORT_MACRO SimulationManagementFamilyPdu : public Pdu
 {
 protected:
   /** Entity that is sending message */
-  EntityID _originatingEntityID; 
+  EntityID _originatingEntityID;
 
   /** Entity that is intended to receive message */
-  EntityID _receivingEntityID; 
+  EntityID _receivingEntityID;
 
 
  public:
@@ -33,18 +34,18 @@ protected:
     virtual void marshal(DataStream& dataStream) const;
     virtual void unmarshal(DataStream& dataStream);
 
-    EntityID& getOriginatingEntityID(); 
-    const EntityID&  getOriginatingEntityID() const; 
+    EntityID& getOriginatingEntityID();
+    const EntityID&  getOriginatingEntityID() const;
     void setOriginatingEntityID(const EntityID    &pX);
 
-    EntityID& getReceivingEntityID(); 
-    const EntityID&  getReceivingEntityID() const; 
+    EntityID& getReceivingEntityID();
+    const EntityID&  getReceivingEntityID() const;
     void setReceivingEntityID(const EntityID    &pX);
 
 
-virtual int getMarshalledSize() const;
+     virtual int getMarshalledSize() const;
 
-     bool operator  ==(const SimulationManagementFamilyPdu& rhs) const;
+     bool operator ==(const SimulationManagementFamilyPdu& rhs) const;
 };
 }
 

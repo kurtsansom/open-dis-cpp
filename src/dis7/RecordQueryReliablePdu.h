@@ -12,7 +12,8 @@ namespace DIS
 {
 // Section 5.3.12.13: A request for one or more records of data from an entity. COMPLETE
 
-// Copyright (c) 2007-2009, MOVES Institute, Naval Postgraduate School. All rights reserved. 
+// Copyright (c) 2007-2012, MOVES Institute, Naval Postgraduate School. All rights reserved. 
+// Licensed under the BSD open source license. See http://www.movesinstitute.org/licenses/bsd.html
 //
 // @author DMcG, jkg
 
@@ -20,28 +21,28 @@ class EXPORT_MACRO RecordQueryReliablePdu : public SimulationManagementWithRelia
 {
 protected:
   /** request ID */
-  unsigned int _requestID; 
+  unsigned int _requestID;
 
   /** level of reliability service used for this transaction */
-  unsigned char _requiredReliabilityService; 
+  unsigned char _requiredReliabilityService;
 
   /** padding. The spec is unclear and contradictory here. */
-  unsigned short _pad1; 
+  unsigned short _pad1;
 
   /** padding */
-  unsigned char _pad2; 
+  unsigned char _pad2;
 
   /** event type */
-  unsigned short _eventType; 
+  unsigned short _eventType;
 
   /** time */
-  unsigned int _time; 
+  unsigned int _time;
 
   /** numberOfRecords */
-  unsigned int _numberOfRecords; 
+  unsigned int _numberOfRecords;
 
   /** record IDs */
-  std::vector<FourByteChunk> _recordIDs; 
+  std::vector<FourByteChunk> _recordIDs;
 
 
  public:
@@ -71,14 +72,14 @@ protected:
 
     unsigned int getNumberOfRecords() const; 
 
-    std::vector<FourByteChunk>& getRecordIDs(); 
-    const std::vector<FourByteChunk>& getRecordIDs() const; 
+    std::vector<FourByteChunk>& getRecordIDs();
+    const std::vector<FourByteChunk>& getRecordIDs() const;
     void setRecordIDs(const std::vector<FourByteChunk>&    pX);
 
 
-virtual int getMarshalledSize() const;
+     virtual int getMarshalledSize() const;
 
-     bool operator  ==(const RecordQueryReliablePdu& rhs) const;
+     bool operator ==(const RecordQueryReliablePdu& rhs) const;
 };
 }
 

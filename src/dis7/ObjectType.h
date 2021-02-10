@@ -9,7 +9,8 @@ namespace DIS
 {
 // The unique designation of an environmental object. Section 6.2.64
 
-// Copyright (c) 2007-2009, MOVES Institute, Naval Postgraduate School. All rights reserved. 
+// Copyright (c) 2007-2012, MOVES Institute, Naval Postgraduate School. All rights reserved. 
+// Licensed under the BSD open source license. See http://www.movesinstitute.org/licenses/bsd.html
 //
 // @author DMcG, jkg
 
@@ -17,16 +18,16 @@ class EXPORT_MACRO ObjectType
 {
 protected:
   /** Domain of entity (air, surface, subsurface, space, etc) */
-  unsigned char _domain; 
+  unsigned char _domain;
 
   /** country to which the design of the entity is attributed */
-  unsigned char _objectKind; 
+  unsigned char _objectKind;
 
   /** category of entity */
-  unsigned char _category; 
+  unsigned char _category;
 
   /** subcategory of entity */
-  unsigned char _subcategory; 
+  unsigned char _subcategory;
 
 
  public:
@@ -49,9 +50,9 @@ protected:
     void setSubcategory(unsigned char pX); 
 
 
-virtual int getMarshalledSize() const;
+     virtual int getMarshalledSize() const;
 
-     bool operator  ==(const ObjectType& rhs) const;
+     bool operator ==(const ObjectType& rhs) const;
 };
 }
 

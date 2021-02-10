@@ -69,22 +69,22 @@ void PduHeader::setTimestamp(unsigned int pX)
     _timestamp = pX;
 }
 
-unsigned char PduHeader::getPduLength() const
+unsigned short PduHeader::getPduLength() const
 {
     return _pduLength;
 }
 
-void PduHeader::setPduLength(unsigned char pX)
+void PduHeader::setPduLength(unsigned short pX)
 {
     _pduLength = pX;
 }
 
-unsigned short PduHeader::getPduStatus() const
+unsigned char PduHeader::getPduStatus() const
 {
     return _pduStatus;
 }
 
-void PduHeader::setPduStatus(unsigned short pX)
+void PduHeader::setPduStatus(unsigned char pX)
 {
     _pduStatus = pX;
 }
@@ -149,8 +149,8 @@ int PduHeader::getMarshalledSize() const
    marshalSize = marshalSize + 1;  // _pduType
    marshalSize = marshalSize + 1;  // _protocolFamily
    marshalSize = marshalSize + 4;  // _timestamp
-   marshalSize = marshalSize + 1;  // _pduLength
-   marshalSize = marshalSize + 2;  // _pduStatus
+   marshalSize = marshalSize + 2;  // _pduLength
+   marshalSize = marshalSize + 1;  // _pduStatus
    marshalSize = marshalSize + 1;  // _padding
     return marshalSize;
 }

@@ -14,7 +14,8 @@ namespace DIS
 {
 // Information used to communicate the offer of supplies by a supplying entity to a receiving entity. Section 7.4.3 COMPLETE
 
-// Copyright (c) 2007-2009, MOVES Institute, Naval Postgraduate School. All rights reserved. 
+// Copyright (c) 2007-2012, MOVES Institute, Naval Postgraduate School. All rights reserved. 
+// Licensed under the BSD open source license. See http://www.movesinstitute.org/licenses/bsd.html
 //
 // @author DMcG, jkg
 
@@ -22,22 +23,22 @@ class EXPORT_MACRO ResupplyOfferPdu : public LogisticsFamilyPdu
 {
 protected:
   /** Field identifies the Entity and respective Entity Record ID that is receiving service (see 6.2.28), Section 7.4.3 */
-  EntityID _receivingEntityID; 
+  EntityID _receivingEntityID;
 
   /** Identifies the Entity and respective Entity ID Record that is supplying  (see 6.2.28), Section 7.4.3 */
-  EntityID _supplyingEntityID; 
+  EntityID _supplyingEntityID;
 
   /** How many supplies types are being offered, Section 7.4.3 */
-  unsigned char _numberOfSupplyTypes; 
+  unsigned char _numberOfSupplyTypes;
 
   /** padding */
-  char _padding1; 
+  char _padding1;
 
   /** padding */
-  short _padding2; 
+  short _padding2;
 
   /** A Reord that Specifies the type of supply and the amount of that supply for each of the supply types in numberOfSupplyTypes (see 6.2.85), Section 7.4.3 */
-  std::vector<SupplyQuantity> _supplies; 
+  std::vector<SupplyQuantity> _supplies;
 
 
  public:
@@ -47,12 +48,12 @@ protected:
     virtual void marshal(DataStream& dataStream) const;
     virtual void unmarshal(DataStream& dataStream);
 
-    EntityID& getReceivingEntityID(); 
-    const EntityID&  getReceivingEntityID() const; 
+    EntityID& getReceivingEntityID();
+    const EntityID&  getReceivingEntityID() const;
     void setReceivingEntityID(const EntityID    &pX);
 
-    EntityID& getSupplyingEntityID(); 
-    const EntityID&  getSupplyingEntityID() const; 
+    EntityID& getSupplyingEntityID();
+    const EntityID&  getSupplyingEntityID() const;
     void setSupplyingEntityID(const EntityID    &pX);
 
     unsigned char getNumberOfSupplyTypes() const; 
@@ -63,14 +64,14 @@ protected:
     short getPadding2() const; 
     void setPadding2(short pX); 
 
-    std::vector<SupplyQuantity>& getSupplies(); 
-    const std::vector<SupplyQuantity>& getSupplies() const; 
+    std::vector<SupplyQuantity>& getSupplies();
+    const std::vector<SupplyQuantity>& getSupplies() const;
     void setSupplies(const std::vector<SupplyQuantity>&    pX);
 
 
-virtual int getMarshalledSize() const;
+     virtual int getMarshalledSize() const;
 
-     bool operator  ==(const ResupplyOfferPdu& rhs) const;
+     bool operator ==(const ResupplyOfferPdu& rhs) const;
 };
 }
 

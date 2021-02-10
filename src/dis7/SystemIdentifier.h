@@ -8,9 +8,10 @@
 
 namespace DIS
 {
-// The ID of the IFF emitting system. NOT COMPLETE. Section 6.2.86
+// The ID of the IFF emitting system. NOT COMPLETE. Section 6.2.87
 
-// Copyright (c) 2007-2009, MOVES Institute, Naval Postgraduate School. All rights reserved. 
+// Copyright (c) 2007-2012, MOVES Institute, Naval Postgraduate School. All rights reserved. 
+// Licensed under the BSD open source license. See http://www.movesinstitute.org/licenses/bsd.html
 //
 // @author DMcG, jkg
 
@@ -18,16 +19,16 @@ class EXPORT_MACRO SystemIdentifier
 {
 protected:
   /** general type of emitting system, an enumeration */
-  unsigned short _systemType; 
+  unsigned short _systemType;
 
   /** named type of system, an enumeration */
-  unsigned short _systemName; 
+  unsigned short _systemName;
 
   /** mode of operation for the system, an enumeration */
-  unsigned short _systemMode; 
+  unsigned short _systemMode;
 
   /** status of this PDU, see section 6.2.15 */
-  ChangeOptions _changeOptions; 
+  ChangeOptions _changeOptions;
 
 
  public:
@@ -46,14 +47,14 @@ protected:
     unsigned short getSystemMode() const; 
     void setSystemMode(unsigned short pX); 
 
-    ChangeOptions& getChangeOptions(); 
-    const ChangeOptions&  getChangeOptions() const; 
+    ChangeOptions& getChangeOptions();
+    const ChangeOptions&  getChangeOptions() const;
     void setChangeOptions(const ChangeOptions    &pX);
 
 
-virtual int getMarshalledSize() const;
+     virtual int getMarshalledSize() const;
 
-     bool operator  ==(const SystemIdentifier& rhs) const;
+     bool operator ==(const SystemIdentifier& rhs) const;
 };
 }
 

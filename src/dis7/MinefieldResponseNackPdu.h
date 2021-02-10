@@ -14,7 +14,8 @@ namespace DIS
 {
 // proivde the means to request a retransmit of a minefield data pdu. Section 7.9.5 COMPLETE
 
-// Copyright (c) 2007-2009, MOVES Institute, Naval Postgraduate School. All rights reserved. 
+// Copyright (c) 2007-2012, MOVES Institute, Naval Postgraduate School. All rights reserved. 
+// Licensed under the BSD open source license. See http://www.movesinstitute.org/licenses/bsd.html
 //
 // @author DMcG, jkg
 
@@ -22,16 +23,16 @@ class EXPORT_MACRO MinefieldResponseNackPdu : public MinefieldFamilyPdu
 {
 protected:
   /** Minefield ID */
-  EntityID _minefieldID; 
+  EntityID _minefieldID;
 
   /** entity ID making the request */
-  EntityID _requestingEntityID; 
+  EntityID _requestingEntityID;
 
   /** request ID */
-  unsigned char _requestID; 
+  unsigned char _requestID;
 
   /** how many pdus were missing */
-  unsigned char _numberOfMissingPdus; 
+  unsigned char _numberOfMissingPdus;
 
   /** PDU sequence numbers that were missing */
   std::vector<EightByteChunk> _missingPduSequenceNumbers; 
@@ -44,12 +45,12 @@ protected:
     virtual void marshal(DataStream& dataStream) const;
     virtual void unmarshal(DataStream& dataStream);
 
-    EntityID& getMinefieldID(); 
-    const EntityID&  getMinefieldID() const; 
+    EntityID& getMinefieldID();
+    const EntityID&  getMinefieldID() const;
     void setMinefieldID(const EntityID    &pX);
 
-    EntityID& getRequestingEntityID(); 
-    const EntityID&  getRequestingEntityID() const; 
+    EntityID& getRequestingEntityID();
+    const EntityID&  getRequestingEntityID() const;
     void setRequestingEntityID(const EntityID    &pX);
 
     unsigned char getRequestID() const; 
@@ -57,14 +58,14 @@ protected:
 
     unsigned char getNumberOfMissingPdus() const; 
 
-    std::vector<EightByteChunk>& getMissingPduSequenceNumbers(); 
-    const std::vector<EightByteChunk>& getMissingPduSequenceNumbers() const; 
+    std::vector<EightByteChunk>& getMissingPduSequenceNumbers();
+    const std::vector<EightByteChunk>& getMissingPduSequenceNumbers() const;
     void setMissingPduSequenceNumbers(const std::vector<EightByteChunk>&    pX);
 
 
-virtual int getMarshalledSize() const;
+     virtual int getMarshalledSize() const;
 
-     bool operator  ==(const MinefieldResponseNackPdu& rhs) const;
+     bool operator ==(const MinefieldResponseNackPdu& rhs) const;
 };
 }
 

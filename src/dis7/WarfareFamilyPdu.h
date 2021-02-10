@@ -12,7 +12,8 @@ namespace DIS
 {
 // abstract superclass for fire and detonation pdus that have shared information. Section 7.3 COMPLETE
 
-// Copyright (c) 2007-2009, MOVES Institute, Naval Postgraduate School. All rights reserved. 
+// Copyright (c) 2007-2012, MOVES Institute, Naval Postgraduate School. All rights reserved. 
+// Licensed under the BSD open source license. See http://www.movesinstitute.org/licenses/bsd.html
 //
 // @author DMcG, jkg
 
@@ -20,10 +21,10 @@ class EXPORT_MACRO WarfareFamilyPdu : public Pdu
 {
 protected:
   /** ID of the entity that shot */
-  EntityID _firingEntityID; 
+  EntityID _firingEntityID;
 
   /** ID of the entity that is being shot at */
-  EntityID _targetEntityID; 
+  EntityID _targetEntityID;
 
 
  public:
@@ -33,18 +34,18 @@ protected:
     virtual void marshal(DataStream& dataStream) const;
     virtual void unmarshal(DataStream& dataStream);
 
-    EntityID& getFiringEntityID(); 
-    const EntityID&  getFiringEntityID() const; 
+    EntityID& getFiringEntityID();
+    const EntityID&  getFiringEntityID() const;
     void setFiringEntityID(const EntityID    &pX);
 
-    EntityID& getTargetEntityID(); 
-    const EntityID&  getTargetEntityID() const; 
+    EntityID& getTargetEntityID();
+    const EntityID&  getTargetEntityID() const;
     void setTargetEntityID(const EntityID    &pX);
 
 
-virtual int getMarshalledSize() const;
+     virtual int getMarshalledSize() const;
 
-     bool operator  ==(const WarfareFamilyPdu& rhs) const;
+     bool operator ==(const WarfareFamilyPdu& rhs) const;
 };
 }
 

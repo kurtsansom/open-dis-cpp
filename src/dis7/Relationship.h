@@ -7,9 +7,10 @@
 
 namespace DIS
 {
-// The relationship of the part entity to its host entity. Section 6.2.73.
+// The relationship of the part entity to its host entity. Section 6.2.74.
 
-// Copyright (c) 2007-2009, MOVES Institute, Naval Postgraduate School. All rights reserved. 
+// Copyright (c) 2007-2012, MOVES Institute, Naval Postgraduate School. All rights reserved. 
+// Licensed under the BSD open source license. See http://www.movesinstitute.org/licenses/bsd.html
 //
 // @author DMcG, jkg
 
@@ -17,10 +18,10 @@ class EXPORT_MACRO Relationship
 {
 protected:
   /** the nature or purpose for joining of the part entity to the host entity and shall be represented by a 16-bit enumeration */
-  unsigned short _nature; 
+  unsigned short _nature;
 
   /** the position of the part entity with respect to the host entity and shall be represented by a 16-bit enumeration */
-  unsigned short _position; 
+  unsigned short _position;
 
 
  public:
@@ -37,9 +38,9 @@ protected:
     void setPosition(unsigned short pX); 
 
 
-virtual int getMarshalledSize() const;
+     virtual int getMarshalledSize() const;
 
-     bool operator  ==(const Relationship& rhs) const;
+     bool operator ==(const Relationship& rhs) const;
 };
 }
 

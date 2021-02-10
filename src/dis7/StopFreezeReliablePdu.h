@@ -11,7 +11,8 @@ namespace DIS
 {
 // Section 5.3.12.4: Stop freeze simulation, relaible. COMPLETE
 
-// Copyright (c) 2007-2009, MOVES Institute, Naval Postgraduate School. All rights reserved. 
+// Copyright (c) 2007-2012, MOVES Institute, Naval Postgraduate School. All rights reserved. 
+// Licensed under the BSD open source license. See http://www.movesinstitute.org/licenses/bsd.html
 //
 // @author DMcG, jkg
 
@@ -19,22 +20,22 @@ class EXPORT_MACRO StopFreezeReliablePdu : public SimulationManagementWithReliab
 {
 protected:
   /** time in real world for this operation to happen */
-  ClockTime _realWorldTime; 
+  ClockTime _realWorldTime;
 
   /** Reason for stopping/freezing simulation */
-  unsigned char _reason; 
+  unsigned char _reason;
 
   /** internal behvior of the simulation while frozen */
-  unsigned char _frozenBehavior; 
+  unsigned char _frozenBehavior;
 
   /** reliablity level */
-  unsigned char _requiredReliablityService; 
+  unsigned char _requiredReliablityService;
 
   /** padding */
-  unsigned char _pad1; 
+  unsigned char _pad1;
 
   /** Request ID */
-  unsigned int _requestID; 
+  unsigned int _requestID;
 
 
  public:
@@ -44,8 +45,8 @@ protected:
     virtual void marshal(DataStream& dataStream) const;
     virtual void unmarshal(DataStream& dataStream);
 
-    ClockTime& getRealWorldTime(); 
-    const ClockTime&  getRealWorldTime() const; 
+    ClockTime& getRealWorldTime();
+    const ClockTime&  getRealWorldTime() const;
     void setRealWorldTime(const ClockTime    &pX);
 
     unsigned char getReason() const; 
@@ -64,9 +65,9 @@ protected:
     void setRequestID(unsigned int pX); 
 
 
-virtual int getMarshalledSize() const;
+     virtual int getMarshalledSize() const;
 
-     bool operator  ==(const StopFreezeReliablePdu& rhs) const;
+     bool operator ==(const StopFreezeReliablePdu& rhs) const;
 };
 }
 

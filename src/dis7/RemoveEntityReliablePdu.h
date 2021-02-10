@@ -10,7 +10,8 @@ namespace DIS
 {
 // Section 5.3.12.2: Removal of an entity , reliable. COMPLETE
 
-// Copyright (c) 2007-2009, MOVES Institute, Naval Postgraduate School. All rights reserved. 
+// Copyright (c) 2007-2012, MOVES Institute, Naval Postgraduate School. All rights reserved. 
+// Licensed under the BSD open source license. See http://www.movesinstitute.org/licenses/bsd.html
 //
 // @author DMcG, jkg
 
@@ -18,16 +19,16 @@ class EXPORT_MACRO RemoveEntityReliablePdu : public SimulationManagementWithReli
 {
 protected:
   /** level of reliability service used for this transaction */
-  unsigned char _requiredReliabilityService; 
+  unsigned char _requiredReliabilityService;
 
   /** padding */
-  unsigned short _pad1; 
+  unsigned short _pad1;
 
   /** padding */
-  unsigned char _pad2; 
+  unsigned char _pad2;
 
   /** Request ID */
-  unsigned int _requestID; 
+  unsigned int _requestID;
 
 
  public:
@@ -50,9 +51,9 @@ protected:
     void setRequestID(unsigned int pX); 
 
 
-virtual int getMarshalledSize() const;
+     virtual int getMarshalledSize() const;
 
-     bool operator  ==(const RemoveEntityReliablePdu& rhs) const;
+     bool operator ==(const RemoveEntityReliablePdu& rhs) const;
 };
 }
 

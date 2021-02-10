@@ -9,7 +9,8 @@ namespace DIS
 {
 // Additional operational data for an IFF emitting system and the number of IFF Fundamental Parameter Data records Section 6.2.76.
 
-// Copyright (c) 2007-2009, MOVES Institute, Naval Postgraduate School. All rights reserved. 
+// Copyright (c) 2007-2012, MOVES Institute, Naval Postgraduate School. All rights reserved. 
+// Licensed under the BSD open source license. See http://www.movesinstitute.org/licenses/bsd.html
 //
 // @author DMcG, jkg
 
@@ -17,13 +18,13 @@ class EXPORT_MACRO SecondaryOperationalData
 {
 protected:
   /** additional operational characteristics of the IFF emitting system. Each 8-bit field will vary depending on the system type. */
-  unsigned char _operationalData1; 
+  unsigned char _operationalData1;
 
   /** additional operational characteristics of the IFF emitting system. Each 8-bit field will vary depending on the system type. */
-  unsigned char _operationalData2; 
+  unsigned char _operationalData2;
 
   /** the number of IFF Fundamental Parameter Data records that follow */
-  unsigned short _numberOfIFFFundamentalParameterRecords; 
+  unsigned short _numberOfIFFFundamentalParameterRecords;
 
 
  public:
@@ -43,9 +44,9 @@ protected:
     void setNumberOfIFFFundamentalParameterRecords(unsigned short pX); 
 
 
-virtual int getMarshalledSize() const;
+     virtual int getMarshalledSize() const;
 
-     bool operator  ==(const SecondaryOperationalData& rhs) const;
+     bool operator ==(const SecondaryOperationalData& rhs) const;
 };
 }
 

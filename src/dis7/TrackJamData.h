@@ -10,7 +10,8 @@ namespace DIS
 {
 //  Track-Jam data Section 6.2.89
 
-// Copyright (c) 2007-2009, MOVES Institute, Naval Postgraduate School. All rights reserved. 
+// Copyright (c) 2007-2012, MOVES Institute, Naval Postgraduate School. All rights reserved. 
+// Licensed under the BSD open source license. See http://www.movesinstitute.org/licenses/bsd.html
 //
 // @author DMcG, jkg
 
@@ -18,13 +19,13 @@ class EXPORT_MACRO TrackJamData
 {
 protected:
   /** the entity tracked or illumated, or an emitter beam targeted with jamming */
-  EntityID _entityID; 
+  EntityID _entityID;
 
   /** Emitter system associated with the entity */
-  unsigned char _emitterNumber; 
+  unsigned char _emitterNumber;
 
   /** Beam associated with the entity */
-  unsigned char _beamNumber; 
+  unsigned char _beamNumber;
 
 
  public:
@@ -34,8 +35,8 @@ protected:
     virtual void marshal(DataStream& dataStream) const;
     virtual void unmarshal(DataStream& dataStream);
 
-    EntityID& getEntityID(); 
-    const EntityID&  getEntityID() const; 
+    EntityID& getEntityID();
+    const EntityID&  getEntityID() const;
     void setEntityID(const EntityID    &pX);
 
     unsigned char getEmitterNumber() const; 
@@ -45,9 +46,9 @@ protected:
     void setBeamNumber(unsigned char pX); 
 
 
-virtual int getMarshalledSize() const;
+     virtual int getMarshalledSize() const;
 
-     bool operator  ==(const TrackJamData& rhs) const;
+     bool operator ==(const TrackJamData& rhs) const;
 };
 }
 

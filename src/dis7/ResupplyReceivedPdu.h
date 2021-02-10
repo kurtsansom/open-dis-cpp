@@ -14,7 +14,8 @@ namespace DIS
 {
 // Section 7.4.4. Receipt of supplies is communicated by issuing Resupply Received PDU. COMPLETE
 
-// Copyright (c) 2007-2009, MOVES Institute, Naval Postgraduate School. All rights reserved. 
+// Copyright (c) 2007-2012, MOVES Institute, Naval Postgraduate School. All rights reserved. 
+// Licensed under the BSD open source license. See http://www.movesinstitute.org/licenses/bsd.html
 //
 // @author DMcG, jkg
 
@@ -22,22 +23,22 @@ class EXPORT_MACRO ResupplyReceivedPdu : public LogisticsFamilyPdu
 {
 protected:
   /** Entity that is receiving service.  Shall be represented by Entity Identifier record (see 6.2.28) */
-  EntityID _receivingEntityID; 
+  EntityID _receivingEntityID;
 
   /** Entity that is supplying.  Shall be represented by Entity Identifier record (see 6.2.28) */
-  EntityID _supplyingEntityID; 
+  EntityID _supplyingEntityID;
 
   /** How many supplies are taken by receiving entity */
-  unsigned char _numberOfSupplyTypes; 
+  unsigned char _numberOfSupplyTypes;
 
   /** padding */
-  short _padding1; 
+  short _padding1;
 
   /** padding */
-  char _padding2; 
+  char _padding2;
 
   /** Type and amount of supplies for each specified supply type.  See 6.2.85 for supply quantity record. */
-  std::vector<SupplyQuantity> _supplies; 
+  std::vector<SupplyQuantity> _supplies;
 
 
  public:
@@ -47,12 +48,12 @@ protected:
     virtual void marshal(DataStream& dataStream) const;
     virtual void unmarshal(DataStream& dataStream);
 
-    EntityID& getReceivingEntityID(); 
-    const EntityID&  getReceivingEntityID() const; 
+    EntityID& getReceivingEntityID();
+    const EntityID&  getReceivingEntityID() const;
     void setReceivingEntityID(const EntityID    &pX);
 
-    EntityID& getSupplyingEntityID(); 
-    const EntityID&  getSupplyingEntityID() const; 
+    EntityID& getSupplyingEntityID();
+    const EntityID&  getSupplyingEntityID() const;
     void setSupplyingEntityID(const EntityID    &pX);
 
     unsigned char getNumberOfSupplyTypes() const; 
@@ -63,14 +64,14 @@ protected:
     char getPadding2() const; 
     void setPadding2(char pX); 
 
-    std::vector<SupplyQuantity>& getSupplies(); 
-    const std::vector<SupplyQuantity>& getSupplies() const; 
+    std::vector<SupplyQuantity>& getSupplies();
+    const std::vector<SupplyQuantity>& getSupplies() const;
     void setSupplies(const std::vector<SupplyQuantity>&    pX);
 
 
-virtual int getMarshalledSize() const;
+     virtual int getMarshalledSize() const;
 
-     bool operator  ==(const ResupplyReceivedPdu& rhs) const;
+     bool operator ==(const ResupplyReceivedPdu& rhs) const;
 };
 }
 

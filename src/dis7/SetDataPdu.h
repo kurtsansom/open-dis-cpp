@@ -13,7 +13,8 @@ namespace DIS
 {
 // Section 7.5.10. Change state information with the data contained in this. COMPLETE
 
-// Copyright (c) 2007-2009, MOVES Institute, Naval Postgraduate School. All rights reserved. 
+// Copyright (c) 2007-2012, MOVES Institute, Naval Postgraduate School. All rights reserved. 
+// Licensed under the BSD open source license. See http://www.movesinstitute.org/licenses/bsd.html
 //
 // @author DMcG, jkg
 
@@ -21,22 +22,22 @@ class EXPORT_MACRO SetDataPdu : public SimulationManagementFamilyPdu
 {
 protected:
   /** ID of request */
-  unsigned int _requestID; 
+  unsigned int _requestID;
 
   /** padding */
-  unsigned int _padding1; 
+  unsigned int _padding1;
 
   /** Number of fixed datum records */
-  unsigned int _numberOfFixedDatumRecords; 
+  unsigned int _numberOfFixedDatumRecords;
 
   /** Number of variable datum records */
-  unsigned int _numberOfVariableDatumRecords; 
+  unsigned int _numberOfVariableDatumRecords;
 
   /** variable length list of fixed datums */
-  std::vector<FixedDatum> _fixedDatums; 
+  std::vector<FixedDatum> _fixedDatums;
 
   /** variable length list of variable length datums */
-  std::vector<VariableDatum> _variableDatums; 
+  std::vector<VariableDatum> _variableDatums;
 
 
  public:
@@ -65,9 +66,9 @@ protected:
     void setVariableDatums(const std::vector<VariableDatum>&    pX);
 
 
-virtual int getMarshalledSize() const;
+     virtual int getMarshalledSize() const;
 
-     bool operator  ==(const SetDataPdu& rhs) const;
+     bool operator ==(const SetDataPdu& rhs) const;
 };
 }
 

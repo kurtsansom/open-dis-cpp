@@ -8,9 +8,10 @@
 
 namespace DIS
 {
-// Represents the firing or detonation of a munition. Section 6.2.20.2
+// Represents the firing or detonation of a munition. Section 6.2.19.2
 
-// Copyright (c) 2007-2009, MOVES Institute, Naval Postgraduate School. All rights reserved. 
+// Copyright (c) 2007-2012, MOVES Institute, Naval Postgraduate School. All rights reserved. 
+// Licensed under the BSD open source license. See http://www.movesinstitute.org/licenses/bsd.html
 //
 // @author DMcG, jkg
 
@@ -18,19 +19,19 @@ class EXPORT_MACRO MunitionDescriptor
 {
 protected:
   /** What munition was used in the burst */
-  EntityType _munitionType; 
+  EntityType _munitionType;
 
-  /** type of warhead */
-  unsigned short _warhead; 
+  /** type of warhead enumeration */
+  unsigned short _warhead;
 
-  /** type of fuse used */
-  unsigned short _fuse; 
+  /** type of fuse used enumeration */
+  unsigned short _fuse;
 
   /** how many of the munition were fired */
-  unsigned short _quantity; 
+  unsigned short _quantity;
 
   /** rate at which the munition was fired */
-  unsigned short _rate; 
+  unsigned short _rate;
 
 
  public:
@@ -40,8 +41,8 @@ protected:
     virtual void marshal(DataStream& dataStream) const;
     virtual void unmarshal(DataStream& dataStream);
 
-    EntityType& getMunitionType(); 
-    const EntityType&  getMunitionType() const; 
+    EntityType& getMunitionType();
+    const EntityType&  getMunitionType() const;
     void setMunitionType(const EntityType    &pX);
 
     unsigned short getWarhead() const; 
@@ -57,9 +58,9 @@ protected:
     void setRate(unsigned short pX); 
 
 
-virtual int getMarshalledSize() const;
+     virtual int getMarshalledSize() const;
 
-     bool operator  ==(const MunitionDescriptor& rhs) const;
+     bool operator ==(const MunitionDescriptor& rhs) const;
 };
 }
 

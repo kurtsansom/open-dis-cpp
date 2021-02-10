@@ -12,7 +12,8 @@ namespace DIS
 {
 // Section 5.3.12.3: Start resume simulation, relaible. COMPLETE
 
-// Copyright (c) 2007-2009, MOVES Institute, Naval Postgraduate School. All rights reserved. 
+// Copyright (c) 2007-2012, MOVES Institute, Naval Postgraduate School. All rights reserved. 
+// Licensed under the BSD open source license. See http://www.movesinstitute.org/licenses/bsd.html
 //
 // @author DMcG, jkg
 
@@ -20,22 +21,22 @@ class EXPORT_MACRO StartResumeReliablePdu : public SimulationManagementWithRelia
 {
 protected:
   /** time in real world for this operation to happen */
-  ClockTime _realWorldTime; 
+  ClockTime _realWorldTime;
 
   /** time in simulation for the simulation to resume */
-  ClockTime _simulationTime; 
+  ClockTime _simulationTime;
 
   /** level of reliability service used for this transaction */
-  unsigned char _requiredReliabilityService; 
+  unsigned char _requiredReliabilityService;
 
   /** padding */
-  unsigned short _pad1; 
+  unsigned short _pad1;
 
   /** padding */
-  unsigned char _pad2; 
+  unsigned char _pad2;
 
   /** Request ID */
-  unsigned int _requestID; 
+  unsigned int _requestID;
 
 
  public:
@@ -45,12 +46,12 @@ protected:
     virtual void marshal(DataStream& dataStream) const;
     virtual void unmarshal(DataStream& dataStream);
 
-    ClockTime& getRealWorldTime(); 
-    const ClockTime&  getRealWorldTime() const; 
+    ClockTime& getRealWorldTime();
+    const ClockTime&  getRealWorldTime() const;
     void setRealWorldTime(const ClockTime    &pX);
 
-    ClockTime& getSimulationTime(); 
-    const ClockTime&  getSimulationTime() const; 
+    ClockTime& getSimulationTime();
+    const ClockTime&  getSimulationTime() const;
     void setSimulationTime(const ClockTime    &pX);
 
     unsigned char getRequiredReliabilityService() const; 
@@ -66,9 +67,9 @@ protected:
     void setRequestID(unsigned int pX); 
 
 
-virtual int getMarshalledSize() const;
+     virtual int getMarshalledSize() const;
 
-     bool operator  ==(const StartResumeReliablePdu& rhs) const;
+     bool operator ==(const StartResumeReliablePdu& rhs) const;
 };
 }
 

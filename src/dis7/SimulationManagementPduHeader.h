@@ -12,7 +12,8 @@ namespace DIS
 {
 // First part of a simulation management (SIMAN) PDU and SIMAN-Reliability (SIMAN-R) PDU. Sectionn 6.2.81
 
-// Copyright (c) 2007-2009, MOVES Institute, Naval Postgraduate School. All rights reserved. 
+// Copyright (c) 2007-2012, MOVES Institute, Naval Postgraduate School. All rights reserved. 
+// Licensed under the BSD open source license. See http://www.movesinstitute.org/licenses/bsd.html
 //
 // @author DMcG, jkg
 
@@ -20,13 +21,13 @@ class EXPORT_MACRO SimulationManagementPduHeader
 {
 protected:
   /** Conventional PDU header */
-  PduHeader _pduHeader; 
+  PduHeader _pduHeader;
 
   /** IDs the simulation or entity, etiehr a simulation or an entity. Either 6.2.80 or 6.2.28 */
-  EntityID _originatingID; 
+  EntityID _originatingID;
 
   /** simulation, all simulations, a special ID, or an entity. See 5.6.5 and 5.12.4 */
-  EntityID _recevingID; 
+  EntityID _recevingID;
 
 
  public:
@@ -36,22 +37,22 @@ protected:
     virtual void marshal(DataStream& dataStream) const;
     virtual void unmarshal(DataStream& dataStream);
 
-    PduHeader& getPduHeader(); 
-    const PduHeader&  getPduHeader() const; 
+    PduHeader& getPduHeader();
+    const PduHeader&  getPduHeader() const;
     void setPduHeader(const PduHeader    &pX);
 
-    EntityID& getOriginatingID(); 
-    const EntityID&  getOriginatingID() const; 
+    EntityID& getOriginatingID();
+    const EntityID&  getOriginatingID() const;
     void setOriginatingID(const EntityID    &pX);
 
-    EntityID& getRecevingID(); 
-    const EntityID&  getRecevingID() const; 
+    EntityID& getRecevingID();
+    const EntityID&  getRecevingID() const;
     void setRecevingID(const EntityID    &pX);
 
 
-virtual int getMarshalledSize() const;
+     virtual int getMarshalledSize() const;
 
-     bool operator  ==(const SimulationManagementPduHeader& rhs) const;
+     bool operator ==(const SimulationManagementPduHeader& rhs) const;
 };
 }
 

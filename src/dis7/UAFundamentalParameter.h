@@ -7,9 +7,10 @@
 
 namespace DIS
 {
-// Regeneration parameters for active emission systems that are variable throughout a scenario. Section 6.2.90
+// Regeneration parameters for active emission systems that are variable throughout a scenario. Section 6.2.91
 
-// Copyright (c) 2007-2009, MOVES Institute, Naval Postgraduate School. All rights reserved. 
+// Copyright (c) 2007-2012, MOVES Institute, Naval Postgraduate School. All rights reserved. 
+// Licensed under the BSD open source license. See http://www.movesinstitute.org/licenses/bsd.html
 //
 // @author DMcG, jkg
 
@@ -17,22 +18,22 @@ class EXPORT_MACRO UAFundamentalParameter
 {
 protected:
   /** Which database record shall be used. An enumeration from EBV document */
-  unsigned short _activeEmissionParameterIndex; 
+  unsigned short _activeEmissionParameterIndex;
 
   /** The type of scan pattern, If not used, zero. An enumeration from EBV document */
-  unsigned short _scanPattern; 
+  unsigned short _scanPattern;
 
   /** center azimuth bearing of th emain beam. In radians. */
-  float _beamCenterAzimuthHorizontal; 
+  float _beamCenterAzimuthHorizontal;
 
   /** Horizontal beamwidth of th emain beam Meastued at the 3dB down point of peak radiated power. In radians. */
-  float _azimuthalBeamwidthHorizontal; 
+  float _azimuthalBeamwidthHorizontal;
 
   /** center of the d/e angle of th emain beam relative to the stablised de angle of the target. In radians. */
-  float _beamCenterDepressionElevation; 
+  float _beamCenterDepressionElevation;
 
   /** vertical beamwidth of the main beam. Meastured at the 3dB down point of peak radiated power. In radians. */
-  float _beamwidthDownElevation; 
+  float _beamwidthDownElevation;
 
 
  public:
@@ -61,9 +62,9 @@ protected:
     void setBeamwidthDownElevation(float pX); 
 
 
-virtual int getMarshalledSize() const;
+     virtual int getMarshalledSize() const;
 
-     bool operator  ==(const UAFundamentalParameter& rhs) const;
+     bool operator ==(const UAFundamentalParameter& rhs) const;
 };
 }
 

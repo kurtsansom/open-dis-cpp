@@ -14,7 +14,8 @@ namespace DIS
 {
 //  SEES PDU, supplemental emissions entity state information. Section 7.6.6 COMPLETE
 
-// Copyright (c) 2007-2009, MOVES Institute, Naval Postgraduate School. All rights reserved. 
+// Copyright (c) 2007-2012, MOVES Institute, Naval Postgraduate School. All rights reserved. 
+// Licensed under the BSD open source license. See http://www.movesinstitute.org/licenses/bsd.html
 //
 // @author DMcG, jkg
 
@@ -22,28 +23,28 @@ class EXPORT_MACRO SeesPdu : public DistributedEmissionsFamilyPdu
 {
 protected:
   /** Originating entity ID */
-  EntityID _orginatingEntityID; 
+  EntityID _orginatingEntityID;
 
   /** IR Signature representation index */
-  unsigned short _infraredSignatureRepresentationIndex; 
+  unsigned short _infraredSignatureRepresentationIndex;
 
   /** acoustic Signature representation index */
-  unsigned short _acousticSignatureRepresentationIndex; 
+  unsigned short _acousticSignatureRepresentationIndex;
 
   /** radar cross section representation index */
-  unsigned short _radarCrossSectionSignatureRepresentationIndex; 
+  unsigned short _radarCrossSectionSignatureRepresentationIndex;
 
   /** how many propulsion systems */
-  unsigned short _numberOfPropulsionSystems; 
+  unsigned short _numberOfPropulsionSystems;
 
   /** how many vectoring nozzle systems */
-  unsigned short _numberOfVectoringNozzleSystems; 
+  unsigned short _numberOfVectoringNozzleSystems;
 
   /** variable length list of propulsion system data */
-  std::vector<PropulsionSystemData> _propulsionSystemData; 
+  std::vector<PropulsionSystemData> _propulsionSystemData;
 
   /** variable length list of vectoring system data */
-  std::vector<VectoringNozzleSystem> _vectoringSystemData; 
+  std::vector<VectoringNozzleSystem> _vectoringSystemData;
 
 
  public:
@@ -53,8 +54,8 @@ protected:
     virtual void marshal(DataStream& dataStream) const;
     virtual void unmarshal(DataStream& dataStream);
 
-    EntityID& getOrginatingEntityID(); 
-    const EntityID&  getOrginatingEntityID() const; 
+    EntityID& getOrginatingEntityID();
+    const EntityID&  getOrginatingEntityID() const;
     void setOrginatingEntityID(const EntityID    &pX);
 
     unsigned short getInfraredSignatureRepresentationIndex() const; 
@@ -70,18 +71,18 @@ protected:
 
     unsigned short getNumberOfVectoringNozzleSystems() const; 
 
-    std::vector<PropulsionSystemData>& getPropulsionSystemData(); 
-    const std::vector<PropulsionSystemData>& getPropulsionSystemData() const; 
+    std::vector<PropulsionSystemData>& getPropulsionSystemData();
+    const std::vector<PropulsionSystemData>& getPropulsionSystemData() const;
     void setPropulsionSystemData(const std::vector<PropulsionSystemData>&    pX);
 
-    std::vector<VectoringNozzleSystem>& getVectoringSystemData(); 
-    const std::vector<VectoringNozzleSystem>& getVectoringSystemData() const; 
+    std::vector<VectoringNozzleSystem>& getVectoringSystemData();
+    const std::vector<VectoringNozzleSystem>& getVectoringSystemData() const;
     void setVectoringSystemData(const std::vector<VectoringNozzleSystem>&    pX);
 
 
-virtual int getMarshalledSize() const;
+     virtual int getMarshalledSize() const;
 
-     bool operator  ==(const SeesPdu& rhs) const;
+     bool operator ==(const SeesPdu& rhs) const;
 };
 }
 

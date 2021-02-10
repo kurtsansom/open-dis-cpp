@@ -11,7 +11,8 @@ namespace DIS
 {
 //  Abstract superclass for radio communications PDUs. Section 7.7
 
-// Copyright (c) 2007-2009, MOVES Institute, Naval Postgraduate School. All rights reserved. 
+// Copyright (c) 2007-2012, MOVES Institute, Naval Postgraduate School. All rights reserved. 
+// Licensed under the BSD open source license. See http://www.movesinstitute.org/licenses/bsd.html
 //
 // @author DMcG, jkg
 
@@ -40,9 +41,9 @@ protected:
     void setRadioId(unsigned short pX); 
 
 
-virtual int getMarshalledSize() const;
+     virtual int getMarshalledSize() const;
 
-     bool operator  ==(const RadioCommunicationsFamilyPdu& rhs) const;
+     bool operator ==(const RadioCommunicationsFamilyPdu& rhs) const;
 };
 }
 

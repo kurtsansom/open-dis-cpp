@@ -9,7 +9,8 @@ namespace DIS
 {
 // Modulation parameters associated with a specific radio system. INCOMPLETE. 6.2.58 
 
-// Copyright (c) 2007-2009, MOVES Institute, Naval Postgraduate School. All rights reserved. 
+// Copyright (c) 2007-2012, MOVES Institute, Naval Postgraduate School. All rights reserved. 
+// Licensed under the BSD open source license. See http://www.movesinstitute.org/licenses/bsd.html
 //
 // @author DMcG, jkg
 
@@ -25,9 +26,9 @@ protected:
     virtual void unmarshal(DataStream& dataStream);
 
 
-virtual int getMarshalledSize() const;
+     virtual int getMarshalledSize() const;
 
-     bool operator  ==(const ModulationParameters& rhs) const;
+     bool operator ==(const ModulationParameters& rhs) const;
 };
 }
 

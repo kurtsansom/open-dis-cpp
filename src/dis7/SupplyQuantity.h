@@ -8,9 +8,10 @@
 
 namespace DIS
 {
-//  A supply, and the amount of that supply. Section 6.2.85
+//  A supply, and the amount of that supply. Section 6.2.86
 
-// Copyright (c) 2007-2009, MOVES Institute, Naval Postgraduate School. All rights reserved. 
+// Copyright (c) 2007-2012, MOVES Institute, Naval Postgraduate School. All rights reserved. 
+// Licensed under the BSD open source license. See http://www.movesinstitute.org/licenses/bsd.html
 //
 // @author DMcG, jkg
 
@@ -18,10 +19,10 @@ class EXPORT_MACRO SupplyQuantity
 {
 protected:
   /** Type of supply */
-  EntityType _supplyType; 
+  EntityType _supplyType;
 
   /** the number of units of a supply type.  */
-  float _quantity; 
+  float _quantity;
 
 
  public:
@@ -31,17 +32,17 @@ protected:
     virtual void marshal(DataStream& dataStream) const;
     virtual void unmarshal(DataStream& dataStream);
 
-    EntityType& getSupplyType(); 
-    const EntityType&  getSupplyType() const; 
+    EntityType& getSupplyType();
+    const EntityType&  getSupplyType() const;
     void setSupplyType(const EntityType    &pX);
 
     float getQuantity() const; 
     void setQuantity(float pX); 
 
 
-virtual int getMarshalledSize() const;
+     virtual int getMarshalledSize() const;
 
-     bool operator  ==(const SupplyQuantity& rhs) const;
+     bool operator ==(const SupplyQuantity& rhs) const;
 };
 }
 

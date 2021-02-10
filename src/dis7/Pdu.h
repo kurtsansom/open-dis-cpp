@@ -10,7 +10,8 @@ namespace DIS
 {
 // Adds some fields to the the classic PDU
 
-// Copyright (c) 2007-2009, MOVES Institute, Naval Postgraduate School. All rights reserved. 
+// Copyright (c) 2007-2012, MOVES Institute, Naval Postgraduate School. All rights reserved. 
+// Licensed under the BSD open source license. See http://www.movesinstitute.org/licenses/bsd.html
 //
 // @author DMcG, jkg
 
@@ -18,10 +19,10 @@ class EXPORT_MACRO Pdu : public PduSuperclass
 {
 protected:
   /** PDU Status Record. Described in 6.2.67. This field is not present in earlier DIS versions  */
-  unsigned char _pduStatus; 
+  unsigned char _pduStatus;
 
   /** zero-filled array of padding */
-  unsigned char _padding; 
+  unsigned char _padding;
 
 
  public:
@@ -38,9 +39,9 @@ protected:
     void setPadding(unsigned char pX); 
 
 
-virtual int getMarshalledSize() const;
+     virtual int getMarshalledSize() const;
 
-     bool operator  ==(const Pdu& rhs) const;
+     bool operator ==(const Pdu& rhs) const;
 };
 }
 

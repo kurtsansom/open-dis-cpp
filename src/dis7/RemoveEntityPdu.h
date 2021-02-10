@@ -12,7 +12,8 @@ namespace DIS
 {
 // Section 7.5.3 The removal of an entity from an exercise shall be communicated with a Remove Entity PDU. COMPLETE
 
-// Copyright (c) 2007-2009, MOVES Institute, Naval Postgraduate School. All rights reserved. 
+// Copyright (c) 2007-2012, MOVES Institute, Naval Postgraduate School. All rights reserved. 
+// Licensed under the BSD open source license. See http://www.movesinstitute.org/licenses/bsd.html
 //
 // @author DMcG, jkg
 
@@ -26,7 +27,7 @@ protected:
   EntityID _receivingID; 
 
   /** This field shall identify the specific and unique start/resume request being made by the SM */
-  unsigned int _requestID; 
+  unsigned int _requestID;
 
 
  public:
@@ -48,9 +49,9 @@ protected:
     void setRequestID(unsigned int pX); 
 
 
-virtual int getMarshalledSize() const;
+     virtual int getMarshalledSize() const;
 
-     bool operator  ==(const RemoveEntityPdu& rhs) const;
+     bool operator ==(const RemoveEntityPdu& rhs) const;
 };
 }
 

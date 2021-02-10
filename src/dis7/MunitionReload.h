@@ -10,7 +10,8 @@ namespace DIS
 {
 // indicate weapons (munitions) previously communicated via the Munition record. Section 6.2.61 
 
-// Copyright (c) 2007-2009, MOVES Institute, Naval Postgraduate School. All rights reserved. 
+// Copyright (c) 2007-2012, MOVES Institute, Naval Postgraduate School. All rights reserved. 
+// Licensed under the BSD open source license. See http://www.movesinstitute.org/licenses/bsd.html
 //
 // @author DMcG, jkg
 
@@ -18,16 +19,16 @@ class EXPORT_MACRO MunitionReload
 {
 protected:
   /**  This field shall identify the entity type of the munition. See section 6.2.30. */
-  EntityType _munitionType; 
+  EntityType _munitionType;
 
   /** the station or launcher to which the munition is assigned. See Annex I */
-  unsigned int _station; 
+  unsigned int _station;
 
   /** the standard quantity of this munition type normally loaded at this station/launcher if a station/launcher is specified. */
-  unsigned short _standardQuantity; 
+  unsigned short _standardQuantity;
 
   /** the maximum quantity of this munition type that this station/launcher is capable of holding when a station/launcher is specified  */
-  unsigned short _maximumQuantity; 
+  unsigned short _maximumQuantity;
 
   /** the station name within the host at which the part entity is located. */
   unsigned short _stationName; 
@@ -43,8 +44,8 @@ protected:
     virtual void marshal(DataStream& dataStream) const;
     virtual void unmarshal(DataStream& dataStream);
 
-    EntityType& getMunitionType(); 
-    const EntityType&  getMunitionType() const; 
+    EntityType& getMunitionType();
+    const EntityType&  getMunitionType() const;
     void setMunitionType(const EntityType    &pX);
 
     unsigned int getStation() const; 
@@ -63,9 +64,9 @@ protected:
     void setStationNumber(unsigned short pX); 
 
 
-virtual int getMarshalledSize() const;
+     virtual int getMarshalledSize() const;
 
-     bool operator  ==(const MunitionReload& rhs) const;
+     bool operator ==(const MunitionReload& rhs) const;
 };
 }
 

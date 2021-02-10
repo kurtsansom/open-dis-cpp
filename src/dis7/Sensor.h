@@ -9,7 +9,8 @@ namespace DIS
 {
 // An entity's sensor information.  Section 6.2.77.
 
-// Copyright (c) 2007-2009, MOVES Institute, Naval Postgraduate School. All rights reserved. 
+// Copyright (c) 2007-2012, MOVES Institute, Naval Postgraduate School. All rights reserved. 
+// Licensed under the BSD open source license. See http://www.movesinstitute.org/licenses/bsd.html
 //
 // @author DMcG, jkg
 
@@ -17,22 +18,22 @@ class EXPORT_MACRO Sensor
 {
 protected:
   /**  the source of the Sensor Type field  */
-  unsigned char _sensorTypeSource; 
+  unsigned char _sensorTypeSource;
 
   /** the on/off status of the sensor */
-  unsigned char _sensorOnOffStatus; 
+  unsigned char _sensorOnOffStatus;
 
   /** the sensor type and shall be represented by a 16-bit enumeration.  */
-  unsigned short _sensorType; 
+  unsigned short _sensorType;
 
   /**  the station to which the sensor is assigned. A zero value shall indi- cate that this Sensor record is not associated with any particular station and represents the total quan- tity of this sensor for this entity. If this field is non-zero, it shall either reference an attached part or an articulated part */
-  unsigned int _station; 
+  unsigned int _station;
 
   /** quantity of the sensor  */
-  unsigned short _quantity; 
+  unsigned short _quantity;
 
   /** padding */
-  unsigned short _padding; 
+  unsigned short _padding;
 
 
  public:
@@ -61,9 +62,9 @@ protected:
     void setPadding(unsigned short pX); 
 
 
-virtual int getMarshalledSize() const;
+     virtual int getMarshalledSize() const;
 
-     bool operator  ==(const Sensor& rhs) const;
+     bool operator ==(const Sensor& rhs) const;
 };
 }
 

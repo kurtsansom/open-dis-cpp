@@ -115,7 +115,7 @@ int ReceiverPdu::getMarshalledSize() const
    marshalSize = RadioCommunicationsFamilyPdu::getMarshalledSize();
    marshalSize = marshalSize + 2;  // _receiverState
    marshalSize = marshalSize + 2;  // _padding1
-   marshalSize = marshalSize + 4;  // _receivedPoser
+   marshalSize = marshalSize + 4;  // _receivedPower
    marshalSize = marshalSize + _transmitterEntityId.getMarshalledSize();  // _transmitterEntityId
    marshalSize = marshalSize + 2;  // _transmitterRadioId
     return marshalSize;

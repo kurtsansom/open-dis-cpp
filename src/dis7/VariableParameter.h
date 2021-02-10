@@ -7,9 +7,10 @@
 
 namespace DIS
 {
-// specification of additional information associated with an entity or detonation, not otherwise accounted for in a PDU 6.2.93.1
+// specification of additional information associated with an entity or detonation, not otherwise accounted for in a PDU 6.2.94.1
 
-// Copyright (c) 2007-2009, MOVES Institute, Naval Postgraduate School. All rights reserved. 
+// Copyright (c) 2007-2012, MOVES Institute, Naval Postgraduate School. All rights reserved. 
+// Licensed under the BSD open source license. See http://www.movesinstitute.org/licenses/bsd.html
 //
 // @author DMcG, jkg
 
@@ -17,19 +18,19 @@ class EXPORT_MACRO VariableParameter
 {
 protected:
   /** the identification of the Variable Parameter record. Enumeration from EBV */
-  unsigned char _recordType; 
+  unsigned char _recordType;
 
   /** Variable parameter data fields. Two doubles minus one byte */
-  double _variableParameterFields1; 
+  double _variableParameterFields1;
 
   /** Variable parameter data fields.  */
-  unsigned int _variableParameterFields2; 
+  unsigned int _variableParameterFields2;
 
   /** Variable parameter data fields.  */
-  unsigned short _variableParameterFields3; 
+  unsigned short _variableParameterFields3;
 
   /** Variable parameter data fields.  */
-  unsigned char _variableParameterFields4; 
+  unsigned char _variableParameterFields4;
 
 
  public:

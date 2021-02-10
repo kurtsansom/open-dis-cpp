@@ -10,7 +10,8 @@ namespace DIS
 {
 // The unique designation of a simulation when using the 48-bit identifier format shall be specified by the Sim- ulation Identifier record. The reason that the 48-bit format is required in addition to the 32-bit simulation address format that actually identifies a specific simulation is because some 48-bit identifier fields in PDUs may contain either an Object Identifier, such as an Entity ID, or a Simulation Identifier. Section 6.2.80
 
-// Copyright (c) 2007-2009, MOVES Institute, Naval Postgraduate School. All rights reserved. 
+// Copyright (c) 2007-2012, MOVES Institute, Naval Postgraduate School. All rights reserved. 
+// Licensed under the BSD open source license. See http://www.movesinstitute.org/licenses/bsd.html
 //
 // @author DMcG, jkg
 
@@ -18,10 +19,10 @@ class EXPORT_MACRO SimulationIdentifier
 {
 protected:
   /** Simulation address  */
-  SimulationAddress _simulationAddress; 
+  SimulationAddress _simulationAddress;
 
   /** This field shall be set to zero as there is no reference number associated with a Simulation Identifier. */
-  unsigned short _referenceNumber; 
+  unsigned short _referenceNumber;
 
 
  public:
@@ -31,17 +32,17 @@ protected:
     virtual void marshal(DataStream& dataStream) const;
     virtual void unmarshal(DataStream& dataStream);
 
-    SimulationAddress& getSimulationAddress(); 
-    const SimulationAddress&  getSimulationAddress() const; 
+    SimulationAddress& getSimulationAddress();
+    const SimulationAddress&  getSimulationAddress() const;
     void setSimulationAddress(const SimulationAddress    &pX);
 
     unsigned short getReferenceNumber() const; 
     void setReferenceNumber(unsigned short pX); 
 
 
-virtual int getMarshalledSize() const;
+     virtual int getMarshalledSize() const;
 
-     bool operator  ==(const SimulationIdentifier& rhs) const;
+     bool operator ==(const SimulationIdentifier& rhs) const;
 };
 }
 

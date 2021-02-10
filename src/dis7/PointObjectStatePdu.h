@@ -17,7 +17,8 @@ namespace DIS
 {
 // : Inormation abut the addition or modification of a synthecic enviroment object that is anchored to the terrain with a single point. Section 7.10.4 COMPLETE
 
-// Copyright (c) 2007-2009, MOVES Institute, Naval Postgraduate School. All rights reserved. 
+// Copyright (c) 2007-2012, MOVES Institute, Naval Postgraduate School. All rights reserved. 
+// Licensed under the BSD open source license. See http://www.movesinstitute.org/licenses/bsd.html
 //
 // @author DMcG, jkg
 
@@ -25,40 +26,40 @@ class EXPORT_MACRO PointObjectStatePdu : public SyntheticEnvironmentFamilyPdu
 {
 protected:
   /** Object in synthetic environment */
-  EntityID _objectID; 
+  EntityID _objectID;
 
   /** Object with which this point object is associated */
-  EntityID _referencedObjectID; 
+  EntityID _referencedObjectID;
 
   /** unique update number of each state transition of an object */
-  unsigned short _updateNumber; 
+  unsigned short _updateNumber;
 
   /** force ID */
-  unsigned char _forceID; 
+  unsigned char _forceID;
 
   /** modifications */
-  unsigned char _modifications; 
+  unsigned char _modifications;
 
   /** Object type */
-  ObjectType _objectType; 
+  ObjectType _objectType;
 
   /** Object location */
-  Vector3Double _objectLocation; 
+  Vector3Double _objectLocation;
 
   /** Object orientation */
-  EulerAngles _objectOrientation; 
+  EulerAngles _objectOrientation;
 
   /** Object apperance */
-  double _objectAppearance; 
+  double _objectAppearance;
 
   /** requesterID */
-  SimulationAddress _requesterID; 
+  SimulationAddress _requesterID;
 
   /** receiver ID */
-  SimulationAddress _receivingID; 
+  SimulationAddress _receivingID;
 
   /** padding */
-  unsigned int _pad2; 
+  unsigned int _pad2;
 
 
  public:
@@ -68,12 +69,12 @@ protected:
     virtual void marshal(DataStream& dataStream) const;
     virtual void unmarshal(DataStream& dataStream);
 
-    EntityID& getObjectID(); 
-    const EntityID&  getObjectID() const; 
+    EntityID& getObjectID();
+    const EntityID&  getObjectID() const;
     void setObjectID(const EntityID    &pX);
 
-    EntityID& getReferencedObjectID(); 
-    const EntityID&  getReferencedObjectID() const; 
+    EntityID& getReferencedObjectID();
+    const EntityID&  getReferencedObjectID() const;
     void setReferencedObjectID(const EntityID    &pX);
 
     unsigned short getUpdateNumber() const; 
@@ -85,36 +86,36 @@ protected:
     unsigned char getModifications() const; 
     void setModifications(unsigned char pX); 
 
-    ObjectType& getObjectType(); 
-    const ObjectType&  getObjectType() const; 
+    ObjectType& getObjectType();
+    const ObjectType&  getObjectType() const;
     void setObjectType(const ObjectType    &pX);
 
-    Vector3Double& getObjectLocation(); 
-    const Vector3Double&  getObjectLocation() const; 
+    Vector3Double& getObjectLocation();
+    const Vector3Double&  getObjectLocation() const;
     void setObjectLocation(const Vector3Double    &pX);
 
-    EulerAngles& getObjectOrientation(); 
-    const EulerAngles&  getObjectOrientation() const; 
+    EulerAngles& getObjectOrientation();
+    const EulerAngles&  getObjectOrientation() const;
     void setObjectOrientation(const EulerAngles    &pX);
 
     double getObjectAppearance() const; 
     void setObjectAppearance(double pX); 
 
-    SimulationAddress& getRequesterID(); 
-    const SimulationAddress&  getRequesterID() const; 
+    SimulationAddress& getRequesterID();
+    const SimulationAddress&  getRequesterID() const;
     void setRequesterID(const SimulationAddress    &pX);
 
-    SimulationAddress& getReceivingID(); 
-    const SimulationAddress&  getReceivingID() const; 
+    SimulationAddress& getReceivingID();
+    const SimulationAddress&  getReceivingID() const;
     void setReceivingID(const SimulationAddress    &pX);
 
     unsigned int getPad2() const; 
     void setPad2(unsigned int pX); 
 
 
-virtual int getMarshalledSize() const;
+     virtual int getMarshalledSize() const;
 
-     bool operator  ==(const PointObjectStatePdu& rhs) const;
+     bool operator ==(const PointObjectStatePdu& rhs) const;
 };
 }
 

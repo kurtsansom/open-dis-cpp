@@ -9,7 +9,8 @@ namespace DIS
 {
 // 8 bit piece of data
 
-// Copyright (c) 2007-2009, MOVES Institute, Naval Postgraduate School. All rights reserved. 
+// Copyright (c) 2007-2012, MOVES Institute, Naval Postgraduate School. All rights reserved. 
+// Licensed under the BSD open source license. See http://www.movesinstitute.org/licenses/bsd.html
 //
 // @author DMcG, jkg
 
@@ -17,7 +18,7 @@ class EXPORT_MACRO OneByteChunk
 {
 protected:
   /** one byte of arbitrary data */
-  char _otherParameters[1]; 
+  char _otherParameters[1];
 
 
  public:
@@ -27,14 +28,14 @@ protected:
     virtual void marshal(DataStream& dataStream) const;
     virtual void unmarshal(DataStream& dataStream);
 
-    char*  getOtherParameters(); 
+    char*  getOtherParameters();
     const char*  getOtherParameters() const; 
     void setOtherParameters( const char*    pX);
 
 
-virtual int getMarshalledSize() const;
+     virtual int getMarshalledSize() const;
 
-     bool operator  ==(const OneByteChunk& rhs) const;
+     bool operator ==(const OneByteChunk& rhs) const;
 };
 }
 

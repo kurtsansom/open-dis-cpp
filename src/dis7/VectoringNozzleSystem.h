@@ -9,7 +9,8 @@ namespace DIS
 {
 // Operational data for describing the vectoring nozzle systems Section 6.2.96
 
-// Copyright (c) 2007-2009, MOVES Institute, Naval Postgraduate School. All rights reserved. 
+// Copyright (c) 2007-2012, MOVES Institute, Naval Postgraduate School. All rights reserved. 
+// Licensed under the BSD open source license. See http://www.movesinstitute.org/licenses/bsd.html
 //
 // @author DMcG, jkg
 
@@ -17,10 +18,10 @@ class EXPORT_MACRO VectoringNozzleSystem
 {
 protected:
   /** In degrees */
-  float _horizontalDeflectionAngle; 
+  float _horizontalDeflectionAngle;
 
   /** In degrees */
-  float _verticalDeflectionAngle; 
+  float _verticalDeflectionAngle;
 
 
  public:
@@ -37,9 +38,9 @@ protected:
     void setVerticalDeflectionAngle(float pX); 
 
 
-virtual int getMarshalledSize() const;
+     virtual int getMarshalledSize() const;
 
-     bool operator  ==(const VectoringNozzleSystem& rhs) const;
+     bool operator ==(const VectoringNozzleSystem& rhs) const;
 };
 }
 

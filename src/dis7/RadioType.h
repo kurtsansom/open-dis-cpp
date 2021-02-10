@@ -7,9 +7,10 @@
 
 namespace DIS
 {
-// Identifies the type of radio. Section 6.2.70
+// Identifies the type of radio. Section 6.2.71
 
-// Copyright (c) 2007-2009, MOVES Institute, Naval Postgraduate School. All rights reserved. 
+// Copyright (c) 2007-2012, MOVES Institute, Naval Postgraduate School. All rights reserved. 
+// Licensed under the BSD open source license. See http://www.movesinstitute.org/licenses/bsd.html
 //
 // @author DMcG, jkg
 
@@ -17,23 +18,23 @@ class EXPORT_MACRO RadioType
 {
 protected:
   /** Kind of entity */
-  unsigned char _entityKind; 
+  unsigned char _entityKind;
 
   /** Domain of entity (air, surface, subsurface, space, etc) */
-  unsigned char _domain; 
+  unsigned char _domain;
 
   /** country to which the design of the entity is attributed */
-  unsigned short _country; 
+  unsigned short _country;
 
   /** category of entity */
-  unsigned char _category; 
+  unsigned char _category;
 
   /** specific info based on subcategory field */
-  unsigned char _subcategory; 
+  unsigned char _subcategory;
 
-  unsigned char _specific; 
+  unsigned char _specific;
 
-  unsigned char _extra; 
+  unsigned char _extra;
 
 
  public:
@@ -65,9 +66,9 @@ protected:
     void setExtra(unsigned char pX); 
 
 
-virtual int getMarshalledSize() const;
+     virtual int getMarshalledSize() const;
 
-     bool operator  ==(const RadioType& rhs) const;
+     bool operator ==(const RadioType& rhs) const;
 };
 }
 

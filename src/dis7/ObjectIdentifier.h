@@ -10,7 +10,8 @@ namespace DIS
 {
 // The unique designation of an environmental object. Section 6.2.63
 
-// Copyright (c) 2007-2009, MOVES Institute, Naval Postgraduate School. All rights reserved. 
+// Copyright (c) 2007-2012, MOVES Institute, Naval Postgraduate School. All rights reserved. 
+// Licensed under the BSD open source license. See http://www.movesinstitute.org/licenses/bsd.html
 //
 // @author DMcG, jkg
 
@@ -18,10 +19,10 @@ class EXPORT_MACRO ObjectIdentifier
 {
 protected:
   /**  Simulation Address */
-  SimulationAddress _simulationAddress; 
+  SimulationAddress _simulationAddress;
 
-  /**  */
-  unsigned short _objectNumber; 
+  /** object number */
+  unsigned short _objectNumber;
 
 
  public:
@@ -31,17 +32,17 @@ protected:
     virtual void marshal(DataStream& dataStream) const;
     virtual void unmarshal(DataStream& dataStream);
 
-    SimulationAddress& getSimulationAddress(); 
-    const SimulationAddress&  getSimulationAddress() const; 
+    SimulationAddress& getSimulationAddress();
+    const SimulationAddress&  getSimulationAddress() const;
     void setSimulationAddress(const SimulationAddress    &pX);
 
     unsigned short getObjectNumber() const; 
     void setObjectNumber(unsigned short pX); 
 
 
-virtual int getMarshalledSize() const;
+     virtual int getMarshalledSize() const;
 
-     bool operator  ==(const ObjectIdentifier& rhs) const;
+     bool operator ==(const ObjectIdentifier& rhs) const;
 };
 }
 

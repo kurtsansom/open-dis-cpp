@@ -10,7 +10,8 @@ namespace DIS
 {
 // An entity's munition (e.g., bomb, missile) information shall be represented by one or more Munition records. For each type or location of munition, this record shall specify the type, location, quantity and status of munitions that an entity contains. Section 6.2.60 
 
-// Copyright (c) 2007-2009, MOVES Institute, Naval Postgraduate School. All rights reserved. 
+// Copyright (c) 2007-2012, MOVES Institute, Naval Postgraduate School. All rights reserved. 
+// Licensed under the BSD open source license. See http://www.movesinstitute.org/licenses/bsd.html
 //
 // @author DMcG, jkg
 
@@ -18,19 +19,19 @@ class EXPORT_MACRO Munition
 {
 protected:
   /**  This field shall identify the entity type of the munition. See section 6.2.30. */
-  EntityType _munitionType; 
+  EntityType _munitionType;
 
   /** the station or launcher to which the munition is assigned. See Annex I */
-  unsigned int _station; 
+  unsigned int _station;
 
   /** the quantity remaining of this munition. */
-  unsigned short _quantity; 
+  unsigned short _quantity;
 
   /**  the status of the munition. It shall be represented by an 8-bit enumeration.  */
-  unsigned char _munitionStatus; 
+  unsigned char _munitionStatus;
 
   /** padding  */
-  unsigned char _padding; 
+  unsigned char _padding;
 
 
  public:
@@ -40,8 +41,8 @@ protected:
     virtual void marshal(DataStream& dataStream) const;
     virtual void unmarshal(DataStream& dataStream);
 
-    EntityType& getMunitionType(); 
-    const EntityType&  getMunitionType() const; 
+    EntityType& getMunitionType();
+    const EntityType&  getMunitionType() const;
     void setMunitionType(const EntityType    &pX);
 
     unsigned int getStation() const; 
@@ -57,9 +58,9 @@ protected:
     void setPadding(unsigned char pX); 
 
 
-virtual int getMarshalledSize() const;
+     virtual int getMarshalledSize() const;
 
-     bool operator  ==(const Munition& rhs) const;
+     bool operator ==(const Munition& rhs) const;
 };
 }
 

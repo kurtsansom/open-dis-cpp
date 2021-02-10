@@ -7,9 +7,10 @@
 
 namespace DIS
 {
-// Information about an entity's engine fuel. Section 6.2.83.
+// Information about an entity's engine fuel. Section 6.2.84.
 
-// Copyright (c) 2007-2009, MOVES Institute, Naval Postgraduate School. All rights reserved. 
+// Copyright (c) 2007-2012, MOVES Institute, Naval Postgraduate School. All rights reserved. 
+// Licensed under the BSD open source license. See http://www.movesinstitute.org/licenses/bsd.html
 //
 // @author DMcG, jkg
 
@@ -17,19 +18,19 @@ class EXPORT_MACRO StorageFuel
 {
 protected:
   /** Fuel quantity, units specified by next field */
-  unsigned int _fuelQuantity; 
+  unsigned int _fuelQuantity;
 
   /** Units in which the fuel is measured */
-  unsigned char _fuelMeasurementUnits; 
+  unsigned char _fuelMeasurementUnits;
 
   /** Type of fuel */
-  unsigned char _fuelType; 
+  unsigned char _fuelType;
 
   /** Location of fuel as related to entity. See section 14 of EBV document */
-  unsigned char _fuelLocation; 
+  unsigned char _fuelLocation;
 
   /** padding */
-  unsigned char _padding; 
+  unsigned char _padding;
 
 
  public:

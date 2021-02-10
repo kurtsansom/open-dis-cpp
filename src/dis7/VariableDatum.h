@@ -9,9 +9,10 @@
 
 namespace DIS
 {
-// the variable datum type, the datum length, and the value for that variable datum type. NOT COMPLETE. Section 6.2.92
+// the variable datum type, the datum length, and the value for that variable datum type. NOT COMPLETE. Section 6.2.93
 
-// Copyright (c) 2007-2009, MOVES Institute, Naval Postgraduate School. All rights reserved. 
+// Copyright (c) 2007-2012, MOVES Institute, Naval Postgraduate School. All rights reserved. 
+// Licensed under the BSD open source license. See http://www.movesinstitute.org/licenses/bsd.html
 //
 // @author DMcG, jkg
 
@@ -19,10 +20,10 @@ class EXPORT_MACRO VariableDatum
 {
 protected:
   /** Type of variable datum to be transmitted. 32 bit enumeration defined in EBV */
-  unsigned int _variableDatumID; 
+  unsigned int _variableDatumID;
 
-  /** Length, in bits, of the variable datum. */
-  unsigned int _variableDatumLength; 
+  /** Length, IN BITS, of the variable datum. */
+  unsigned int _variableDatumLength;
 
   /** Variable datum. This can be any number of bits long, depending on the datum. */
   unsigned int _variableDatumBits; 
@@ -53,10 +54,9 @@ protected:
     unsigned int getPadding() const; 
     void setPadding(unsigned int pX); 
 
+     virtual int getMarshalledSize() const;
 
-virtual int getMarshalledSize() const;
-
-     bool operator  ==(const VariableDatum& rhs) const;
+     bool operator ==(const VariableDatum& rhs) const;
 };
 }
 
