@@ -1,7 +1,7 @@
 #ifndef SIXBYTECHUNK_H
 #define SIXBYTECHUNK_H
 
-#include <utils/DataStream.h>
+#include <common/DataStream.h>
 #include <common/msLibMacro.h>
 
 

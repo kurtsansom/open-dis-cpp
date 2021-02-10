@@ -2,7 +2,7 @@
 #define ACOUSTICBEAMDATA_H
 
 #include <dis6/AcousticBeamFundamentalParameter.h>
-#include <utils/DataStream.h>
+#include <common/DataStream.h>
 #include <common/msLibMacro.h>
 
 

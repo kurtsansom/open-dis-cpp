@@ -1,7 +1,7 @@
 #ifndef INTERCOMCOMMUNICATIONSPARAMETERS_H
 #define INTERCOMCOMMUNICATIONSPARAMETERS_H
 
-#include <utils/DataStream.h>
+#include <common/DataStream.h>
 #include <common/msLibMacro.h>
 
 

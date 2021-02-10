@@ -1,7 +1,7 @@
 #ifndef MODULATIONPARAMETERS_H
 #define MODULATIONPARAMETERS_H
 
-#include <utils/DataStream.h>
+#include <common/DataStream.h>
 #include <common/msLibMacro.h>
 
 

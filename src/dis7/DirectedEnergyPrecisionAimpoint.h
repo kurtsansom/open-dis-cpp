@@ -6,7 +6,7 @@
 #include <dis7/Vector3Float.h>
 #include <dis7/Vector3Float.h>
 #include <dis7/EntityID.h>
-#include <utils/DataStream.h>
+#include <common/DataStream.h>
 #include <common/msLibMacro.h>
 
 

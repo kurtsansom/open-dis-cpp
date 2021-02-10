@@ -2,7 +2,7 @@
 #define CREATEENTITYPDU_H
 
 #include <dis6/SimulationManagementFamilyPdu.h>
-#include <utils/DataStream.h>
+#include <common/DataStream.h>
 #include <common/msLibMacro.h>
 
 

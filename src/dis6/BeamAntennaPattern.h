@@ -2,7 +2,7 @@
 #define BEAMANTENNAPATTERN_H
 
 #include <dis6/Orientation.h>
-#include <utils/DataStream.h>
+#include <common/DataStream.h>
 #include <common/msLibMacro.h>
 
 

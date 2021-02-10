@@ -1,7 +1,7 @@
 #ifndef VARIABLEPARAMETER_H
 #define VARIABLEPARAMETER_H
 
-#include <utils/DataStream.h>
+#include <common/DataStream.h>
 #include <common/msLibMacro.h>
 
 

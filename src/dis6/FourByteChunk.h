@@ -1,7 +1,7 @@
 #ifndef FOURBYTECHUNK_H
 #define FOURBYTECHUNK_H
 
-#include <utils/DataStream.h>
+#include <common/DataStream.h>
 #include <common/msLibMacro.h>
 
 

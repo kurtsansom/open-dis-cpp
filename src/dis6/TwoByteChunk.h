@@ -1,7 +1,7 @@
 #ifndef TWOBYTECHUNK_H
 #define TWOBYTECHUNK_H
 
-#include <utils/DataStream.h>
+#include <common/DataStream.h>
 #include <common/msLibMacro.h>
 
 

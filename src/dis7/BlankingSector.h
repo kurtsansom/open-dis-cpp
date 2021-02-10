@@ -1,7 +1,7 @@
 #ifndef BLANKINGSECTOR_H
 #define BLANKINGSECTOR_H
 
-#include <utils/DataStream.h>
+#include <common/DataStream.h>
 #include <common/msLibMacro.h>
 
 

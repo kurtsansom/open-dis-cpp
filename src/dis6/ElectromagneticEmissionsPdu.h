@@ -6,7 +6,7 @@
 #include <dis6/ElectromagneticEmissionSystemData.h>
 #include <vector>
 #include <dis6/DistributedEmissionsFamilyPdu.h>
-#include <utils/DataStream.h>
+#include <common/DataStream.h>
 #include <common/msLibMacro.h>
 
 

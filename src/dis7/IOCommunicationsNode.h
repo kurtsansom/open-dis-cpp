@@ -2,7 +2,7 @@
 #define IOCOMMUNICATIONSNODE_H
 
 #include <dis7/EntityID.h>
-#include <utils/DataStream.h>
+#include <common/DataStream.h>
 #include <common/msLibMacro.h>
 
 

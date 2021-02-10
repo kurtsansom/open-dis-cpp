@@ -5,7 +5,7 @@
 #include <dis7/DirectedEnergyDamage.h>
 #include <vector>
 #include <dis7/WarfareFamilyPdu.h>
-#include <utils/DataStream.h>
+#include <common/DataStream.h>
 #include <common/msLibMacro.h>
 
 

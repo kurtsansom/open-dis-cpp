@@ -2,7 +2,7 @@
 #define MINEFIELDPDUFAMILY_H
 
 #include <dis6/Pdu.h>
-#include <utils/DataStream.h>
+#include <common/DataStream.h>
 #include <common/msLibMacro.h>
 
 

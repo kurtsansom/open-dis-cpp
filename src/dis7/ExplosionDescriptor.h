@@ -2,7 +2,7 @@
 #define EXPLOSIONDESCRIPTOR_H
 
 #include <dis7/EntityType.h>
-#include <utils/DataStream.h>
+#include <common/DataStream.h>
 #include <common/msLibMacro.h>
 
 

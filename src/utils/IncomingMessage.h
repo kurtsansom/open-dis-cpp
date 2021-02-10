@@ -5,12 +5,12 @@
 #ifndef _dcl_dis_incoming_message_
 #define _dcl_dis_incoming_message_
 
-#include <utils/IBufferProcessor.h>   // for base class
+#include <common/IBufferProcessor.h>   // for base class
 #include <utils/IPduBank.h> 
 #include <map>                      // for member
-#include <utils/Endian.h>             // for internal type
+#include <common/Endian.h>             // for internal type
 #include <common/msLibMacro.h>         // for library symbols
-#include <utils/PDUType.h>
+#include <common/PDUType.h>
 
 namespace DIS
 {

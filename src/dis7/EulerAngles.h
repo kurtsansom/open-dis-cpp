@@ -1,7 +1,7 @@
 #ifndef EULERANGLES_H
 #define EULERANGLES_H
 
-#include <utils/DataStream.h>
+#include <common/DataStream.h>
 #include <common/msLibMacro.h>
 
 

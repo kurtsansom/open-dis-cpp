@@ -1,7 +1,7 @@
 #ifndef ENVIRONMENTTYPE_H
 #define ENVIRONMENTTYPE_H
 
-#include <utils/DataStream.h>
+#include <common/DataStream.h>
 #include <common/msLibMacro.h>
 
 

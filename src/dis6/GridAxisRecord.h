@@ -1,7 +1,7 @@
 #ifndef GRIDAXISRECORD_H
 #define GRIDAXISRECORD_H
 
-#include <utils/DataStream.h>
+#include <common/DataStream.h>
 #include <common/msLibMacro.h>
 
 

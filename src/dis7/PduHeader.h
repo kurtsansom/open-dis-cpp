@@ -1,7 +1,7 @@
 #ifndef PDUHEADER_H
 #define PDUHEADER_H
 
-#include <utils/DataStream.h>
+#include <common/DataStream.h>
 #include <common/msLibMacro.h>
 
 

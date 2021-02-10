@@ -1,7 +1,7 @@
 #ifndef VECTOR2FLOAT_H
 #define VECTOR2FLOAT_H
 
-#include <utils/DataStream.h>
+#include <common/DataStream.h>
 #include <common/msLibMacro.h>
 
 

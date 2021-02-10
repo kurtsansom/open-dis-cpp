@@ -4,7 +4,7 @@
 #include <dis7/UnsignedDISInteger.h>
 #include <dis7/UnsignedDISInteger.h>
 #include <vector>
-#include <utils/DataStream.h>
+#include <common/DataStream.h>
 #include <common/msLibMacro.h>
 
 

@@ -1,7 +1,7 @@
 #ifndef ENTITYTYPE_H
 #define ENTITYTYPE_H
 
-#include <utils/DataStream.h>
+#include <common/DataStream.h>
 #include <common/msLibMacro.h>
 
 

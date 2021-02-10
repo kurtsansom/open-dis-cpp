@@ -2,7 +2,7 @@
 #define _IPDU_BANK_H_
 
 #include <dis6/Pdu.h>
-#include <utils/DataStream.h>
+#include <common/DataStream.h>
 
 namespace DIS
 {

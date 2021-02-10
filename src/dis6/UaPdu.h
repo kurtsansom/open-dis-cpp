@@ -8,7 +8,7 @@
 #include <dis6/AcousticEmitterSystemData.h>
 #include <vector>
 #include <dis6/DistributedEmissionsFamilyPdu.h>
-#include <utils/DataStream.h>
+#include <common/DataStream.h>
 #include <common/msLibMacro.h>
 
 

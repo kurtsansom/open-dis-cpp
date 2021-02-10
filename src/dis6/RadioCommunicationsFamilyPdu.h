@@ -3,7 +3,7 @@
 
 #include <dis6/EntityID.h>
 #include <dis6/Pdu.h>
-#include <utils/DataStream.h>
+#include <common/DataStream.h>
 #include <common/msLibMacro.h>
 
 

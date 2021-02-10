@@ -1,7 +1,7 @@
 #ifndef ORIENTATION_H
 #define ORIENTATION_H
 
-#include <utils/DataStream.h>
+#include <common/DataStream.h>
 #include <common/msLibMacro.h>
 
 

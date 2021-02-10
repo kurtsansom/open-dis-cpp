@@ -1,7 +1,7 @@
 #ifndef TOTALRECORDSETS_H
 #define TOTALRECORDSETS_H
 
-#include <utils/DataStream.h>
+#include <common/DataStream.h>
 #include <common/msLibMacro.h>
 
 

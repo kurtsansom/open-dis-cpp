@@ -1,7 +1,7 @@
 #ifndef PDUSUPERCLASS_H
 #define PDUSUPERCLASS_H
 
-#include <utils/DataStream.h>
+#include <common/DataStream.h>
 #include <common/msLibMacro.h>
 
 

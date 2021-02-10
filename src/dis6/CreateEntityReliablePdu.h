@@ -2,7 +2,7 @@
 #define CREATEENTITYRELIABLEPDU_H
 
 #include <dis6/SimulationManagementWithReliabilityFamilyPdu.h>
-#include <utils/DataStream.h>
+#include <common/DataStream.h>
 #include <common/msLibMacro.h>
 
 

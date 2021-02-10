@@ -1,7 +1,7 @@
 #ifndef NAMEDLOCATIONIDENTIFICATION_H
 #define NAMEDLOCATIONIDENTIFICATION_H
 
-#include <utils/DataStream.h>
+#include <common/DataStream.h>
 #include <common/msLibMacro.h>
 
 

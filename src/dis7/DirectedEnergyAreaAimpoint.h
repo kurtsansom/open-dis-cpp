@@ -4,7 +4,7 @@
 #include <dis7/BeamAntennaPattern.h>
 #include <dis7/DirectedEnergyTargetEnergyDeposition.h>
 #include <vector>
-#include <utils/DataStream.h>
+#include <common/DataStream.h>
 #include <common/msLibMacro.h>
 
 

@@ -1,7 +1,7 @@
 #ifndef EVENTID_H
 #define EVENTID_H
 
-#include <utils/DataStream.h>
+#include <common/DataStream.h>
 #include <common/msLibMacro.h>
 
 

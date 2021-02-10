@@ -8,7 +8,7 @@
 #include <dis6/Vector3Float.h>
 #include <dis6/Vector3Float.h>
 #include <dis6/EntityInformationFamilyPdu.h>
-#include <utils/DataStream.h>
+#include <common/DataStream.h>
 #include <common/msLibMacro.h>
 
 

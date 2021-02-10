@@ -1,7 +1,7 @@
 #ifndef MARKING_H
 #define MARKING_H
 
-#include <utils/DataStream.h>
+#include <common/DataStream.h>
 #include <common/msLibMacro.h>
 
 

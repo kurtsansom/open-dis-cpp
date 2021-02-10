@@ -7,7 +7,7 @@
 #include <dis6/GridAxisRecord.h>
 #include <vector>
 #include <dis6/SyntheticEnvironmentFamilyPdu.h>
-#include <utils/DataStream.h>
+#include <common/DataStream.h>
 #include <common/msLibMacro.h>
 
 

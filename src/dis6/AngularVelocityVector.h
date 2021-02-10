@@ -1,7 +1,7 @@
 #ifndef ANGULARVELOCITYVECTOR_H
 #define ANGULARVELOCITYVECTOR_H
 
-#include <utils/DataStream.h>
+#include <common/DataStream.h>
 #include <common/msLibMacro.h>
 
 

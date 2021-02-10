@@ -1,7 +1,7 @@
 #ifndef BEAMSTATUS_H
 #define BEAMSTATUS_H
 
-#include <utils/DataStream.h>
+#include <common/DataStream.h>
 #include <common/msLibMacro.h>
 
 

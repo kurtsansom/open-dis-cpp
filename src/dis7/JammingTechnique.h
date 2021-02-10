@@ -1,7 +1,7 @@
 #ifndef JAMMINGTECHNIQUE_H
 #define JAMMINGTECHNIQUE_H
 
-#include <utils/DataStream.h>
+#include <common/DataStream.h>
 #include <common/msLibMacro.h>
 
 

@@ -6,7 +6,7 @@
 #include <dis6/IntercomCommunicationsParameters.h>
 #include <vector>
 #include <dis6/RadioCommunicationsFamilyPdu.h>
-#include <utils/DataStream.h>
+#include <common/DataStream.h>
 #include <common/msLibMacro.h>
 
 
