@@ -4,8 +4,6 @@ using namespace DIS;
 
 
 AcknowledgePdu::AcknowledgePdu() : SimulationManagementFamilyPdu(),
-   _originatingID(), 
-   _receivingID(), 
    _acknowledgeFlag(0), 
    _responseFlag(0), 
    _requestID(0)
@@ -15,36 +13,6 @@ AcknowledgePdu::AcknowledgePdu() : SimulationManagementFamilyPdu(),
 
 AcknowledgePdu::~AcknowledgePdu()
 {
-}
-
-EntityID& AcknowledgePdu::getOriginatingID() 
-{
-    return _originatingID;
-}
-
-const EntityID& AcknowledgePdu::getOriginatingID() const
-{
-    return _originatingID;
-}
-
-void AcknowledgePdu::setOriginatingID(const EntityID &pX)
-{
-    _originatingID = pX;
-}
-
-EntityID& AcknowledgePdu::getReceivingID() 
-{
-    return _receivingID;
-}
-
-const EntityID& AcknowledgePdu::getReceivingID() const
-{
-    return _receivingID;
-}
-
-void AcknowledgePdu::setReceivingID(const EntityID &pX)
-{
-    _receivingID = pX;
 }
 
 unsigned short AcknowledgePdu::getAcknowledgeFlag() const
@@ -80,8 +48,8 @@ void AcknowledgePdu::setRequestID(unsigned int pX)
 void AcknowledgePdu::marshal(DataStream& dataStream) const
 {
     SimulationManagementFamilyPdu::marshal(dataStream); // Marshal information in superclass first
-    _originatingID.marshal(dataStream);
-    _receivingID.marshal(dataStream);
+    _originatingEntityID.marshal(dataStream);
+    _receivingEntityID.marshal(dataStream);
     dataStream << _acknowledgeFlag;
     dataStream << _responseFlag;
     dataStream << _requestID;
@@ -90,8 +58,8 @@ void AcknowledgePdu::marshal(DataStream& dataStream) const
 void AcknowledgePdu::unmarshal(DataStream& dataStream)
 {
     SimulationManagementFamilyPdu::unmarshal(dataStream); // unmarshal information in superclass first
-    _originatingID.unmarshal(dataStream);
-    _receivingID.unmarshal(dataStream);
+    _originatingEntityID.unmarshal(dataStream);
+    _receivingEntityID.unmarshal(dataStream);
     dataStream >> _acknowledgeFlag;
     dataStream >> _responseFlag;
     dataStream >> _requestID;
@@ -104,8 +72,8 @@ bool AcknowledgePdu::operator ==(const AcknowledgePdu& rhs) const
 
      ivarsEqual = SimulationManagementFamilyPdu::operator==(rhs);
 
-     if( ! (_originatingID == rhs._originatingID) ) ivarsEqual = false;
-     if( ! (_receivingID == rhs._receivingID) ) ivarsEqual = false;
+     if( ! (_originatingEntityID == rhs._originatingEntityID) ) ivarsEqual = false;
+     if( ! (_receivingEntityID == rhs._receivingEntityID) ) ivarsEqual = false;
      if( ! (_acknowledgeFlag == rhs._acknowledgeFlag) ) ivarsEqual = false;
      if( ! (_responseFlag == rhs._responseFlag) ) ivarsEqual = false;
      if( ! (_requestID == rhs._requestID) ) ivarsEqual = false;
@@ -118,8 +86,8 @@ int AcknowledgePdu::getMarshalledSize() const
    int marshalSize = 0;
 
    marshalSize = SimulationManagementFamilyPdu::getMarshalledSize();
-   marshalSize = marshalSize + _originatingID.getMarshalledSize();  // _originatingID
-   marshalSize = marshalSize + _receivingID.getMarshalledSize();  // _receivingID
+   marshalSize = marshalSize + _originatingEntityID.getMarshalledSize();  // _originatingEntityID
+   marshalSize = marshalSize + _receivingEntityID.getMarshalledSize();  // _receivingEntityID
    marshalSize = marshalSize + 2;  // _acknowledgeFlag
    marshalSize = marshalSize + 2;  // _responseFlag
    marshalSize = marshalSize + 4;  // _requestID

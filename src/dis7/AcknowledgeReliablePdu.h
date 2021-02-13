@@ -10,7 +10,8 @@ namespace DIS
 {
 // Section 5.3.12.5: Ack receipt of a start-resume, stop-freeze, create-entity or remove enitty (reliable) pdus. COMPLETE
 
-// Copyright (c) 2007-2009, MOVES Institute, Naval Postgraduate School. All rights reserved. 
+// Copyright (c) 2007-2012, MOVES Institute, Naval Postgraduate School. All rights reserved. 
+// Licensed under the BSD open source license. See http://www.movesinstitute.org/licenses/bsd.html
 //
 // @author DMcG, jkg
 
@@ -18,13 +19,13 @@ class EXPORT_MACRO AcknowledgeReliablePdu : public SimulationManagementWithRelia
 {
 protected:
   /** ack flags */
-  unsigned short _acknowledgeFlag; 
+  unsigned short _acknowledgeFlag;
 
   /** response flags */
-  unsigned short _responseFlag; 
+  unsigned short _responseFlag;
 
   /** Request ID */
-  unsigned int _requestID; 
+  unsigned int _requestID;
 
 
  public:
@@ -44,9 +45,9 @@ protected:
     void setRequestID(unsigned int pX); 
 
 
-virtual int getMarshalledSize() const;
+     virtual int getMarshalledSize() const;
 
-     bool operator  ==(const AcknowledgeReliablePdu& rhs) const;
+     bool operator ==(const AcknowledgeReliablePdu& rhs) const;
 };
 }
 

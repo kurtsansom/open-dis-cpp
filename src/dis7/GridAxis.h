@@ -9,7 +9,8 @@ namespace DIS
 {
 // Grid axis record for fixed data. Section 6.2.41
 
-// Copyright (c) 2007-2009, MOVES Institute, Naval Postgraduate School. All rights reserved. 
+// Copyright (c) 2007-2012, MOVES Institute, Naval Postgraduate School. All rights reserved. 
+// Licensed under the BSD open source license. See http://www.movesinstitute.org/licenses/bsd.html
 //
 // @author DMcG, jkg
 
@@ -17,25 +18,25 @@ class EXPORT_MACRO GridAxis
 {
 protected:
   /** coordinate of the grid origin or initial value */
-  double _domainInitialXi; 
+  double _domainInitialXi;
 
   /** coordinate of the endpoint or final value */
-  double _domainFinalXi; 
+  double _domainFinalXi;
 
   /** The number of grid points along the Xi domain axis for the enviornmental state data */
-  unsigned short _domainPointsXi; 
+  unsigned short _domainPointsXi;
 
   /** interleaf factor along the domain axis. */
-  unsigned char _interleafFactor; 
+  unsigned char _interleafFactor;
 
   /** type of grid axis */
-  unsigned char _axisType; 
+  unsigned char _axisType;
 
   /** Number of grid locations along Xi axis */
-  unsigned short _numberOfPointsOnXiAxis; 
+  unsigned short _numberOfPointsOnXiAxis;
 
   /** initial grid point for the current pdu */
-  unsigned short _initialIndex; 
+  unsigned short _initialIndex;
 
 
  public:
@@ -67,9 +68,9 @@ protected:
     void setInitialIndex(unsigned short pX); 
 
 
-virtual int getMarshalledSize() const;
+    virtual int getMarshalledSize() const;
 
-     bool operator  ==(const GridAxis& rhs) const;
+    bool operator ==(const GridAxis& rhs) const;
 };
 }
 

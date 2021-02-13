@@ -43,9 +43,9 @@ protected:
     void setEntity(unsigned short pX); 
 
 
-virtual int getMarshalledSize() const;
+    virtual int getMarshalledSize() const;
 
-     bool operator  ==(const EntityID& rhs) const;
+    bool operator ==(const EntityID& rhs) const;
 };
 }
 

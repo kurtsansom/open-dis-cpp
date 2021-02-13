@@ -32,9 +32,9 @@ protected:
     void setOtherParameters( const char*    pX);
 
 
-virtual int getMarshalledSize() const;
+    virtual int getMarshalledSize() const;
 
-     bool operator  ==(const OneByteChunk& rhs) const;
+    bool operator ==(const OneByteChunk& rhs) const;
 };
 }
 

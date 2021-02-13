@@ -76,10 +76,10 @@ protected:
   unsigned char _padding3; 
 
   /** variable length list of modulation parameters */
-  std::vector<Vector3Float> _modulationParametersList; 
+  std::vector<Vector3Float> _modulationParametersList;
 
   /** variable length list of antenna pattern records */
-  std::vector<Vector3Float> _antennaPatternList; 
+  std::vector<Vector3Float> _antennaPatternList;
 
 
  public:
@@ -151,9 +151,9 @@ protected:
     void setAntennaPatternList(const std::vector<Vector3Float>&    pX);
 
 
-virtual int getMarshalledSize() const;
+     virtual int getMarshalledSize() const;
 
-     bool operator  ==(const TransmitterPdu& rhs) const;
+     bool operator ==(const TransmitterPdu& rhs) const;
 };
 }
 

@@ -11,7 +11,8 @@ namespace DIS
 {
 //  Abstract superclass for radio communications PDUs. Section 7.7
 
-// Copyright (c) 2007-2009, MOVES Institute, Naval Postgraduate School. All rights reserved. 
+// Copyright (c) 2007-2012, MOVES Institute, Naval Postgraduate School. All rights reserved. 
+// Licensed under the BSD open source license. See http://www.movesinstitute.org/licenses/bsd.html
 //
 // @author DMcG, jkg
 
@@ -19,10 +20,10 @@ class EXPORT_MACRO RadioCommunicationsFamilyPdu : public Pdu
 {
 protected:
   /** ID of the entitythat is the source of the communication */
-  EntityID _entityId; 
+  EntityID _radioReferenceID;
 
   /** particular radio within an entity */
-  unsigned short _radioId; 
+  unsigned short _radioNumber;
 
 
  public:
@@ -32,17 +33,17 @@ protected:
     virtual void marshal(DataStream& dataStream) const;
     virtual void unmarshal(DataStream& dataStream);
 
-    EntityID& getEntityId(); 
-    const EntityID&  getEntityId() const; 
-    void setEntityId(const EntityID    &pX);
+    EntityID& getRadioReferenceID();
+    const EntityID&  getRadioReferenceID() const;
+    void setRadioReferenceID(const EntityID    &pX);
 
-    unsigned short getRadioId() const; 
-    void setRadioId(unsigned short pX); 
+    unsigned short getRadioNumber() const; 
+    void setRadioNumber(unsigned short pX); 
 
 
-virtual int getMarshalledSize() const;
+    virtual int getMarshalledSize() const;
 
-     bool operator  ==(const RadioCommunicationsFamilyPdu& rhs) const;
+    bool operator ==(const RadioCommunicationsFamilyPdu& rhs) const;
 };
 }
 

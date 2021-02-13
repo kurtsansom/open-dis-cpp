@@ -10,7 +10,8 @@ namespace DIS
 {
 // Section 5.3.6.5. Acknowledge the receiptof a start/resume, stop/freeze, or RemoveEntityPDU. COMPLETE
 
-// Copyright (c) 2007-2009, MOVES Institute, Naval Postgraduate School. All rights reserved. 
+// Copyright (c) 2007-2012, MOVES Institute, Naval Postgraduate School. All rights reserved. 
+// Licensed under the BSD open source license. See http://www.movesinstitute.org/licenses/bsd.html
 //
 // @author DMcG, jkg
 
@@ -18,13 +19,13 @@ class EXPORT_MACRO AcknowledgePdu : public SimulationManagementFamilyPdu
 {
 protected:
   /** type of message being acknowledged */
-  unsigned short _acknowledgeFlag; 
+  unsigned short _acknowledgeFlag;
 
   /** Whether or not the receiving entity was able to comply with the request */
-  unsigned short _responseFlag; 
+  unsigned short _responseFlag;
 
   /** Request ID that is unique */
-  unsigned int _requestID; 
+  unsigned int _requestID;
 
 
  public:
@@ -44,9 +45,9 @@ protected:
     void setRequestID(unsigned int pX); 
 
 
-virtual int getMarshalledSize() const;
+     virtual int getMarshalledSize() const;
 
-     bool operator  ==(const AcknowledgePdu& rhs) const;
+     bool operator ==(const AcknowledgePdu& rhs) const;
 };
 }
 

@@ -20,19 +20,19 @@ class EXPORT_MACRO RepairResponsePdu : public LogisticsFamilyPdu
 {
 protected:
   /** Entity that is receiving service */
-  EntityID _receivingEntityID; 
+  EntityID _receivingEntityID;
 
   /** Entity that is supplying */
-  EntityID _repairingEntityID; 
+  EntityID _repairingEntityID;
 
   /** Result of repair operation */
-  unsigned char _repairResult; 
+  unsigned char _repairResult;
 
   /** padding */
-  short _padding1; 
+  short _padding1;
 
   /** padding */
-  char _padding2; 
+  char _padding2;
 
 
  public:
@@ -42,12 +42,12 @@ protected:
     virtual void marshal(DataStream& dataStream) const;
     virtual void unmarshal(DataStream& dataStream);
 
-    EntityID& getReceivingEntityID(); 
-    const EntityID&  getReceivingEntityID() const; 
+    EntityID& getReceivingEntityID();
+    const EntityID&  getReceivingEntityID() const;
     void setReceivingEntityID(const EntityID    &pX);
 
-    EntityID& getRepairingEntityID(); 
-    const EntityID&  getRepairingEntityID() const; 
+    EntityID& getRepairingEntityID();
+    const EntityID&  getRepairingEntityID() const;
     void setRepairingEntityID(const EntityID    &pX);
 
     unsigned char getRepairResult() const; 
@@ -60,9 +60,9 @@ protected:
     void setPadding2(char pX); 
 
 
-virtual int getMarshalledSize() const;
+    virtual int getMarshalledSize() const;
 
-     bool operator  ==(const RepairResponsePdu& rhs) const;
+    bool operator ==(const RepairResponsePdu& rhs) const;
 };
 }
 

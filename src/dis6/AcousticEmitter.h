@@ -9,7 +9,8 @@ namespace DIS
 {
 // Section 5.2.35. information about a specific UA emmtter
 
-// Copyright (c) 2007-2009, MOVES Institute, Naval Postgraduate School. All rights reserved. 
+// Copyright (c) 2007-2012, MOVES Institute, Naval Postgraduate School. All rights reserved. 
+// Licensed under the BSD open source license. See http://www.movesinstitute.org/licenses/bsd.html
 //
 // @author DMcG, jkg
 
@@ -17,13 +18,13 @@ class EXPORT_MACRO AcousticEmitter
 {
 protected:
   /** the system for a particular UA emitter, and an enumeration */
-  unsigned short _acousticName; 
+  unsigned short _acousticName;
 
   /** The function of the acoustic system */
-  unsigned char _function; 
+  unsigned char _function;
 
   /** The UA emitter identification number relative to a specific system */
-  unsigned char _acousticIdNumber; 
+  unsigned char _acousticIdNumber;
 
 
  public:
@@ -43,9 +44,9 @@ protected:
     void setAcousticIdNumber(unsigned char pX); 
 
 
-virtual int getMarshalledSize() const;
+     virtual int getMarshalledSize() const;
 
-     bool operator  ==(const AcousticEmitter& rhs) const;
+     bool operator ==(const AcousticEmitter& rhs) const;
 };
 }
 

@@ -1,8 +1,8 @@
-#include <utils/StreamUtils.h>
+#include <dis7/utils/StreamUtils.h>
 
-#include <dis6/EntityStatePdu.h>
-#include <dis6/EntityID.h>
-#include <dis6/DetonationPdu.h>
+#include <dis7/EntityStatePdu.h>
+#include <dis7/EntityID.h>
+#include <dis7/DetonationPdu.h>
 
 std::ostream& operator <<(std::ostream& lhs, const DIS::EntityType& rhs)
 {
@@ -19,7 +19,7 @@ std::ostream& operator <<(std::ostream& lhs, const DIS::EntityType& rhs)
 std::ostream& operator <<(std::ostream& lhs, const DIS::EntityID& rhs)
 {
    lhs << "EntityID ("
-       << (unsigned int)rhs.getEntity() << ") ";
+       << (unsigned int)rhs.getEntityNumber() << ") ";
    return lhs;
 }
 

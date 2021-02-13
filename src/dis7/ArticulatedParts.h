@@ -9,7 +9,8 @@ namespace DIS
 {
 //  articulated parts for movable parts and a combination of moveable/attached parts of an entity. Section 6.2.94.2
 
-// Copyright (c) 2007-2009, MOVES Institute, Naval Postgraduate School. All rights reserved. 
+// Copyright (c) 2007-2012, MOVES Institute, Naval Postgraduate School. All rights reserved. 
+// Licensed under the BSD open source license. See http://www.movesinstitute.org/licenses/bsd.html
 //
 // @author DMcG, jkg
 
@@ -17,16 +18,16 @@ class EXPORT_MACRO ArticulatedParts
 {
 protected:
   /** the identification of the Variable Parameter record. Enumeration from EBV */
-  unsigned char _recordType; 
+  unsigned char _recordType;
 
   /** indicate the change of any parameter for any articulated part. Starts at zero, incremented for each change  */
-  unsigned char _changeIndicator; 
+  unsigned char _changeIndicator;
 
   /** the identification of the articulated part to which this articulation parameter is attached. This field shall be specified by a 16-bit unsigned integer. This field shall contain the value zero if the articulated part is attached directly to the entity. */
-  unsigned short _partAttachedTo; 
+  unsigned short _partAttachedTo;
 
   /** the type of parameter represented, 32 bit enumeration */
-  unsigned int _parameterType; 
+  unsigned int _parameterType;
 
   /** This field shall specify the parameter value and shall be specified by a 32-bit
 floating point number.  */
@@ -59,9 +60,9 @@ floating point number.  */
     void setParameterValue(float pX);
 
 
-virtual int getMarshalledSize() const;
+    virtual int getMarshalledSize() const;
 
-     bool operator  ==(const ArticulatedParts& rhs) const;
+    bool operator ==(const ArticulatedParts& rhs) const;
 };
 }
 

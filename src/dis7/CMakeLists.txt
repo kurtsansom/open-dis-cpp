@@ -32,6 +32,7 @@ target_sources(OpenDIS7
     CommunicationsNodeID.cpp
     CreateEntityPdu.cpp
     CreateEntityReliablePdu.cpp
+    DataFilterRecord.cpp
     DataPdu.cpp
     DataQueryDatumSpecification.cpp
     DataQueryPdu.cpp
@@ -56,6 +57,7 @@ target_sources(OpenDIS7
     EntityAssociation.cpp
     EntityDamageStatusPdu.cpp
     EntityID.cpp
+    EntityIdentifier.cpp
     EntityInformationFamilyPdu.cpp
     EntityManagementFamilyPdu.cpp
     EntityMarking.cpp
@@ -83,9 +85,11 @@ target_sources(OpenDIS7
     FundamentalOperationalData.cpp
     GridAxis.cpp
     GroupIdentifier.cpp
+    IFFData.cpp
     IffDataSpecification.cpp
     IFFFundamentalParameterData.cpp
     IntercomCommunicationsParameters.cpp
+    IntercomControlPdu.cpp
     IntercomIdentifier.cpp
     IntercomSignalPdu.cpp
     IOCommunicationsNode.cpp
@@ -104,6 +108,7 @@ target_sources(OpenDIS7
     MinefieldFamilyPdu.cpp
     MinefieldIdentifier.cpp
     MinefieldResponseNackPdu.cpp
+    MinefieldSensorType.cpp
     MinefieldStatePdu.cpp
     ModulationParameters.cpp
     ModulationType.cpp
@@ -119,9 +124,11 @@ target_sources(OpenDIS7
     Pdu.cpp
     PduHeader.cpp
     PduStatus.cpp
+    # PduStream.cpp
     PduSuperclass.cpp
     PointObjectStatePdu.cpp
     PropulsionSystemData.cpp
+    ProtocolMode.cpp
     RadioCommunicationsFamilyPdu.cpp
     RadioIdentifier.cpp
     RadioType.cpp
@@ -134,6 +141,10 @@ target_sources(OpenDIS7
     RemoveEntityPdu.cpp
     RemoveEntityReliablePdu.cpp
     RepairCompletePdu.cpp
+    RepairResponsePdu.cpp
+    RequestID.cpp
+    ResupplyOfferPdu.cpp
+    ResupplyReceivedPdu.cpp
     SecondaryOperationalData.cpp
     SeesPdu.cpp
     Sensor.cpp
@@ -141,6 +152,8 @@ target_sources(OpenDIS7
     ServiceRequestPdu.cpp
     SetDataPdu.cpp
     SetDataReliablePdu.cpp
+    SignalPdu.cpp
+    SilentEntitySystem.cpp
     SimulationAddress.cpp
     SimulationIdentifier.cpp
     SimulationManagementFamilyPdu.cpp
@@ -156,8 +169,10 @@ target_sources(OpenDIS7
     SupplyQuantity.cpp
     SyntheticEnvironmentFamilyPdu.cpp
     SystemIdentifier.cpp
+    Timestamp.cpp
     TotalRecordSets.cpp
     TrackJamData.cpp
+    # TransmitterPdu.cpp
     TwoByteChunk.cpp
     UAFundamentalParameter.cpp
     UaPdu.cpp
@@ -172,3 +187,5 @@ target_sources(OpenDIS7
     VectoringNozzleSystem.cpp
     WarfareFamilyPdu.cpp
 )
+
+add_subdirectory(utils)

@@ -3,9 +3,8 @@
 using namespace DIS;
 
 
-EntityID::EntityID():
-   _simulationAddress(), 
-   _entityNumber(0)
+EntityID::EntityID() : EntityIdentifier()
+
 {
 }
 
@@ -13,41 +12,14 @@ EntityID::~EntityID()
 {
 }
 
-SimulationAddress& EntityID::getSimulationAddress() 
-{
-    return _simulationAddress;
-}
-
-const SimulationAddress& EntityID::getSimulationAddress() const
-{
-    return _simulationAddress;
-}
-
-void EntityID::setSimulationAddress(const SimulationAddress &pX)
-{
-    _simulationAddress = pX;
-}
-
-unsigned short EntityID::getEntityNumber() const
-{
-    return _entityNumber;
-}
-
-void EntityID::setEntityNumber(unsigned short pX)
-{
-    _entityNumber = pX;
-}
-
 void EntityID::marshal(DataStream& dataStream) const
 {
-    _simulationAddress.marshal(dataStream);
-    dataStream << _entityNumber;
+    EntityIdentifier::marshal(dataStream); // Marshal information in superclass first
 }
 
 void EntityID::unmarshal(DataStream& dataStream)
 {
-    _simulationAddress.unmarshal(dataStream);
-    dataStream >> _entityNumber;
+    EntityIdentifier::unmarshal(dataStream); // unmarshal information in superclass first
 }
 
 
@@ -55,8 +27,8 @@ bool EntityID::operator ==(const EntityID& rhs) const
  {
      bool ivarsEqual = true;
 
-     if( ! (_simulationAddress == rhs._simulationAddress) ) ivarsEqual = false;
-     if( ! (_entityNumber == rhs._entityNumber) ) ivarsEqual = false;
+     ivarsEqual = EntityIdentifier::operator==(rhs);
+
 
     return ivarsEqual;
  }
@@ -65,8 +37,7 @@ int EntityID::getMarshalledSize() const
 {
    int marshalSize = 0;
 
-   marshalSize = marshalSize + _simulationAddress.getMarshalledSize();  // _simulationAddress
-   marshalSize = marshalSize + 2;  // _entityNumber
+   marshalSize = EntityIdentifier::getMarshalledSize();
     return marshalSize;
 }
 

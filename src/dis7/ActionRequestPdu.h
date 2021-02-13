@@ -2,7 +2,6 @@
 #define ACTIONREQUESTPDU_H
 
 #include <dis7/EntityID.h>
-#include <dis7/EntityID.h>
 #include <dis7/FixedDatum.h>
 #include <dis7/VariableDatum.h>
 #include <vector>
@@ -15,36 +14,32 @@ namespace DIS
 {
 // Section 7.5.7. Request from simulation manager to a managed entity to perform a specified action. COMPLETE
 
-// Copyright (c) 2007-2009, MOVES Institute, Naval Postgraduate School. All rights reserved. 
+// Copyright (c) 2007-2012, MOVES Institute, Naval Postgraduate School. All rights reserved. 
+// Licensed under the BSD open source license. See http://www.movesinstitute.org/licenses/bsd.html
 //
 // @author DMcG, jkg
 
 class EXPORT_MACRO ActionRequestPdu : public SimulationManagementFamilyPdu
 {
 protected:
-  /** Identifier for originating entity(or simulation) */
-  EntityID _originatingID; 
-
-  /** Identifier for the receiving entity(or simulation) */
-  EntityID _receivingID; 
 
   /** identifies the request being made by the simulaton manager */
-  unsigned int _requestID; 
+  unsigned int _requestID;
 
   /** identifies the particular action being requested(see Section 7 of SISO-REF-010). */
-  unsigned int _actionID; 
+  unsigned int _actionID;
 
   /** Number of fixed datum records */
-  unsigned int _numberOfFixedDatumRecords; 
+  unsigned int _numberOfFixedDatumRecords;
 
   /** Number of variable datum records */
-  unsigned int _numberOfVariableDatumRecords; 
+  unsigned int _numberOfVariableDatumRecords;
 
   /** variable length list of fixed datums */
-  std::vector<FixedDatum> _fixedDatums; 
+  std::vector<FixedDatum> _fixedDatums;
 
   /** variable length list of variable length datums */
-  std::vector<VariableDatum> _variableDatums; 
+  std::vector<VariableDatum> _variableDatums;
 
 
  public:
@@ -53,14 +48,6 @@ protected:
 
     virtual void marshal(DataStream& dataStream) const;
     virtual void unmarshal(DataStream& dataStream);
-
-    EntityID& getOriginatingID(); 
-    const EntityID&  getOriginatingID() const; 
-    void setOriginatingID(const EntityID    &pX);
-
-    EntityID& getReceivingID(); 
-    const EntityID&  getReceivingID() const; 
-    void setReceivingID(const EntityID    &pX);
 
     unsigned int getRequestID() const; 
     void setRequestID(unsigned int pX); 
@@ -81,9 +68,9 @@ protected:
     void setVariableDatums(const std::vector<VariableDatum>&    pX);
 
 
-virtual int getMarshalledSize() const;
+     virtual int getMarshalledSize() const;
 
-     bool operator  ==(const ActionRequestPdu& rhs) const;
+     bool operator ==(const ActionRequestPdu& rhs) const;
 };
 }
 

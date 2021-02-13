@@ -9,6 +9,8 @@
 #include <dis7/DetonationPdu.h>
 #include <common/DataStream.h>
 #include <dis7/Vector3Double.h>
+#include <dis7/ArticulatedParts.h>
+#include <dis7/VariableParameter.h>
 // #include <dis6/BurstDescriptor.h>
 
 #include <common/Conversion.h>
@@ -98,7 +100,11 @@ void init_entities(DIS::EntityStatePdu& friendly0,
       enemy_sim_addr.setApplication( 1 );
 
       enemy_entity_id.setSimulationAddress( enemy_sim_addr );
+
+      enemy_entity_id.setSite( 0 );
+      enemy_entity_id.setApplication( 1 );
       enemy_entity_id.setEntityNumber( 1 );
+
 
       enemy.setEntityID( enemy_entity_id );
 
@@ -163,33 +169,33 @@ void init_entities(DIS::EntityStatePdu& friendly0,
 
    // articulation
    {
-      DIS::ArticulationParameter turret_azimuth;
+      DIS::ArticulatedParts turret_azimuth;
       turret_azimuth.setParameterType( DIS::Convert::MakeArticulationParameterType(Example::Articulation::PRIMARY_TURRET,Example::Articulation::AZIMUTH) );
       turret_azimuth.setPartAttachedTo( 0 );            // 0 = connected directly to the vehicle
-      turret_azimuth.setParameterTypeDesignator( Example::Articulation::ARTICULATED );
+      turret_azimuth.setRecordType( Example::Articulation::ARTICULATED );
 
-      DIS::ArticulationParameter turret_azimuth_rate;
+      DIS::ArticulatedParts turret_azimuth_rate;
       turret_azimuth_rate.setParameterType( DIS::Convert::MakeArticulationParameterType(Example::Articulation::PRIMARY_TURRET,Example::Articulation::AZIMUTH_RATE) );
       turret_azimuth_rate.setPartAttachedTo( 0 );       // 0 = connected directly to the vehicle
-      turret_azimuth_rate.setParameterTypeDesignator( Example::Articulation::ARTICULATED );
+      turret_azimuth_rate.setRecordType( Example::Articulation::ARTICULATED );
 
-      DIS::ArticulationParameter turret_gun_elevation;
+      DIS::ArticulatedParts turret_gun_elevation;
       turret_gun_elevation.setParameterType( DIS::Convert::MakeArticulationParameterType(Example::Articulation::PRIMARY_GUN,Example::Articulation::ELEVATION) );
       turret_gun_elevation.setPartAttachedTo( 1 );            // 1 = connected to the turret
-      turret_gun_elevation.setParameterTypeDesignator( Example::Articulation::ARTICULATED );
+      turret_gun_elevation.setRecordType( Example::Articulation::ARTICULATED );
 
-      DIS::ArticulationParameter gun2_elevation;
+      DIS::ArticulatedParts gun2_elevation;
       gun2_elevation.setParameterType( DIS::Convert::MakeArticulationParameterType(Example::Articulation::SECONDARY_GUN,Example::Articulation::ELEVATION) );
       gun2_elevation.setPartAttachedTo( 1 );            // 1 = connected to the turret
-      gun2_elevation.setParameterTypeDesignator( Example::Articulation::ARTICULATED );
+      gun2_elevation.setRecordType( Example::Articulation::ARTICULATED );
 
-      std::vector<DIS::ArticulationParameter>& params = enemy.getArticulationParameters();
+      std::vector<DIS::VariableParameter>& params = enemy.getVariableParameters();
       params.clear();
       params.resize(4);  // make default number of parameters
-      params[Example::INDEX_TURRET_AZIMUTH] = turret_azimuth;
-      params[Example::INDEX_TURRET_AZIMUTH_RATE] = turret_azimuth_rate;
-      params[Example::INDEX_GUN_ELEVATION] = turret_gun_elevation;
-      params[Example::INDEX_GUN_2_ELEVATION] = gun2_elevation;
+      params.at(Example::INDEX_TURRET_AZIMUTH) = turret_azimuth;
+      params.at(Example::INDEX_TURRET_AZIMUTH_RATE) = turret_azimuth_rate;
+      params.at(Example::INDEX_GUN_ELEVATION) = turret_gun_elevation;
+      params.at(Example::INDEX_GUN_2_ELEVATION) = gun2_elevation;
    }
 
    friendly0.setLength( friendly0.getMarshalledSize());
@@ -281,21 +287,21 @@ void UpdateTank(DIS::EntityStatePdu& tank, Example::TankDynamics& dynamics, doub
    dynamics.Update( dt );
 
    // articulation
-   std::vector<DIS::ArticulationParameter> &params = tank.getArticulationParameters();
+   std::vector<DIS::ArticulatedParts> &params = tank.getVariableParameters();
 
-   DIS::ArticulationParameter& turret_azimuth = params[Example::INDEX_TURRET_AZIMUTH];
+   DIS::ArticulatedParts& turret_azimuth = params[Example::INDEX_TURRET_AZIMUTH];
    turret_azimuth.setParameterValue( dynamics._angle_primary_turret );
    turret_azimuth.setChangeIndicator( frame_stamp );  // constantly changing
 
-   DIS::ArticulationParameter& turret_azimuth_rate = params[Example::INDEX_TURRET_AZIMUTH_RATE];
+   DIS::ArticulatedParts& turret_azimuth_rate = params[Example::INDEX_TURRET_AZIMUTH_RATE];
    turret_azimuth_rate.setChangeIndicator( 0 ); // no change
    turret_azimuth_rate.setParameterValue( dynamics._velocity_turret );
 
-   DIS::ArticulationParameter& gun_elevation = params[Example::INDEX_GUN_ELEVATION];
+   DIS::ArticulatedParts& gun_elevation = params[Example::INDEX_GUN_ELEVATION];
    gun_elevation.setChangeIndicator( 0 );  // no change
    gun_elevation.setParameterValue( dynamics._angle_primary_gun );
 
-   DIS::ArticulationParameter& gun2_elevation = params[Example::INDEX_GUN_2_ELEVATION];
+   DIS::ArticulatedParts& gun2_elevation = params[Example::INDEX_GUN_2_ELEVATION];
    gun2_elevation.setChangeIndicator( frame_stamp );  // no change
    gun2_elevation.setParameterValue( dynamics._angle_secondary_gun );
 }

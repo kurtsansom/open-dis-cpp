@@ -7,8 +7,8 @@ ReceiverPdu::ReceiverPdu() : RadioCommunicationsFamilyPdu(),
    _receiverState(0), 
    _padding1(0), 
    _receivedPower(0.0), 
-   _transmitterEntityId(), 
-   _transmitterRadioId(0)
+   _transmitterRadioReferenceId(), 
+   _transmitterRadioNumber(0)
 {
     setPduType( 27 );
 }
@@ -47,29 +47,29 @@ void ReceiverPdu::setReceivedPower(float pX)
     _receivedPower = pX;
 }
 
-EntityID& ReceiverPdu::getTransmitterEntityId() 
+EntityID& ReceiverPdu::getTransmitterRadioReferenceId() 
 {
-    return _transmitterEntityId;
+    return _transmitterRadioReferenceId;
 }
 
-const EntityID& ReceiverPdu::getTransmitterEntityId() const
+const EntityID& ReceiverPdu::getTransmitterRadioReferenceId() const
 {
-    return _transmitterEntityId;
+    return _transmitterRadioReferenceId;
 }
 
-void ReceiverPdu::setTransmitterEntityId(const EntityID &pX)
+void ReceiverPdu::setTransmitterRadioReferenceId(const EntityID &pX)
 {
-    _transmitterEntityId = pX;
+    _transmitterRadioReferenceId = pX;
 }
 
-unsigned short ReceiverPdu::getTransmitterRadioId() const
+unsigned short ReceiverPdu::getTransmitterRadioNumber() const
 {
-    return _transmitterRadioId;
+    return _transmitterRadioNumber;
 }
 
-void ReceiverPdu::setTransmitterRadioId(unsigned short pX)
+void ReceiverPdu::setTransmitterRadioNumber(unsigned short pX)
 {
-    _transmitterRadioId = pX;
+    _transmitterRadioNumber = pX;
 }
 
 void ReceiverPdu::marshal(DataStream& dataStream) const
@@ -78,8 +78,8 @@ void ReceiverPdu::marshal(DataStream& dataStream) const
     dataStream << _receiverState;
     dataStream << _padding1;
     dataStream << _receivedPower;
-    _transmitterEntityId.marshal(dataStream);
-    dataStream << _transmitterRadioId;
+    _transmitterRadioReferenceId.marshal(dataStream);
+    dataStream << _transmitterRadioNumber;
 }
 
 void ReceiverPdu::unmarshal(DataStream& dataStream)
@@ -88,8 +88,8 @@ void ReceiverPdu::unmarshal(DataStream& dataStream)
     dataStream >> _receiverState;
     dataStream >> _padding1;
     dataStream >> _receivedPower;
-    _transmitterEntityId.unmarshal(dataStream);
-    dataStream >> _transmitterRadioId;
+    _transmitterRadioReferenceId.unmarshal(dataStream);
+    dataStream >> _transmitterRadioNumber;
 }
 
 
@@ -102,8 +102,8 @@ bool ReceiverPdu::operator ==(const ReceiverPdu& rhs) const
      if( ! (_receiverState == rhs._receiverState) ) ivarsEqual = false;
      if( ! (_padding1 == rhs._padding1) ) ivarsEqual = false;
      if( ! (_receivedPower == rhs._receivedPower) ) ivarsEqual = false;
-     if( ! (_transmitterEntityId == rhs._transmitterEntityId) ) ivarsEqual = false;
-     if( ! (_transmitterRadioId == rhs._transmitterRadioId) ) ivarsEqual = false;
+     if( ! (_transmitterRadioReferenceId == rhs._transmitterRadioReferenceId) ) ivarsEqual = false;
+     if( ! (_transmitterRadioNumber == rhs._transmitterRadioNumber) ) ivarsEqual = false;
 
     return ivarsEqual;
  }
@@ -115,9 +115,9 @@ int ReceiverPdu::getMarshalledSize() const
    marshalSize = RadioCommunicationsFamilyPdu::getMarshalledSize();
    marshalSize = marshalSize + 2;  // _receiverState
    marshalSize = marshalSize + 2;  // _padding1
-   marshalSize = marshalSize + 4;  // _receivedPoser
-   marshalSize = marshalSize + _transmitterEntityId.getMarshalledSize();  // _transmitterEntityId
-   marshalSize = marshalSize + 2;  // _transmitterRadioId
+   marshalSize = marshalSize + 4;  // _receivedPower
+   marshalSize = marshalSize + _transmitterRadioReferenceId.getMarshalledSize();  // _transmitterRadioReferenceId
+   marshalSize = marshalSize + 2;  // _transmitterRadioNumber
     return marshalSize;
 }
 

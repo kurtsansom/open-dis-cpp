@@ -4,8 +4,6 @@ using namespace DIS;
 
 
 ActionRequestPdu::ActionRequestPdu() : SimulationManagementFamilyPdu(),
-   _originatingID(), 
-   _receivingID(), 
    _requestID(0), 
    _actionID(0), 
    _numberOfFixedDatumRecords(0), 
@@ -18,36 +16,6 @@ ActionRequestPdu::~ActionRequestPdu()
 {
     _fixedDatums.clear();
     _variableDatums.clear();
-}
-
-EntityID& ActionRequestPdu::getOriginatingID() 
-{
-    return _originatingID;
-}
-
-const EntityID& ActionRequestPdu::getOriginatingID() const
-{
-    return _originatingID;
-}
-
-void ActionRequestPdu::setOriginatingID(const EntityID &pX)
-{
-    _originatingID = pX;
-}
-
-EntityID& ActionRequestPdu::getReceivingID() 
-{
-    return _receivingID;
-}
-
-const EntityID& ActionRequestPdu::getReceivingID() const
-{
-    return _receivingID;
-}
-
-void ActionRequestPdu::setReceivingID(const EntityID &pX)
-{
-    _receivingID = pX;
 }
 
 unsigned int ActionRequestPdu::getRequestID() const
@@ -113,8 +81,8 @@ void ActionRequestPdu::setVariableDatums(const std::vector<VariableDatum>& pX)
 void ActionRequestPdu::marshal(DataStream& dataStream) const
 {
     SimulationManagementFamilyPdu::marshal(dataStream); // Marshal information in superclass first
-    _originatingID.marshal(dataStream);
-    _receivingID.marshal(dataStream);
+    _originatingEntityID.marshal(dataStream);
+    _receivingEntityID.marshal(dataStream);
     dataStream << _requestID;
     dataStream << _actionID;
     dataStream << ( unsigned int )_fixedDatums.size();
@@ -138,8 +106,8 @@ void ActionRequestPdu::marshal(DataStream& dataStream) const
 void ActionRequestPdu::unmarshal(DataStream& dataStream)
 {
     SimulationManagementFamilyPdu::unmarshal(dataStream); // unmarshal information in superclass first
-    _originatingID.unmarshal(dataStream);
-    _receivingID.unmarshal(dataStream);
+    _originatingEntityID.unmarshal(dataStream);
+    _receivingEntityID.unmarshal(dataStream);
     dataStream >> _requestID;
     dataStream >> _actionID;
     dataStream >> _numberOfFixedDatumRecords;
@@ -169,8 +137,8 @@ bool ActionRequestPdu::operator ==(const ActionRequestPdu& rhs) const
 
      ivarsEqual = SimulationManagementFamilyPdu::operator==(rhs);
 
-     if( ! (_originatingID == rhs._originatingID) ) ivarsEqual = false;
-     if( ! (_receivingID == rhs._receivingID) ) ivarsEqual = false;
+     if( ! (_originatingEntityID == rhs._originatingEntityID) ) ivarsEqual = false;
+     if( ! (_receivingEntityID == rhs._receivingEntityID) ) ivarsEqual = false;
      if( ! (_requestID == rhs._requestID) ) ivarsEqual = false;
      if( ! (_actionID == rhs._actionID) ) ivarsEqual = false;
 
@@ -194,8 +162,8 @@ int ActionRequestPdu::getMarshalledSize() const
    int marshalSize = 0;
 
    marshalSize = SimulationManagementFamilyPdu::getMarshalledSize();
-   marshalSize = marshalSize + _originatingID.getMarshalledSize();  // _originatingID
-   marshalSize = marshalSize + _receivingID.getMarshalledSize();  // _receivingID
+   marshalSize = marshalSize + _originatingEntityID.getMarshalledSize();  // _originatingEntityID
+   marshalSize = marshalSize + _receivingEntityID.getMarshalledSize();  // _receivingEntityID
    marshalSize = marshalSize + 4;  // _requestID
    marshalSize = marshalSize + 4;  // _actionID
    marshalSize = marshalSize + 4;  // _numberOfFixedDatumRecords

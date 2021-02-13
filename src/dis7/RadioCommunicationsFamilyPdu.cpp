@@ -4,8 +4,8 @@ using namespace DIS;
 
 
 RadioCommunicationsFamilyPdu::RadioCommunicationsFamilyPdu() : Pdu(),
-   _entityId(), 
-   _radioId(0)
+   _radioReferenceID(), 
+   _radioNumber(0)
 {
     setProtocolFamily( 4 );
 }
@@ -14,43 +14,43 @@ RadioCommunicationsFamilyPdu::~RadioCommunicationsFamilyPdu()
 {
 }
 
-EntityID& RadioCommunicationsFamilyPdu::getEntityId() 
+EntityID& RadioCommunicationsFamilyPdu::getRadioReferenceID() 
 {
-    return _entityId;
+    return _radioReferenceID;
 }
 
-const EntityID& RadioCommunicationsFamilyPdu::getEntityId() const
+const EntityID& RadioCommunicationsFamilyPdu::getRadioReferenceID() const
 {
-    return _entityId;
+    return _radioReferenceID;
 }
 
-void RadioCommunicationsFamilyPdu::setEntityId(const EntityID &pX)
+void RadioCommunicationsFamilyPdu::setRadioReferenceID(const EntityID &pX)
 {
-    _entityId = pX;
+    _radioReferenceID = pX;
 }
 
-unsigned short RadioCommunicationsFamilyPdu::getRadioId() const
+unsigned short RadioCommunicationsFamilyPdu::getRadioNumber() const
 {
-    return _radioId;
+    return _radioNumber;
 }
 
-void RadioCommunicationsFamilyPdu::setRadioId(unsigned short pX)
+void RadioCommunicationsFamilyPdu::setRadioNumber(unsigned short pX)
 {
-    _radioId = pX;
+    _radioNumber = pX;
 }
 
 void RadioCommunicationsFamilyPdu::marshal(DataStream& dataStream) const
 {
     Pdu::marshal(dataStream); // Marshal information in superclass first
-    _entityId.marshal(dataStream);
-    dataStream << _radioId;
+    _radioReferenceID.marshal(dataStream);
+    dataStream << _radioNumber;
 }
 
 void RadioCommunicationsFamilyPdu::unmarshal(DataStream& dataStream)
 {
     Pdu::unmarshal(dataStream); // unmarshal information in superclass first
-    _entityId.unmarshal(dataStream);
-    dataStream >> _radioId;
+    _radioReferenceID.unmarshal(dataStream);
+    dataStream >> _radioNumber;
 }
 
 
@@ -60,8 +60,8 @@ bool RadioCommunicationsFamilyPdu::operator ==(const RadioCommunicationsFamilyPd
 
      ivarsEqual = Pdu::operator==(rhs);
 
-     if( ! (_entityId == rhs._entityId) ) ivarsEqual = false;
-     if( ! (_radioId == rhs._radioId) ) ivarsEqual = false;
+     if( ! (_radioReferenceID == rhs._radioReferenceID) ) ivarsEqual = false;
+     if( ! (_radioNumber == rhs._radioNumber) ) ivarsEqual = false;
 
     return ivarsEqual;
  }
@@ -71,8 +71,8 @@ int RadioCommunicationsFamilyPdu::getMarshalledSize() const
    int marshalSize = 0;
 
    marshalSize = Pdu::getMarshalledSize();
-   marshalSize = marshalSize + _entityId.getMarshalledSize();  // _entityId
-   marshalSize = marshalSize + 2;  // _radioId
+   marshalSize = marshalSize + _radioReferenceID.getMarshalledSize();  // _radioReferenceID
+   marshalSize = marshalSize + 2;  // _radioNumber
     return marshalSize;
 }
 

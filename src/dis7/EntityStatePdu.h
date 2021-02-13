@@ -28,24 +28,24 @@ class EXPORT_MACRO EntityStatePdu : public EntityInformationFamilyPdu
 {
 protected:
   /** Unique ID for an entity that is tied to this state information */
-  EntityID _entityID; 
+  EntityID _entityID;
 
   /** What force this entity is affiliated with, eg red, blue, neutral, etc */
-  unsigned char _forceId; 
+  unsigned char _forceId;
 
   /** How many variable parameters are in the variable length list. In earlier versions of DIS these were known as articulation parameters */
-  unsigned char _numberOfVariableParameters; 
+  unsigned char _numberOfVariableParameters;
 
   /** Describes the type of entity in the world */
-  EntityType _entityType; 
+  EntityType _entityType;
 
-  EntityType _alternativeEntityType; 
+  EntityType _alternativeEntityType;
 
   /** Describes the speed of the entity in the world */
-  Vector3Float _entityLinearVelocity; 
+  Vector3Float _entityLinearVelocity;
 
   /** describes the location of the entity in the world */
-  Vector3Double _entityLocation; 
+  Vector3Double _entityLocation;
 
   /** describes the orientation of the entity, in euler angles */
   EulerAngles _entityOrientation; 
@@ -121,9 +121,9 @@ protected:
     void setVariableParameters(const std::vector<VariableParameter>&    pX);
 
 
-virtual int getMarshalledSize() const;
+    virtual int getMarshalledSize() const;
 
-     bool operator  ==(const EntityStatePdu& rhs) const;
+    bool operator ==(const EntityStatePdu& rhs) const;
 };
 }
 

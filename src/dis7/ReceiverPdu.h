@@ -11,7 +11,8 @@ namespace DIS
 {
 //  Communication of a receiver state. Section 7.7.4 COMPLETE
 
-// Copyright (c) 2007-2009, MOVES Institute, Naval Postgraduate School. All rights reserved. 
+// Copyright (c) 2007-2012, MOVES Institute, Naval Postgraduate School. All rights reserved. 
+// Licensed under the BSD open source license. See http://www.movesinstitute.org/licenses/bsd.html
 //
 // @author DMcG, jkg
 
@@ -19,19 +20,19 @@ class EXPORT_MACRO ReceiverPdu : public RadioCommunicationsFamilyPdu
 {
 protected:
   /** encoding scheme used, and enumeration */
-  unsigned short _receiverState; 
+  unsigned short _receiverState;
 
   /** padding */
-  unsigned short _padding1; 
+  unsigned short _padding1;
 
   /** received power */
-  float _receivedPower; 
+  float _receivedPower;
 
   /** ID of transmitter */
-  EntityID _transmitterEntityId; 
+  EntityID _transmitterRadioReferenceId;
 
   /** ID of transmitting radio */
-  unsigned short _transmitterRadioId; 
+  unsigned short _transmitterRadioNumber;
 
 
  public:
@@ -50,17 +51,17 @@ protected:
     float getReceivedPower() const; 
     void setReceivedPower(float pX); 
 
-    EntityID& getTransmitterEntityId(); 
-    const EntityID&  getTransmitterEntityId() const; 
-    void setTransmitterEntityId(const EntityID    &pX);
+    EntityID& getTransmitterRadioReferenceId();
+    const EntityID&  getTransmitterRadioReferenceId() const;
+    void setTransmitterRadioReferenceId(const EntityID    &pX);
 
-    unsigned short getTransmitterRadioId() const; 
-    void setTransmitterRadioId(unsigned short pX); 
+    unsigned short getTransmitterRadioNumber() const; 
+    void setTransmitterRadioNumber(unsigned short pX); 
 
 
-virtual int getMarshalledSize() const;
+    virtual int getMarshalledSize() const;
 
-     bool operator  ==(const ReceiverPdu& rhs) const;
+    bool operator ==(const ReceiverPdu& rhs) const;
 };
 }
 

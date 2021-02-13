@@ -20,22 +20,22 @@ class EXPORT_MACRO SignalPdu : public RadioCommunicationsFamilyPdu
 {
 protected:
   /** encoding scheme used, and enumeration */
-  unsigned short _encodingScheme; 
+  unsigned short _encodingScheme;
 
   /** tdl type */
-  unsigned short _tdlType; 
+  unsigned short _tdlType;
 
   /** sample rate */
-  unsigned int _sampleRate; 
+  unsigned int _sampleRate;
 
-  /** length od data */
-  short _dataLength; 
+  /** length of data */
+  short _dataLength;
 
   /** number of samples */
-  short _samples; 
+  short _samples;
 
   /** list of eight bit values */
-  std::vector<OneByteChunk> _data; 
+  std::vector<OneByteChunk> _data;
 
 
  public:
@@ -45,28 +45,28 @@ protected:
     virtual void marshal(DataStream& dataStream) const;
     virtual void unmarshal(DataStream& dataStream);
 
-    unsigned short getEncodingScheme() const; 
-    void setEncodingScheme(unsigned short pX); 
+    unsigned short getEncodingScheme() const;
+    void setEncodingScheme(unsigned short pX);
 
-    unsigned short getTdlType() const; 
-    void setTdlType(unsigned short pX); 
+    unsigned short getTdlType() const;
+    void setTdlType(unsigned short pX);
 
-    unsigned int getSampleRate() const; 
-    void setSampleRate(unsigned int pX); 
+    unsigned int getSampleRate() const;
+    void setSampleRate(unsigned int pX);
 
-    short getDataLength() const; 
+    short getDataLength() const;
 
     short getSamples() const; 
     void setSamples(short pX); 
 
-    std::vector<OneByteChunk>& getData(); 
-    const std::vector<OneByteChunk>& getData() const; 
+    std::vector<OneByteChunk>& getData();
+    const std::vector<OneByteChunk>& getData() const;
     void setData(const std::vector<OneByteChunk>&    pX);
 
 
-virtual int getMarshalledSize() const;
+    virtual int getMarshalledSize() const;
 
-     bool operator  ==(const SignalPdu& rhs) const;
+    bool operator ==(const SignalPdu& rhs) const;
 };
 }
 

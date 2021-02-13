@@ -1,28 +1,23 @@
 #ifndef ENTITYID_H
 #define ENTITYID_H
 
-#include <dis7/SimulationAddress.h>
+#include <dis7/EntityIdentifier.h>
 #include <common/DataStream.h>
 #include <common/msLibMacro.h>
 
 
 namespace DIS
 {
-// Entity Identifier. Unique ID for entities in the world. Consists of an simulation address and a entity number. Section 6.2.28.
+// Entity Identifier. Unique ID for entities in the world. Consists of an simulation address and a entity number. Section 6.2.28. more laconically named EntityIdentifier
 
-// Copyright (c) 2007-2009, MOVES Institute, Naval Postgraduate School. All rights reserved. 
+// Copyright (c) 2007-2012, MOVES Institute, Naval Postgraduate School. All rights reserved. 
+// Licensed under the BSD open source license. See http://www.movesinstitute.org/licenses/bsd.html
 //
 // @author DMcG, jkg
 
-class EXPORT_MACRO EntityID
+class EXPORT_MACRO EntityID : public EntityIdentifier
 {
 protected:
-  /** Site and application IDs */
-  SimulationAddress _simulationAddress; 
-
-  /** Entity number */
-  unsigned short _entityNumber; 
-
 
  public:
     EntityID();
@@ -31,17 +26,10 @@ protected:
     virtual void marshal(DataStream& dataStream) const;
     virtual void unmarshal(DataStream& dataStream);
 
-    SimulationAddress& getSimulationAddress(); 
-    const SimulationAddress&  getSimulationAddress() const; 
-    void setSimulationAddress(const SimulationAddress    &pX);
 
-    unsigned short getEntityNumber() const; 
-    void setEntityNumber(unsigned short pX); 
+    virtual int getMarshalledSize() const;
 
-
-virtual int getMarshalledSize() const;
-
-     bool operator  ==(const EntityID& rhs) const;
+    bool operator ==(const EntityID& rhs) const;
 };
 }
 

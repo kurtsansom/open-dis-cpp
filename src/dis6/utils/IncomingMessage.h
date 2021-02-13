@@ -6,7 +6,7 @@
 #define _dcl_dis_incoming_message_
 
 #include <common/IBufferProcessor.h>   // for base class
-#include <utils/IPduBank.h> 
+#include <dis6/utils/IPduBank.h> 
 #include <map>                      // for member
 #include <common/Endian.h>             // for internal type
 #include <common/msLibMacro.h>         // for library symbols

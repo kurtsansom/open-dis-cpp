@@ -17,10 +17,10 @@ class EXPORT_MACRO SimulationAddress
 {
 protected:
   /** The site ID */
-  unsigned short _site; 
+  unsigned short _site;
 
   /** The application ID */
-  unsigned short _application; 
+  unsigned short _application;
 
 
  public:
@@ -37,9 +37,9 @@ protected:
     void setApplication(unsigned short pX); 
 
 
-virtual int getMarshalledSize() const;
+     virtual int getMarshalledSize() const;
 
-     bool operator  ==(const SimulationAddress& rhs) const;
+     bool operator ==(const SimulationAddress& rhs) const;
 };
 }
 

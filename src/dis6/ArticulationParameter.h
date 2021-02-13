@@ -16,15 +16,15 @@ namespace DIS
 class EXPORT_MACRO ArticulationParameter
 {
 protected:
-  unsigned char _parameterTypeDesignator; 
+  unsigned char _parameterTypeDesignator;
 
-  unsigned char _changeIndicator; 
+  unsigned char _changeIndicator;
 
-  unsigned short _partAttachedTo; 
+  unsigned short _partAttachedTo;
 
-  int _parameterType; 
+  int _parameterType;
 
-  double _parameterValue; 
+  double _parameterValue;
 
 
  public:
@@ -46,13 +46,13 @@ protected:
     int getParameterType() const; 
     void setParameterType(int pX); 
 
-    double getParameterValue() const; 
-    void setParameterValue(double pX); 
+    double getParameterValue() const;
+    void setParameterValue(double pX);
 
 
-virtual int getMarshalledSize() const;
+    virtual int getMarshalledSize() const;
 
-     bool operator  ==(const ArticulationParameter& rhs) const;
+    bool operator ==(const ArticulationParameter& rhs) const;
 };
 }
 

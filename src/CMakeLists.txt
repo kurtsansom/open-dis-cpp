@@ -53,6 +53,6 @@ add_library(opendis::dis7 ALIAS OpenDIS7)
 
 # put these at the otherwise utils barfs because it has two targets
 add_subdirectory(common)
-add_subdirectory(utils)
+# add_subdirectory(utils)
 add_subdirectory(dis6)
 add_subdirectory(dis7)

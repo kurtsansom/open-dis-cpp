@@ -139,3 +139,6 @@ target_sources(OpenDIS6
     VectoringNozzleSystemData.cpp
     WarfareFamilyPdu.cpp
 )
+
+add_subdirectory(utils)
+

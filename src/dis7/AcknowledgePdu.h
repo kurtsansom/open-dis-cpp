@@ -1,8 +1,6 @@
 #ifndef ACKNOWLEDGEPDU_H
 #define ACKNOWLEDGEPDU_H
 
-#include <dis7/EntityID.h>
-#include <dis7/EntityID.h>
 #include <dis7/SimulationManagementFamilyPdu.h>
 #include <common/DataStream.h>
 #include <common/msLibMacro.h>
@@ -12,27 +10,22 @@ namespace DIS
 {
 // Section 7.5.6. Acknowledge the receipt of a start/resume, stop/freeze, or RemoveEntityPDU. COMPLETE
 
-// Copyright (c) 2007-2009, MOVES Institute, Naval Postgraduate School. All rights reserved. 
+// Copyright (c) 2007-2012, MOVES Institute, Naval Postgraduate School. All rights reserved. 
+// Licensed under the BSD open source license. See http://www.movesinstitute.org/licenses/bsd.html
 //
 // @author DMcG, jkg
 
 class EXPORT_MACRO AcknowledgePdu : public SimulationManagementFamilyPdu
 {
 protected:
-  /** Identifier for originating entity(or simulation) */
-  EntityID _originatingID; 
-
-  /** Identifier for the receiving entity(or simulation) */
-  EntityID _receivingID; 
-
   /** type of message being acknowledged */
-  unsigned short _acknowledgeFlag; 
+  unsigned short _acknowledgeFlag;
 
   /** Whether or not the receiving entity was able to comply with the request */
-  unsigned short _responseFlag; 
+  unsigned short _responseFlag;
 
   /** Request ID that is unique */
-  unsigned int _requestID; 
+  unsigned int _requestID;
 
 
  public:
@@ -41,14 +34,6 @@ protected:
 
     virtual void marshal(DataStream& dataStream) const;
     virtual void unmarshal(DataStream& dataStream);
-
-    EntityID& getOriginatingID(); 
-    const EntityID&  getOriginatingID() const; 
-    void setOriginatingID(const EntityID    &pX);
-
-    EntityID& getReceivingID(); 
-    const EntityID&  getReceivingID() const; 
-    void setReceivingID(const EntityID    &pX);
 
     unsigned short getAcknowledgeFlag() const; 
     void setAcknowledgeFlag(unsigned short pX); 
@@ -60,9 +45,9 @@ protected:
     void setRequestID(unsigned int pX); 
 
 
-virtual int getMarshalledSize() const;
+     virtual int getMarshalledSize() const;
 
-     bool operator  ==(const AcknowledgePdu& rhs) const;
+     bool operator ==(const AcknowledgePdu& rhs) const;
 };
 }
 
