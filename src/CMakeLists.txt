@@ -44,7 +44,7 @@ target_link_libraries(OpenDIS7 opendis::common opendis::common_utils)
 # Add src/ to the include directories to OpenDIS6
 target_include_directories(OpenDIS7 PUBLIC
   $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}>
-  $<INSTALL_INTERFACE:${CMAKE_INSTALL_INCLUDEDIR}>
+  $<INSTALL_INTERFACE:${CMAKE_INSTALL_INCLUDEDIR}/dis7>
 )
 # Add compile definition EXPORT_LIBRARY for DIS7 msLibMacro.h
 target_compile_definitions(OpenDIS7 PRIVATE EXPORT_LIBRARY)

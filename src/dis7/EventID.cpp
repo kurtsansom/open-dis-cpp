@@ -1,82 +1,43 @@
-#include <dis7/EventIdentifier.h>
-#include <dis7/SimulationAddress.h>
+#include <dis7/EventID.h>
 
 using namespace DIS;
 
 
-EventIdentifier::EventIdentifier() : SimulationAddress(),
-   _eventNumber(0)
+EventID::EventID() : EventIdentifier()
+
 {
 }
 
-EventIdentifier::~EventIdentifier()
+EventID::~EventID()
 {
 }
 
-SimulationAddress EventIdentifier::getSimulationAddress()
+void EventID::marshal(DataStream& dataStream) const
 {
-    SimulationAddress _simulationAddress;
-    _simulationAddress.setSite(_site);
-    _simulationAddress.setApplication(_application);
-
-    return _simulationAddress;
+    EventIdentifier::marshal(dataStream); // Marshal information in superclass first
 }
 
-const SimulationAddress EventIdentifier::getSimulationAddress() const
+void EventID::unmarshal(DataStream& dataStream)
 {
-    SimulationAddress _simulationAddress;
-    _simulationAddress.setSite(_site);
-    _simulationAddress.setApplication(_application);
-
-    return _simulationAddress;
-}
-
-void EventIdentifier::setSimulationAddress(const SimulationAddress &pX)
-{
-    _site = pX.getSite();
-    _application = pX.getApplication();
-}
-
-unsigned short EventIdentifier::getEventNumber() const
-{
-    return _eventNumber;
-}
-
-void EventIdentifier::setEventNumber(unsigned short pX)
-{
-    _eventNumber = pX;
-}
-
-void EventIdentifier::marshal(DataStream& dataStream) const
-{
-    SimulationAddress::marshal(dataStream); // Marshal information in superclass first
-    dataStream << _eventNumber;
-}
-
-void EventIdentifier::unmarshal(DataStream& dataStream)
-{
-    SimulationAddress::unmarshal(dataStream); // unmarshal information in superclass first
-    dataStream >> _eventNumber;
+    EventIdentifier::unmarshal(dataStream); // unmarshal information in superclass first
 }
 
 
-bool EventIdentifier::operator ==(const EventIdentifier& rhs) const
+bool EventID::operator ==(const EventID& rhs) const
  {
      bool ivarsEqual = true;
 
-     ivarsEqual = SimulationAddress::operator==(rhs);
+     ivarsEqual = EventIdentifier::operator==(rhs);
 
-     if( ! (_eventNumber == rhs._eventNumber) ) ivarsEqual = false;
 
     return ivarsEqual;
  }
 
-int EventIdentifier::getMarshalledSize() const
+int EventID::getMarshalledSize() const
 {
    int marshalSize = 0;
 
-   marshalSize = SimulationAddress::getMarshalledSize();
-   marshalSize = marshalSize + 2;  // _eventNumber
+   marshalSize = EventIdentifier::getMarshalledSize();
     return marshalSize;
 }
 

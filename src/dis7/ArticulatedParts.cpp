@@ -8,7 +8,7 @@ ArticulatedParts::ArticulatedParts():
    _changeIndicator(0), 
    _partAttachedTo(0), 
    _parameterType(0), 
-   _parameterValue(0),
+   _parameterValue(0.0), 
    _padding(0)
 {
 }
@@ -67,6 +67,16 @@ void ArticulatedParts::setParameterValue(float pX)
     _parameterValue = pX;
 }
 
+unsigned int ArticulatedParts::getPadding() const
+{
+    return _padding;
+}
+
+void ArticulatedParts::setPadding(unsigned int pX)
+{
+    _padding = pX;
+}
+
 void ArticulatedParts::marshal(DataStream& dataStream) const
 {
     dataStream << _recordType;
@@ -97,6 +107,7 @@ bool ArticulatedParts::operator ==(const ArticulatedParts& rhs) const
      if( ! (_partAttachedTo == rhs._partAttachedTo) ) ivarsEqual = false;
      if( ! (_parameterType == rhs._parameterType) ) ivarsEqual = false;
      if( ! (_parameterValue == rhs._parameterValue) ) ivarsEqual = false;
+     if( ! (_padding == rhs._padding) ) ivarsEqual = false;
 
     return ivarsEqual;
  }

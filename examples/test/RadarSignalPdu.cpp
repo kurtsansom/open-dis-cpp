@@ -1,82 +1,81 @@
-#include <dis7/EventIdentifier.h>
-#include <dis7/SimulationAddress.h>
+#include "RadarSignalPdu.h"
 
 using namespace DIS;
 
 
-EventIdentifier::EventIdentifier() : SimulationAddress(),
-   _eventNumber(0)
+RadarSignalPdu::RadarSignalPdu() : SignalPdu(),
+   _somevalue(0),
+   _test_str("Hello")
 {
+    setPduType( 206 );
 }
 
-EventIdentifier::~EventIdentifier()
+RadarSignalPdu::~RadarSignalPdu()
 {
+    _data.clear();
 }
 
-SimulationAddress EventIdentifier::getSimulationAddress()
+unsigned short RadarSignalPdu::getSomevalue() const
 {
-    SimulationAddress _simulationAddress;
-    _simulationAddress.setSite(_site);
-    _simulationAddress.setApplication(_application);
-
-    return _simulationAddress;
+    return _somevalue;
 }
 
-const SimulationAddress EventIdentifier::getSimulationAddress() const
+void RadarSignalPdu::setSomevalue(unsigned char pX)
 {
-    SimulationAddress _simulationAddress;
-    _simulationAddress.setSite(_site);
-    _simulationAddress.setApplication(_application);
-
-    return _simulationAddress;
+    _somevalue = pX;
 }
 
-void EventIdentifier::setSimulationAddress(const SimulationAddress &pX)
+std::string RadarSignalPdu::getString() const
 {
-    _site = pX.getSite();
-    _application = pX.getApplication();
+    return _test_str;
 }
 
-unsigned short EventIdentifier::getEventNumber() const
+void RadarSignalPdu::setString(std::string pX)
 {
-    return _eventNumber;
+    _test_str = pX;
 }
 
-void EventIdentifier::setEventNumber(unsigned short pX)
+void RadarSignalPdu::marshal(DataStream& dataStream) const
 {
-    _eventNumber = pX;
+    SignalPdu::marshal(dataStream); // Marshal information in superclass first
+    dataStream << _somevalue;
 }
 
-void EventIdentifier::marshal(DataStream& dataStream) const
+void RadarSignalPdu::unmarshal(DataStream& dataStream)
 {
-    SimulationAddress::marshal(dataStream); // Marshal information in superclass first
-    dataStream << _eventNumber;
-}
-
-void EventIdentifier::unmarshal(DataStream& dataStream)
-{
-    SimulationAddress::unmarshal(dataStream); // unmarshal information in superclass first
-    dataStream >> _eventNumber;
+    SignalPdu::unmarshal(dataStream); // unmarshal information in superclass first
+    dataStream >> _somevalue;
 }
 
 
-bool EventIdentifier::operator ==(const EventIdentifier& rhs) const
+bool RadarSignalPdu::operator ==(const RadarSignalPdu& rhs) const
  {
      bool ivarsEqual = true;
 
-     ivarsEqual = SimulationAddress::operator==(rhs);
+     ivarsEqual = SignalPdu::operator==(rhs);
 
-     if( ! (_eventNumber == rhs._eventNumber) ) ivarsEqual = false;
+     if( ! (_encodingScheme == rhs._encodingScheme) ) ivarsEqual = false;
+     if( ! (_tdlType == rhs._tdlType) ) ivarsEqual = false;
+     if( ! (_sampleRate == rhs._sampleRate) ) ivarsEqual = false;
+     if( ! (_dataLength == rhs._dataLength) ) ivarsEqual = false;
+     if( ! (_samples == rhs._samples) ) ivarsEqual = false;
+
+     for(size_t idx = 0; idx < _dataLength; idx++)
+     {
+        if( ! ( _data[idx] == rhs._data[idx]) ) ivarsEqual = false;
+     }
+
 
     return ivarsEqual;
  }
 
-int EventIdentifier::getMarshalledSize() const
+int RadarSignalPdu::getMarshalledSize() const
 {
-   int marshalSize = 0;
+    int marshalSize = 0;
 
-   marshalSize = SimulationAddress::getMarshalledSize();
-   marshalSize = marshalSize + 2;  // _eventNumber
+    marshalSize = SignalPdu::getMarshalledSize();
+    marshalSize = marshalSize + 1;  // _somevalue
+
     return marshalSize;
 }
 

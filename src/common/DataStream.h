@@ -51,27 +51,32 @@ namespace DIS
       DataStream& operator <<(bool c);
       DataStream& operator <<(char c);
       DataStream& operator <<(unsigned char c);
-      DataStream& operator <<(float c);
-      DataStream& operator <<(double c);
+      DataStream& operator <<(short c);
+      DataStream& operator <<(unsigned short c);
       DataStream& operator <<(int c);
       DataStream& operator <<(unsigned int c);
+      DataStream& operator <<(long c);
+      DataStream& operator <<(unsigned long c);
       DataStream& operator <<(long long c);
       DataStream& operator <<(unsigned long long c);
-      DataStream& operator <<(unsigned short c);
-      DataStream& operator <<(short c);
+      DataStream& operator <<(float c);
+      DataStream& operator <<(double c);
+      
 
       // read operations
       DataStream& operator >>(bool& c);
       DataStream& operator >>(char& c);
       DataStream& operator >>(unsigned char& c);
-      DataStream& operator >>(float& c);
-      DataStream& operator >>(double& c);
+      DataStream& operator >>(short& c);
+      DataStream& operator >>(unsigned short& c);
       DataStream& operator >>(int& c);
       DataStream& operator >>(unsigned int& c);
+      DataStream& operator >>(long& c);
+      DataStream& operator >>(unsigned long& c);
       DataStream& operator >>(long long& c);
       DataStream& operator >>(unsigned long long& c);
-      DataStream& operator >>(unsigned short& c);
-      DataStream& operator >>(short& c);
+      DataStream& operator >>(float& c);
+      DataStream& operator >>(double& c);
 
       Endian GetStreamEndian() const;
       Endian GetMachineEndian() const;

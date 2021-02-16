@@ -1,13 +1,10 @@
 #ifndef TRANSMITTERPDU_H
 #define TRANSMITTERPDU_H
 
-#include <dis7/EntityID.h>
 #include <dis7/EntityType.h>
 #include <dis7/Vector3Double.h>
 #include <dis7/Vector3Float.h>
 #include <dis7/ModulationType.h>
-#include <dis7/Vector3Float.h>
-#include <dis7/Vector3Float.h>
 #include <vector>
 #include <dis7/RadioCommunicationsFamilyPdu.h>
 #include <common/DataStream.h>
@@ -35,6 +32,9 @@ protected:
   /** input source */
   unsigned char _inputSource;
 
+  /** Length of additional information about a specific transmitter that is not otherwise part of the Transmitter PDU */
+  unsigned short _variableTransmitterParameterLength;
+
   /** Location of antenna */
   Vector3Double _antennaLocation;
 
@@ -48,7 +48,7 @@ protected:
   unsigned short _antennaPatternLength;
 
   /** Center frequency being used in hertz */
-  unsigned long _frequency;
+  unsigned long long _frequency;
 
   /** transmit frequency Bandwidth in hertz */
   float _transmitFrequencyBandwidth;
@@ -98,6 +98,9 @@ protected:
     unsigned char getInputSource() const; 
     void setInputSource(unsigned char pX); 
 
+    unsigned short getVariableTransmitterParameterLength() const;
+    void setVariableTransmitterParameterLength(unsigned short pX);
+
     Vector3Double& getAntennaLocation();
     const Vector3Double&  getAntennaLocation() const;
     void setAntennaLocation(const Vector3Double    &pX);
@@ -109,8 +112,8 @@ protected:
     unsigned short getAntennaPatternType() const; 
     void setAntennaPatternType(unsigned short pX); 
 
-    unsigned short getAntennaPatternLength() const; 
-    void setAntennaPatternLength(unsigned short pX); 
+    unsigned short getAntennaPatternLength() const;
+    void setAntennaPatternLength();
 
     unsigned long long getFrequency() const;
     void setFrequency(unsigned long long pX);
@@ -132,7 +135,7 @@ protected:
     void setCryptoKeyId(unsigned short pX); 
 
     unsigned char getModulationParameterLength() const;
-    void setModulationParameterLength(unsigned char pX);
+    void setModulationParameterLength();
 
     unsigned char getPadding1() const;
     void setPadding1(unsigned char pX); 
@@ -142,17 +145,17 @@ protected:
 
 
     std::vector<Vector3Float>& getModulationParametersList(); 
-    const std::vector<Vector3Float>& getModulationParametersList() const; 
+    const std::vector<Vector3Float>& getModulationParametersList() const;
     void setModulationParametersList(const std::vector<Vector3Float>&    pX);
 
-    std::vector<Vector3Float>& getAntennaPatternList(); 
-    const std::vector<Vector3Float>& getAntennaPatternList() const; 
+    std::vector<Vector3Float>& getAntennaPatternList();
+    const std::vector<Vector3Float>& getAntennaPatternList() const;
     void setAntennaPatternList(const std::vector<Vector3Float>&    pX);
 
 
-     virtual int getMarshalledSize() const;
+    virtual int getMarshalledSize() const;
 
-     bool operator ==(const TransmitterPdu& rhs) const;
+    bool operator ==(const TransmitterPdu& rhs) const;
 };
 }
 

@@ -2,15 +2,14 @@
 
 using namespace DIS;
 
-
 SignalPdu::SignalPdu() : RadioCommunicationsFamilyPdu(),
-   _encodingScheme(0), 
-   _tdlType(0), 
-   _sampleRate(0), 
-   _dataLength(0), 
-   _samples(0)
+                         _encodingScheme(0),
+                         _tdlType(0),
+                         _sampleRate(0),
+                         _dataLength(0),
+                         _samples(0)
 {
-    setPduType( 26 );
+    setPduType(26);
 }
 
 SignalPdu::~SignalPdu()
@@ -55,7 +54,8 @@ unsigned short SignalPdu::getDataLength() const
 
 void SignalPdu::setDataLength()
 {
-    _dataLength = ( unsigned short )_data.size();
+    // field is the number of bits
+    _dataLength = (unsigned short)(_data.size() * sizeof(char));
 }
 
 unsigned short SignalPdu::getSamples() const
@@ -68,23 +68,37 @@ void SignalPdu::setSamples(unsigned short pX)
     _samples = pX;
 }
 
-std::vector<OneByteChunk>& SignalPdu::getData() 
+std::vector<OneByteChunk> &SignalPdu::getData()
 {
     return _data;
 }
 
-const std::vector<OneByteChunk>& SignalPdu::getData() const
+const std::vector<OneByteChunk> &SignalPdu::getData() const
 {
     return _data;
 }
 
-void SignalPdu::setData(const std::vector<OneByteChunk>& pX)
+void SignalPdu::setData(const std::vector<OneByteChunk> &pX)
 {
     _data = pX;
+    
+    // Do we need to apply padding, the PDU size should be a multiple
+    // of 32 bits / 4 octets.
+    unsigned char padding = _data.size() % 4;
+    if (padding != 0)
+    {
+        for( unsigned int i = 0; i < (4 - padding); ++ i )
+        {
+            OneByteChunk temp;
+            _data.push_back( temp );
+        }
+    }
+
+    // Update lengths
     setDataLength();
 }
 
-void SignalPdu::marshal(DataStream& dataStream) const
+void SignalPdu::marshal(DataStream &dataStream) const
 {
     RadioCommunicationsFamilyPdu::marshal(dataStream); // Marshal information in superclass first
     dataStream << _encodingScheme;
@@ -93,15 +107,15 @@ void SignalPdu::marshal(DataStream& dataStream) const
     dataStream << _dataLength;
     dataStream << _samples;
 
-     for(size_t idx = 0; idx < _dataLength; idx++)
-     {
+    size_t byte_length = _dataLength / sizeof(char);
+    for (size_t idx = 0; idx < byte_length; idx++)
+    {
         OneByteChunk x = _data[idx];
         x.marshal(dataStream);
-     }
-
+    }
 }
 
-void SignalPdu::unmarshal(DataStream& dataStream)
+void SignalPdu::unmarshal(DataStream &dataStream)
 {
     RadioCommunicationsFamilyPdu::unmarshal(dataStream); // unmarshal information in superclass first
     dataStream >> _encodingScheme;
@@ -110,50 +124,57 @@ void SignalPdu::unmarshal(DataStream& dataStream)
     dataStream >> _dataLength;
     dataStream >> _samples;
 
-     _data.clear();
-     for(size_t idx = 0; idx < _dataLength; idx++)
-     {
+    _data.clear();
+    size_t byte_length = _dataLength / sizeof(char);
+    for (size_t idx = 0; idx < byte_length; idx++)
+    {
         OneByteChunk x;
         x.unmarshal(dataStream);
         _data.push_back(x);
-     }
+    }
 }
 
+bool SignalPdu::operator==(const SignalPdu &rhs) const
+{
+    bool ivarsEqual = true;
 
-bool SignalPdu::operator ==(const SignalPdu& rhs) const
- {
-     bool ivarsEqual = true;
+    ivarsEqual = RadioCommunicationsFamilyPdu::operator==(rhs);
 
-     ivarsEqual = RadioCommunicationsFamilyPdu::operator==(rhs);
+    if (!(_encodingScheme == rhs._encodingScheme))
+        ivarsEqual = false;
+    if (!(_tdlType == rhs._tdlType))
+        ivarsEqual = false;
+    if (!(_sampleRate == rhs._sampleRate))
+        ivarsEqual = false;
+    if (!(_dataLength == rhs._dataLength))
+        ivarsEqual = false;
+    if (!(_samples == rhs._samples))
+        ivarsEqual = false;
 
-     if( ! (_encodingScheme == rhs._encodingScheme) ) ivarsEqual = false;
-     if( ! (_tdlType == rhs._tdlType) ) ivarsEqual = false;
-     if( ! (_sampleRate == rhs._sampleRate) ) ivarsEqual = false;
-     if( ! (_dataLength == rhs._dataLength) ) ivarsEqual = false;
-     if( ! (_samples == rhs._samples) ) ivarsEqual = false;
-
-     for(size_t idx = 0; idx < _dataLength; idx++)
-     {
-        if( ! ( _data[idx] == rhs._data[idx]) ) ivarsEqual = false;
-     }
-
+    size_t byte_length = _dataLength / sizeof(char);
+    for (size_t idx = 0; idx < byte_length; idx++)
+    {
+        if (!(_data[idx] == rhs._data[idx]))
+            ivarsEqual = false;
+    }
 
     return ivarsEqual;
- }
+}
 
 int SignalPdu::getMarshalledSize() const
 {
-   int marshalSize = 0;
+    int marshalSize = 0;
 
-   marshalSize = RadioCommunicationsFamilyPdu::getMarshalledSize();
-   marshalSize = marshalSize + 2;  // _encodingScheme
-   marshalSize = marshalSize + 2;  // _tdlType
-   marshalSize = marshalSize + 4;  // _sampleRate
-   marshalSize = marshalSize + 2;  // _dataLength
-   marshalSize = marshalSize + 2;  // _samples
+    marshalSize = RadioCommunicationsFamilyPdu::getMarshalledSize();
+    marshalSize = marshalSize + 2; // _encodingScheme
+    marshalSize = marshalSize + 2; // _tdlType
+    marshalSize = marshalSize + 4; // _sampleRate
+    marshalSize = marshalSize + 2; // _dataLength
+    marshalSize = marshalSize + 2; // _samples
 
-   for(size_t idx=0; idx < _dataLength; idx++)
-   {
+    size_t byte_length = _dataLength / sizeof(char);
+    for (size_t idx = 0; idx < byte_length; idx++)
+    {
         OneByteChunk listElement = _data[idx];
         marshalSize = marshalSize + listElement.getMarshalledSize();
     }
@@ -165,7 +186,7 @@ int SignalPdu::getMarshalledSize() const
 // Redistribution and use in source and binary forms, with or without
 // modification, are permitted provided that the following conditions
 //  are met:
-// 
+//
 //  * Redistributions of source code must retain the above copyright
 // notice, this list of conditions and the following disclaimer.
 // * Redistributions in binary form must reproduce the above copyright
@@ -178,7 +199,7 @@ int SignalPdu::getMarshalledSize() const
 // nor the names of its contributors may be used to endorse or
 //  promote products derived from this software without specific
 // prior written permission.
-// 
+//
 // THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS
 // AS IS AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT
 // LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS

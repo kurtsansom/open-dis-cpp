@@ -10,8 +10,7 @@ set(OpenDIS_cmake_dir "${OpenDIS_SOURCE_DIR}/cmake")
 list(INSERT CMAKE_MODULE_PATH 0 "${OpenDIS_cmake_dir}")
       
 set(CMAKE_CXX_STANDARD_REQUIRED on)
-set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
-
+set(CMAKE_EXPORT_COMPILE_COMMANDS TRUE CACHE BOOL "Enable exporting the compilation files" )
 option(WERROR "Add -Werror flag to build (turns warnings into errors)" ON)
 # Default options
 option(OpenDIS_ENABLE_EXAMPLES "Enable the examples for OpenDIS" ON)

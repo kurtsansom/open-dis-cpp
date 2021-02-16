@@ -1,40 +1,50 @@
-#ifndef TIMESTAMP_H
-#define TIMESTAMP_H
+#ifndef RADARSIGNALPDU_H
+#define RADARSIGNALPDU_H
 
+#include <string>
+#include <iostream>
+
+#include <dis7/OneByteChunk.h>
+#include <dis7/SignalPdu.h>
 #include <common/DataStream.h>
 #include <common/msLibMacro.h>
 
-
 namespace DIS
 {
-// LSB is absolute or relative timestamp. Scale is 2^31 - 1 divided into one hour.
+//  Detailed information about a radio transmitter. This PDU requires manually written code to complete. The encodingScheme field can be used in multiple        ways, which requires hand-written code to finish. Section 7.7.3. UNFINISHED
 
 // Copyright (c) 2007-2012, MOVES Institute, Naval Postgraduate School. All rights reserved. 
 // Licensed under the BSD open source license. See http://www.movesinstitute.org/licenses/bsd.html
 //
 // @author DMcG, jkg
 
-class EXPORT_MACRO Timestamp
+class EXPORT_MACRO RadarSignalPdu : public SignalPdu
 {
 protected:
-  /** timestamp */
-  unsigned int _timestamp;
+  // /** list of eight bit values */
+  // std::vector<OneByteChunk> _data;
+
+  unsigned char _somevalue;
+
+  std::string _test_str;
 
 
  public:
-    Timestamp();
-    virtual ~Timestamp();
+    RadarSignalPdu();
+    virtual ~RadarSignalPdu();
 
     virtual void marshal(DataStream& dataStream) const;
     virtual void unmarshal(DataStream& dataStream);
 
-    unsigned int getTimestamp() const; 
-    void setTimestamp(unsigned int pX); 
+    unsigned short getSomevalue() const;
+    void setSomevalue(unsigned char pX);
 
+    std::string getString() const;
+    void setString(std::string pX);
 
     virtual int getMarshalledSize() const;
 
-    bool operator ==(const Timestamp& rhs) const;
+    bool operator ==(const RadarSignalPdu& rhs) const;
 };
 }
 

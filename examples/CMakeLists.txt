@@ -26,7 +26,7 @@ add_library(example_common ${common_shared})
 target_link_libraries(example_common PUBLIC ${SDL2_LIBRARIES} ${SDL2_NET_LIBRARIES})
 target_include_directories(example_common PUBLIC
   $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/common>
-  $<INSTALL_INTERFACE:${CMAKE_INSTALL_INCLUDEDIR}>
+  $<INSTALL_INTERFACE:${CMAKE_INSTALL_INCLUDEDIR}/examples>
   ${SDL2_INCLUDE_DIRS}
   ${SDL2_NET_INCLUDE_DIRS}
 )
@@ -41,7 +41,7 @@ target_link_libraries(ExampleSender PRIVATE opendis::dis6
                                             example::common)
 target_include_directories(ExampleSender PRIVATE
   $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}>
-  $<INSTALL_INTERFACE:${CMAKE_INSTALL_INCLUDEDIR}>
+  $<INSTALL_INTERFACE:${CMAKE_INSTALL_INCLUDEDIR}/examples>
 )
 
 # Define ExampleReceiver Executable
@@ -52,7 +52,7 @@ target_link_libraries(ExampleReceiver PRIVATE opendis::dis6
 # add src to ExampleSender include directories
 target_include_directories(ExampleReceiver PRIVATE
   $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}>
-  $<INSTALL_INTERFACE:${CMAKE_INSTALL_INCLUDEDIR}>
+  $<INSTALL_INTERFACE:${CMAKE_INSTALL_INCLUDEDIR}/examples>
 )
 
 
@@ -64,7 +64,7 @@ target_link_libraries(dis7_ExampleSender PRIVATE opendis::dis7
                                             example::common)
 target_include_directories(dis7_ExampleSender PRIVATE
   $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}>
-  $<INSTALL_INTERFACE:${CMAKE_INSTALL_INCLUDEDIR}>
+  $<INSTALL_INTERFACE:${CMAKE_INSTALL_INCLUDEDIR}/examples>
 )
 
 # Define ExampleReceiver Executable
@@ -75,12 +75,37 @@ target_link_libraries(dis7_ExampleReceiver PRIVATE opendis::dis7
 # add src to ExampleSender include directories
 target_include_directories(dis7_ExampleReceiver PRIVATE
   $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}>
-  $<INSTALL_INTERFACE:${CMAKE_INSTALL_INCLUDEDIR}>
+  $<INSTALL_INTERFACE:${CMAKE_INSTALL_INCLUDEDIR}/examples>
 )
+
+
+# test with dis7 example
+# Define ExampleSender Executable
+add_executable(test_Sender)
+# Link OpenDIS into ExampleSender
+target_link_libraries(test_Sender PRIVATE opendis::dis7 
+                                            example::common)
+target_include_directories(test_Sender PRIVATE
+  $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}>
+  $<INSTALL_INTERFACE:${CMAKE_INSTALL_INCLUDEDIR}/examples>
+)
+
+# # Define ExampleReceiver Executable
+# add_executable(test_Receiver)
+# # Link OpenDIS into ExampleReceiver
+# target_link_libraries(test_Receiver PRIVATE opendis::dis7
+#                                               example::common)
+# # add src to ExampleSender include directories
+# target_include_directories(test_Receiver PRIVATE
+#   $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}>
+#   $<INSTALL_INTERFACE:${CMAKE_INSTALL_INCLUDEDIR}/examples>
+# )
+
 
 add_subdirectory(common)
 add_subdirectory(dis6)
-add_subdirectory(dis7)
+# add_subdirectory(dis7)
+add_subdirectory(test)
 
 
 # # the Old way of doing it

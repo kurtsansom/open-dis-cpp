@@ -70,6 +70,7 @@ target_sources(OpenDIS7
     EnvironmentType.cpp
     EulerAngles.cpp
     EventIdentifier.cpp
+    EventID.cpp
     EventIdentifierLiveEntity.cpp
     EventReportPdu.cpp
     EventReportReliablePdu.cpp
@@ -172,7 +173,7 @@ target_sources(OpenDIS7
     Timestamp.cpp
     TotalRecordSets.cpp
     TrackJamData.cpp
-    # TransmitterPdu.cpp
+    TransmitterPdu.cpp
     TwoByteChunk.cpp
     UAFundamentalParameter.cpp
     UaPdu.cpp

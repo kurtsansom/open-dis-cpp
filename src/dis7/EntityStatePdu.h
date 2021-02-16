@@ -3,7 +3,6 @@
 
 #include <dis7/EntityID.h>
 #include <dis7/EntityType.h>
-#include <dis7/EntityType.h>
 #include <dis7/Vector3Float.h>
 #include <dis7/Vector3Double.h>
 #include <dis7/EulerAngles.h>
@@ -20,7 +19,8 @@ namespace DIS
 {
 // Represents the postion and state of one entity in the world. Section 7.2.2. COMPLETE
 
-// Copyright (c) 2007-2009, MOVES Institute, Naval Postgraduate School. All rights reserved. 
+// Copyright (c) 2007-2012, MOVES Institute, Naval Postgraduate School. All rights reserved. 
+// Licensed under the BSD open source license. See http://www.movesinstitute.org/licenses/bsd.html
 //
 // @author DMcG, jkg
 
@@ -48,22 +48,22 @@ protected:
   Vector3Double _entityLocation;
 
   /** describes the orientation of the entity, in euler angles */
-  EulerAngles _entityOrientation; 
+  EulerAngles _entityOrientation;
 
   /** a series of bit flags that are used to help draw the entity, such as smoking, on fire, etc. */
-  unsigned int _entityAppearance; 
+  unsigned int _entityAppearance;
 
   /** parameters used for dead reckoning */
-  DeadReckoningParameters _deadReckoningParameters; 
+  DeadReckoningParameters _deadReckoningParameters;
 
   /** characters that can be used for debugging, or to draw unique strings on the side of entities in the world */
-  EntityMarking _marking; 
+  EntityMarking _marking;
 
   /** a series of bit flags */
-  unsigned int _capabilities; 
+  unsigned int _capabilities;
 
   /** variable length list of variable parameters. In earlier DIS versions this was articulation parameters. */
-  std::vector<VariableParameter> _variableParameters; 
+  std::vector<VariableParameter> _variableParameters;
 
 
  public:
@@ -73,8 +73,8 @@ protected:
     virtual void marshal(DataStream& dataStream) const;
     virtual void unmarshal(DataStream& dataStream);
 
-    EntityID& getEntityID(); 
-    const EntityID&  getEntityID() const; 
+    EntityID& getEntityID();
+    const EntityID&  getEntityID() const;
     void setEntityID(const EntityID    &pX);
 
     unsigned char getForceId() const; 
@@ -82,31 +82,31 @@ protected:
 
     unsigned char getNumberOfVariableParameters() const; 
 
-    EntityType& getEntityType(); 
-    const EntityType&  getEntityType() const; 
+    EntityType& getEntityType();
+    const EntityType&  getEntityType() const;
     void setEntityType(const EntityType    &pX);
 
-    EntityType& getAlternativeEntityType(); 
-    const EntityType&  getAlternativeEntityType() const; 
+    EntityType& getAlternativeEntityType();
+    const EntityType&  getAlternativeEntityType() const;
     void setAlternativeEntityType(const EntityType    &pX);
 
-    Vector3Float& getEntityLinearVelocity(); 
-    const Vector3Float&  getEntityLinearVelocity() const; 
+    Vector3Float& getEntityLinearVelocity();
+    const Vector3Float&  getEntityLinearVelocity() const;
     void setEntityLinearVelocity(const Vector3Float    &pX);
 
-    Vector3Double& getEntityLocation(); 
-    const Vector3Double&  getEntityLocation() const; 
+    Vector3Double& getEntityLocation();
+    const Vector3Double&  getEntityLocation() const;
     void setEntityLocation(const Vector3Double    &pX);
 
-    EulerAngles& getEntityOrientation(); 
-    const EulerAngles&  getEntityOrientation() const; 
+    EulerAngles& getEntityOrientation();
+    const EulerAngles&  getEntityOrientation() const;
     void setEntityOrientation(const EulerAngles    &pX);
 
-    unsigned int getEntityAppearance() const; 
-    void setEntityAppearance(unsigned int pX); 
+    unsigned int getEntityAppearance() const;
+    void setEntityAppearance(unsigned int pX);
 
     DeadReckoningParameters& getDeadReckoningParameters(); 
-    const DeadReckoningParameters&  getDeadReckoningParameters() const; 
+    const DeadReckoningParameters&  getDeadReckoningParameters() const;
     void setDeadReckoningParameters(const DeadReckoningParameters    &pX);
 
     EntityMarking& getMarking(); 
@@ -114,7 +114,7 @@ protected:
     void setMarking(const EntityMarking    &pX);
 
     unsigned int getCapabilities() const; 
-    void setCapabilities(unsigned int pX); 
+    void setCapabilities(unsigned int pX);
 
     std::vector<VariableParameter>& getVariableParameters(); 
     const std::vector<VariableParameter>& getVariableParameters() const; 

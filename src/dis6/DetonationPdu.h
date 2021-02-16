@@ -62,8 +62,8 @@ protected:
     virtual void marshal(DataStream& dataStream) const;
     virtual void unmarshal(DataStream& dataStream);
 
-    EntityID& getMunitionID(); 
-    const EntityID&  getMunitionID() const; 
+    EntityID& getMunitionID();
+    const EntityID&  getMunitionID() const;
     void setMunitionID(const EntityID    &pX);
 
     EventID& getEventID(); 

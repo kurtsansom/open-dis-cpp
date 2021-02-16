@@ -18,7 +18,8 @@ namespace DIS
 {
 // Detonation or impact of munitions, as well as, non-munition explosions, the burst or initial bloom of chaff, and the ignition of a flare shall be indicated. Section 7.3.3  COMPLETE
 
-// Copyright (c) 2007-2009, MOVES Institute, Naval Postgraduate School. All rights reserved. 
+// Copyright (c) 2007-2012, MOVES Institute, Naval Postgraduate School. All rights reserved. 
+// Licensed under the BSD open source license. See http://www.movesinstitute.org/licenses/bsd.html
 //
 // @author DMcG, jkg
 
@@ -26,34 +27,34 @@ class EXPORT_MACRO DetonationPdu : public WarfareFamilyPdu
 {
 protected:
   /** ID of the expendable entity, Section 7.3.3  */
-  EntityID _explodingEntityID; 
+  EntityID _explodingEntityID;
 
   /** ID of event, Section 7.3.3 */
-  EventIdentifier _eventID; 
+  EventIdentifier _eventID;
 
   /** velocity of the munition immediately before detonation/impact, Section 7.3.3  */
-  Vector3Float _velocity; 
+  Vector3Float _velocity;
 
   /** location of the munition detonation, the expendable detonation, Section 7.3.3  */
-  Vector3Double _locationInWorldCoordinates; 
+  Vector3Double _locationInWorldCoordinates;
 
   /** Describes the detonation represented, Section 7.3.3  */
-  MunitionDescriptor _descriptor; 
+  MunitionDescriptor _descriptor;
 
   /** Velocity of the ammunition, Section 7.3.3  */
-  Vector3Float _locationOfEntityCoordinates; 
+  Vector3Float _locationOfEntityCoordinates;
 
   /** result of the detonation, Section 7.3.3  */
-  unsigned char _detonationResult; 
+  unsigned char _detonationResult;
 
   /** How many articulation parameters we have, Section 7.3.3  */
-  unsigned char _numberOfVariableParameters; 
+  unsigned char _numberOfVariableParameters;
 
   /** padding */
-  unsigned short _pad; 
+  unsigned short _pad;
 
   /** specify the parameter values for each Variable Parameter record, Section 7.3.3  */
-  std::vector<VariableParameter> _variableParameters; 
+  std::vector<VariableParameter> _variableParameters;
 
 
  public:
@@ -63,46 +64,46 @@ protected:
     virtual void marshal(DataStream& dataStream) const;
     virtual void unmarshal(DataStream& dataStream);
 
-    EntityID& getExplodingEntityID(); 
-    const EntityID&  getExplodingEntityID() const; 
+    EntityID& getExplodingEntityID();
+    const EntityID&  getExplodingEntityID() const;
     void setExplodingEntityID(const EntityID    &pX);
 
-    EventIdentifier& getEventID(); 
-    const EventIdentifier&  getEventID() const; 
+    EventIdentifier& getEventID();
+    const EventIdentifier&  getEventID() const;
     void setEventID(const EventIdentifier    &pX);
 
-    Vector3Float& getVelocity(); 
-    const Vector3Float&  getVelocity() const; 
+    Vector3Float& getVelocity();
+    const Vector3Float&  getVelocity() const;
     void setVelocity(const Vector3Float    &pX);
 
-    Vector3Double& getLocationInWorldCoordinates(); 
-    const Vector3Double&  getLocationInWorldCoordinates() const; 
+    Vector3Double& getLocationInWorldCoordinates();
+    const Vector3Double&  getLocationInWorldCoordinates() const;
     void setLocationInWorldCoordinates(const Vector3Double    &pX);
 
-    MunitionDescriptor& getDescriptor(); 
-    const MunitionDescriptor&  getDescriptor() const; 
+    MunitionDescriptor& getDescriptor();
+    const MunitionDescriptor&  getDescriptor() const;
     void setDescriptor(const MunitionDescriptor    &pX);
 
-    Vector3Float& getLocationOfEntityCoordinates(); 
-    const Vector3Float&  getLocationOfEntityCoordinates() const; 
+    Vector3Float& getLocationOfEntityCoordinates();
+    const Vector3Float&  getLocationOfEntityCoordinates() const;
     void setLocationOfEntityCoordinates(const Vector3Float    &pX);
 
     unsigned char getDetonationResult() const; 
     void setDetonationResult(unsigned char pX); 
 
-    unsigned char getNumberOfVariableParameters() const; 
+    unsigned char getNumberOfVariableParameters() const;
 
-    unsigned short getPad() const; 
-    void setPad(unsigned short pX); 
+    unsigned short getPad() const;
+    void setPad(unsigned short pX);
 
-    std::vector<VariableParameter>& getVariableParameters(); 
-    const std::vector<VariableParameter>& getVariableParameters() const; 
+    std::vector<VariableParameter>& getVariableParameters();
+    const std::vector<VariableParameter>& getVariableParameters() const;
     void setVariableParameters(const std::vector<VariableParameter>&    pX);
 
 
-virtual int getMarshalledSize() const;
+    virtual int getMarshalledSize() const;
 
-     bool operator  ==(const DetonationPdu& rhs) const;
+    bool operator ==(const DetonationPdu& rhs) const;
 };
 }
 

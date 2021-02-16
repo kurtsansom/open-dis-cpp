@@ -10,18 +10,16 @@ namespace DIS
 {
 // Identifies an event in the world. Use this format for every PDU EXCEPT the LiveEntityPdu. Section 6.2.34.
 
-// Copyright (c) 2007-2009, MOVES Institute, Naval Postgraduate School. All rights reserved. 
+// Copyright (c) 2007-2012, MOVES Institute, Naval Postgraduate School. All rights reserved. 
+// Licensed under the BSD open source license. See http://www.movesinstitute.org/licenses/bsd.html
 //
 // @author DMcG, jkg
 
-class EXPORT_MACRO EventIdentifier
+class EXPORT_MACRO EventIdentifier : public SimulationAddress
 {
 protected:
-  /** Site and application IDs */
-  SimulationAddress _simulationAddress; 
 
-  unsigned short _eventNumber; 
-
+  unsigned short _eventNumber;
 
  public:
     EventIdentifier();
@@ -30,17 +28,17 @@ protected:
     virtual void marshal(DataStream& dataStream) const;
     virtual void unmarshal(DataStream& dataStream);
 
-    SimulationAddress& getSimulationAddress(); 
-    const SimulationAddress&  getSimulationAddress() const; 
+    SimulationAddress getSimulationAddress();
+    const SimulationAddress  getSimulationAddress() const;
     void setSimulationAddress(const SimulationAddress    &pX);
 
     unsigned short getEventNumber() const; 
-    void setEventNumber(unsigned short pX); 
+    void setEventNumber(unsigned short pX);
 
 
-virtual int getMarshalledSize() const;
+    virtual int getMarshalledSize() const;
 
-     bool operator  ==(const EventIdentifier& rhs) const;
+    bool operator ==(const EventIdentifier& rhs) const;
 };
 }
 

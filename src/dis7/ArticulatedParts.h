@@ -59,6 +59,9 @@ floating point number.  */
     float getParameterValue() const;
     void setParameterValue(float pX);
 
+    unsigned int getPadding() const;
+    void setPadding(unsigned int pX);
+
 
     virtual int getMarshalledSize() const;
 

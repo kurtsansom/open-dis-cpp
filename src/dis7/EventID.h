@@ -1,40 +1,35 @@
-#ifndef TIMESTAMP_H
-#define TIMESTAMP_H
+#ifndef EVENTID_H
+#define EVENTID_H
 
+#include <dis7/EventIdentifier.h>
 #include <common/DataStream.h>
 #include <common/msLibMacro.h>
 
 
 namespace DIS
 {
-// LSB is absolute or relative timestamp. Scale is 2^31 - 1 divided into one hour.
+// Synonmous with EventIdentifier
 
 // Copyright (c) 2007-2012, MOVES Institute, Naval Postgraduate School. All rights reserved. 
 // Licensed under the BSD open source license. See http://www.movesinstitute.org/licenses/bsd.html
 //
 // @author DMcG, jkg
 
-class EXPORT_MACRO Timestamp
+class EXPORT_MACRO EventID : public EventIdentifier
 {
 protected:
-  /** timestamp */
-  unsigned int _timestamp;
-
 
  public:
-    Timestamp();
-    virtual ~Timestamp();
+    EventID();
+    virtual ~EventID();
 
     virtual void marshal(DataStream& dataStream) const;
     virtual void unmarshal(DataStream& dataStream);
 
-    unsigned int getTimestamp() const; 
-    void setTimestamp(unsigned int pX); 
-
 
     virtual int getMarshalledSize() const;
 
-    bool operator ==(const Timestamp& rhs) const;
+    bool operator ==(const EventID& rhs) const;
 };
 }
 

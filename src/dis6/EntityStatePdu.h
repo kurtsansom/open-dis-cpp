@@ -3,7 +3,6 @@
 
 #include <dis6/EntityID.h>
 #include <dis6/EntityType.h>
-#include <dis6/EntityType.h>
 #include <dis6/Vector3Float.h>
 #include <dis6/Vector3Double.h>
 #include <dis6/Orientation.h>

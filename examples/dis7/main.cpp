@@ -1,21 +1,21 @@
 
+#include <iostream>
+
 // specific for the example
 #include "Connection.h"
 #include "Utils.h"
 #include "Timer.h"
 
 // the DIS library usage
+#include <common/DataStream.h>
+#include <common/Conversion.h>
 #include <dis7/EntityStatePdu.h>
 #include <dis7/DetonationPdu.h>
-#include <common/DataStream.h>
 #include <dis7/Vector3Double.h>
 #include <dis7/ArticulatedParts.h>
 #include <dis7/VariableParameter.h>
-// #include <dis6/BurstDescriptor.h>
+#include <dis7/MunitionDescriptor.h>
 
-#include <common/Conversion.h>
-
-#include <iostream>
 
 namespace Example
 {
@@ -192,7 +192,7 @@ void init_entities(DIS::EntityStatePdu& friendly0,
       std::vector<DIS::VariableParameter>& params = enemy.getVariableParameters();
       params.clear();
       params.resize(4);  // make default number of parameters
-      params.at(Example::INDEX_TURRET_AZIMUTH) = turret_azimuth;
+      params.at(Example::INDEX_TURRET_AZIMUTH).setVariableParameterFields1(turret_azimuth);
       params.at(Example::INDEX_TURRET_AZIMUTH_RATE) = turret_azimuth_rate;
       params.at(Example::INDEX_GUN_ELEVATION) = turret_gun_elevation;
       params.at(Example::INDEX_GUN_2_ELEVATION) = gun2_elevation;
@@ -217,9 +217,9 @@ void init_effects(DIS::DetonationPdu &detonation, const DIS::EntityID& firing, c
       DIS::EntityID detonation_entity_id;
       detonation_entity_id.setSite( 0 );
       detonation_entity_id.setApplication( 1 );
-      detonation_entity_id.setEntity( 4 );
+      detonation_entity_id.setEntityNumber( 4 );
 
-      detonation.setMunitionID( detonation_entity_id );
+      detonation.setExplodingEntityID( detonation_entity_id );
    }
 
    /// event id data
@@ -231,7 +231,7 @@ void init_effects(DIS::DetonationPdu &detonation, const DIS::EntityID& firing, c
       //   This field shall be represented by an Event Identifier record (see 5.2.18).
 
       // 0200 Point Detonation (PD)
-      DIS::EventID detonation_event_id;
+      DIS::EventIdentifier detonation_event_id;
       detonation_event_id.setSite( 0 );
       detonation_event_id.setApplication( 1 );
       detonation_event_id.setEventNumber( 0 );
@@ -260,7 +260,17 @@ void init_effects(DIS::DetonationPdu &detonation, const DIS::EntityID& firing, c
 
       detonation.setLocationInWorldCoordinates(worldPosition);
 
-      DIS::BurstDescriptor burstDescriptor;
+      DIS::MunitionDescriptor burstDescriptor;
+      DIS::EntityType munitionType;
+      munitionType.setCategory( 1 );
+      munitionType.setCountry( 222 );
+      munitionType.setDomain( 1 );
+      munitionType.setEntityKind( 1 );
+      munitionType.setExtra( 0 );
+      munitionType.setSpecific( 2 );
+      munitionType.setSubcategory( 2 );
+
+      burstDescriptor.setMunitionType( munitionType );
       //burstDescriptor.setMunition( 0 );      ///\todo set this with the 64 bit type.
       burstDescriptor.setWarhead( 1000 );    // 1000 High Explosive (HE)
       burstDescriptor.setFuse( 200 );        // 0200 Point Detonation (PD)

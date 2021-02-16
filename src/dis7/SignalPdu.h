@@ -28,7 +28,7 @@ protected:
   /** sample rate */
   unsigned int _sampleRate;
 
-  /** length of data */
+  /** length of data in bits*/
   unsigned short _dataLength;
 
   /** number of samples */

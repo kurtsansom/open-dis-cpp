@@ -29,8 +29,8 @@ protected:
     virtual void marshal(DataStream& dataStream) const;
     virtual void unmarshal(DataStream& dataStream);
 
-    SimulationAddress getSimulationAddress(); 
-    const SimulationAddress  getSimulationAddress() const; 
+    SimulationAddress getSimulationAddress();
+    const SimulationAddress  getSimulationAddress() const;
     void setSimulationAddress(const SimulationAddress    &pX);
 
     unsigned short getEntityNumber() const;

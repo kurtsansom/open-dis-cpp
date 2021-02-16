@@ -188,7 +188,7 @@ void TransmitterPdu::setCryptoKeyId(unsigned short pX)
 
 unsigned char TransmitterPdu::getModulationParameterCount() const
 {
-   return _modulationParametersList.size();
+    return _modulationParametersList.size();
 }
 
 unsigned short TransmitterPdu::getPadding2() const
@@ -238,7 +238,7 @@ const std::vector<Vector3Float>& TransmitterPdu::getAntennaPatternList() const
 
 void TransmitterPdu::setAntennaPatternList(const std::vector<Vector3Float>& pX)
 {
-     _antennaPatternList = pX;
+    _antennaPatternList = pX;
 }
 
 void TransmitterPdu::marshal(DataStream& dataStream) const

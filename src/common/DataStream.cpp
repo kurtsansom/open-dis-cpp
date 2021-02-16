@@ -174,13 +174,13 @@ DataStream& DataStream::operator <<(unsigned char c)
    return *this;
 }
 
-DataStream& DataStream::operator <<(float f) 
+DataStream& DataStream::operator <<(short d)
 {
-   WriteAlgorithm( f );
+   WriteAlgorithm( d );
    return *this;
 }
 
-DataStream& DataStream::operator <<(double d) 
+DataStream& DataStream::operator <<(unsigned short d)
 {
    WriteAlgorithm( d );
    return *this;
@@ -198,6 +198,18 @@ DataStream& DataStream::operator <<(unsigned int d)
    return *this;
 }
 
+DataStream& DataStream::operator <<(long d)
+{
+   WriteAlgorithm( d );
+   return *this;
+}
+
+DataStream& DataStream::operator <<(unsigned long d)
+{
+   WriteAlgorithm( d );
+   return *this;
+}
+
 DataStream& DataStream::operator <<(long long d)
 {
    WriteAlgorithm( d );
@@ -210,17 +222,18 @@ DataStream& DataStream::operator <<(unsigned long long d)
    return *this;
 }
 
-DataStream& DataStream::operator <<(unsigned short d)
+DataStream& DataStream::operator <<(float f) 
+{
+   WriteAlgorithm( f );
+   return *this;
+}
+
+DataStream& DataStream::operator <<(double d) 
 {
    WriteAlgorithm( d );
    return *this;
 }
 
-DataStream& DataStream::operator <<(short d)
-{
-   WriteAlgorithm( d );
-   return *this;
-}
 
 // read stuff
 DataStream& DataStream::operator >>(char& c)
@@ -235,13 +248,13 @@ DataStream& DataStream::operator >>(unsigned char& c)
    return *this;
 }
 
-DataStream& DataStream::operator >>(float& f)
+DataStream& DataStream::operator >>(short& d)
 {
-   ReadAlgorithm( f );
+   ReadAlgorithm( d );
    return *this;
 }
 
-DataStream& DataStream::operator >>(double& d)
+DataStream& DataStream::operator >>(unsigned short& d)
 {
    ReadAlgorithm( d );
    return *this;
@@ -259,6 +272,18 @@ DataStream& DataStream::operator >>(unsigned int& d)
    return *this;
 }
 
+DataStream& DataStream::operator >>(long& d)
+{
+   ReadAlgorithm( d );
+   return *this;
+}
+
+DataStream& DataStream::operator >>(unsigned long& d)
+{
+   ReadAlgorithm( d );
+   return *this;
+}
+
 DataStream& DataStream::operator >>(long long& d)
 {
    ReadAlgorithm( d );
@@ -271,13 +296,13 @@ DataStream& DataStream::operator >>(unsigned long long& d)
    return *this;
 }
 
-DataStream& DataStream::operator >>(unsigned short& d)
+DataStream& DataStream::operator >>(float& f)
 {
-   ReadAlgorithm( d );
+   ReadAlgorithm( f );
    return *this;
 }
 
-DataStream& DataStream::operator >>(short& d)
+DataStream& DataStream::operator >>(double& d)
 {
    ReadAlgorithm( d );
    return *this;
