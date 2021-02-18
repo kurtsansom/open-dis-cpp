@@ -90,21 +90,21 @@ target_include_directories(test_Sender PRIVATE
   $<INSTALL_INTERFACE:${CMAKE_INSTALL_INCLUDEDIR}/examples>
 )
 
-# # Define ExampleReceiver Executable
-# add_executable(test_Receiver)
-# # Link OpenDIS into ExampleReceiver
-# target_link_libraries(test_Receiver PRIVATE opendis::dis7
-#                                               example::common)
-# # add src to ExampleSender include directories
-# target_include_directories(test_Receiver PRIVATE
-#   $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}>
-#   $<INSTALL_INTERFACE:${CMAKE_INSTALL_INCLUDEDIR}/examples>
-# )
+# Define ExampleReceiver Executable
+add_executable(test_Receiver)
+# Link OpenDIS into ExampleReceiver
+target_link_libraries(test_Receiver PRIVATE opendis::dis7
+                                              example::common)
+# add src to ExampleSender include directories
+target_include_directories(test_Receiver PRIVATE
+  $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}>
+  $<INSTALL_INTERFACE:${CMAKE_INSTALL_INCLUDEDIR}/examples>
+)
 
 
 add_subdirectory(common)
 add_subdirectory(dis6)
-# add_subdirectory(dis7)
+add_subdirectory(dis7)
 add_subdirectory(test)
 
 

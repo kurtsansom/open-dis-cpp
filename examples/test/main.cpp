@@ -132,9 +132,9 @@ void init_entities(DIS::RadarSignalPdu& radar)
    {
       radar.setProtocolVersion(7);
       radar.setExerciseID(0);
-      radar.setPduType(1);
+      radar.setPduType(26);
       radar.setProtocolFamily(1);
-      radar.setTimestamp(9999);
+      radar.setTimestamp(0);
       radar.setLength(35);
       radar.setPadding(8);
    }
@@ -157,38 +157,40 @@ void init_entities(DIS::RadarSignalPdu& radar)
    // signal specific info
    {
       radar.setRadioNumber(20);
-      radar.setEncodingScheme(Example::SignalEncodingClass::APPLICATION_SPECIFIC_DATA);
+      radar.setEncodingScheme(Example::APPLICATION_SPECIFIC_DATA);
       /// indicates the TDL type of the data field of this PDU.  This value
       /// should be set to siso::SIGNAL_TDL_TYPE_OTHER when the data portion of
       /// this PDU does not represent a TDL message.
-      radar.setTdlType(Example::SignalTDLType::OTHER);
+      radar.setTdlType(Example::OTHER);
       radar.setSampleRate(256);
       // radar.setDataLength(); // automatically set
       std::vector<DIS::OneByteChunk> radar_data;
       DIS::OneByteChunk chunk;
+      
       unsigned int mult = sizeof(int) / sizeof(char);
       std::cout << "chars per int " << mult << std::endl;
-
-      unsigned int temp = 10;
-      char bytes[sizeof(temp)];
-      std::copy(static_cast<const char*>(static_cast<const void*>(&temp)),
-                static_cast<const char*>(static_cast<const void*>(&temp)) + sizeof(temp),
-                bytes);
-      for (unsigned int i = 0; i < sizeof(temp); ++i)
+      const char* c;
+      // char * int_ptr;
+      char temp[10];
+      for (unsigned int i = 0; i < 10; ++i)
       {
-         std::cout << i << " test " << bytes[i] << std::endl;
-         // chunk.setOtherParameters(( char )i);
+         temp[i] = (char) i+97;
+         // int_ptr = ( char )&i;
+         // c = &i;
+         c = &temp[i];
+         chunk.setOtherParameters(c);
+         radar_data.push_back(chunk);
+      }
+      DIS::OneByteChunk chunk_test;
+      char * c_out;
+      for (unsigned int i = 0; i < 10; ++i)
+      {
+         chunk_test = radar_data.at(i);
+         c_out = chunk_test.getOtherParameters();
+         std::cout << "value at: " << temp[i] << " is: " << *c_out << std::endl;
+
       }
 
-      // for (unsigned int i = 0; i < 35; ++i)
-      // {
-      //    char bytes[sizeof i];
-      //    std::copy(static_cast<const char*>(static_cast<const void*>(&i)),
-      //             static_cast<const char*>(static_cast<const void*>(&i)) + sizeof i,
-      //             bytes);
-      //    chunk.setOtherParameters(( char )i);
-      //    radar_data.push_back( chunk );
-      // }
       radar.setData(radar_data);
    }
 
@@ -242,85 +244,51 @@ int main(int argc, char* argv[])
 
    init_entities( radar );
 
-   // DIS::DetonationPdu tank_round;
-   // init_effects( tank_round, friendly[0].getEntityID(), enemy.getEntityID());
+   // Initialize the timer
+   Example::Timer timer;
+   timer.Update();
 
-   // // -- initialize the flight controllers -- //
-   // // the holding location of the friendly aircraft
-   // Example::Point3d IP;
-   // IP.x = 50.f;
-   // IP.y = 50.f; // altitude?
-   // IP.z = 50.f;
-   // Example::HeloFlightDynamics helo_flight_dynamics_0(Example::DegreesToRadians(20.f),20., IP, 0.);
-   // IP.x = 75.f;
-   // IP.y = 75.f; // altitude?
-   // IP.z = 75.f;
-   // Example::HeloFlightDynamics helo_flight_dynamics_1(Example::DegreesToRadians(40.f),40., IP, 0.);
+   // define the content to be sent of the network
+   double sim_time = 0;
+   double dt = 0;
+   unsigned int frame_stamp=0;
 
-   // Example::TankDynamics tank_dynamics( Example::DegreesToRadians(10.f), Example::DegreesToRadians(20.f) );
-   // // Initialize the timer
-   // Example::Timer timer;
-   // timer.Update();
+   Example::TimedAlert isTimeToPrintStatistics(5.0);   // alert us at 10.0 second intervals
 
-   // // define the content to be sent of the network
-   // double sim_time = 0;
-   // double dt = 0;
-   // unsigned int frame_stamp=0;
+   double last_time = timer.GetSeconds();
 
-   // Example::TimedAlert isDetonationReady(10.0);   // alert us at 10.0 second intervals
-   // Example::TimedAlert isTimeToPrintStatistics(5.0);   // alert us at 10.0 second intervals
+   while( true )
+   {
+      timer.Update();
+      double current_time = timer.GetSeconds();
+      dt = current_time - last_time;
+      sim_time += dt;
+      last_time = current_time;
 
-   // double last_time = timer.GetSeconds();
+      radar.setTimestamp( frame_stamp );
 
-   // // the simulation loop
-   // ///\todo find an exit condition so we don't need to explicitly kill the app
-   // while( true )
-   // {
-   //    timer.Update();
-   //    double current_time = timer.GetSeconds();
-   //    dt = current_time - last_time;
-   //    sim_time += dt;
-   //    last_time = current_time;
+      radar.marshal(buffer);
 
-   //    // use the dynamics to update the entities' state.
-   //    UpdateHelo( friendly[0], helo_flight_dynamics_0, dt, frame_stamp );
-   //    UpdateHelo( friendly[1], helo_flight_dynamics_1, dt, frame_stamp );
-   //    UpdateTank( enemy, tank_dynamics, dt, frame_stamp );
+      if( isTimeToPrintStatistics(dt) )
+      {
+         std::cout << "frame:" << frame_stamp
+            << "\t dt:" << dt
+            //<< " | x:" << temp_position.getX()
+            //<< " | y:" << temp_position.getY()
+            << std::endl;
+      }
 
-   //    // serialize for network send
-   //    friendly[0].marshal( buffer );
-   //    friendly[1].marshal( buffer );
-   //    enemy.marshal( buffer );
+      // send it over the line
+      multicast.Send( &buffer[0] , buffer.size() );
 
-   //    // Are we ready for le boom boom?
-   //    if( isDetonationReady(dt) )
-   //    {
-   //       tank_round.marshal( buffer );
-   //       // some feedback
-   //       std::cout << "detonation!" << std::endl;
-   //    }
+      // clear for next frame
+      buffer.clear();
 
-   //    // some feedback
-   //    if( isTimeToPrintStatistics(dt) )
-   //    {
-   //       std::cout << "frame:" << frame_stamp
-   //          << "\t dt:" << dt
-   //          //<< " | x:" << temp_position.getX()
-   //          //<< " | y:" << temp_position.getY()
-   //          << std::endl;
-   //    }
+      // increase for next frame
+      frame_stamp++;
 
-   //    // send it over the line
-   //    multicast.Send( &buffer[0] , buffer.size() );
-
-   //    // clear for next frame
-   //    buffer.clear();
-
-   //    // increase for next frame
-   //    frame_stamp++;
-
-   //    Example::sleep( 10000 );
-   // }
+      Example::sleep( 10000 );
+   }
 
    multicast.Disconnect();
    return 0;

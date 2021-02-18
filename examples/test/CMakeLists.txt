@@ -5,9 +5,9 @@ target_sources(test_Sender
   "main.cpp"
 )
 
-# target_sources(dis7_ExampleReceiver
-#   PRIVATE
-#   "main_receive.cpp"
-#   "Utils.cpp"
-#   "EntityStatePduProcessor.cpp"
-# )
+target_sources(test_Receiver
+  PRIVATE
+  "main_receive.cpp"
+  "Utils.cpp"
+  "RadarSignalPduProcessor.cpp"
+)

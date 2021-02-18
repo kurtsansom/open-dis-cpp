@@ -1,6 +1,6 @@
 
 #include "Connection.h"                  // for reading packets from the socket
-#include "EntityStatePduProcessor.h"     // for usage
+#include "RadarSignalPduProcessor.h"     // for usage
 #include "Utils.h"
 
 #include <dis7/utils/IncomingMessage.h>                 // for library usage
@@ -27,9 +27,10 @@ int main(int argc, char* argv[])
    char buffer[Example::MTU_SIZE+1];
    buffer[Example::MTU_SIZE] = '\0';   // should be NULL terminated somewhere in case the network read does not do this?
 
-   Example::EntityStatePduProcessor processor;
+   Example::RadarSignalPduProcessor processor;
 
-   const unsigned char es_pdu_type = 1;
+   // this is required to know what message type to look for on the network
+   const unsigned char es_pdu_type = 26;
    DIS::IncomingMessage incoming;
    incoming.AddProcessor( es_pdu_type , &processor );
    while( true )

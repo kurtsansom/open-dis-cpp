@@ -38,13 +38,13 @@ void RadarSignalPdu::setString(std::string pX)
 void RadarSignalPdu::marshal(DataStream& dataStream) const
 {
     SignalPdu::marshal(dataStream); // Marshal information in superclass first
-    dataStream << _somevalue;
+    // dataStream << _somevalue;
 }
 
 void RadarSignalPdu::unmarshal(DataStream& dataStream)
 {
     SignalPdu::unmarshal(dataStream); // unmarshal information in superclass first
-    dataStream >> _somevalue;
+    // dataStream >> _somevalue;
 }
 
 
@@ -54,17 +54,7 @@ bool RadarSignalPdu::operator ==(const RadarSignalPdu& rhs) const
 
      ivarsEqual = SignalPdu::operator==(rhs);
 
-     if( ! (_encodingScheme == rhs._encodingScheme) ) ivarsEqual = false;
-     if( ! (_tdlType == rhs._tdlType) ) ivarsEqual = false;
-     if( ! (_sampleRate == rhs._sampleRate) ) ivarsEqual = false;
-     if( ! (_dataLength == rhs._dataLength) ) ivarsEqual = false;
-     if( ! (_samples == rhs._samples) ) ivarsEqual = false;
-
-     for(size_t idx = 0; idx < _dataLength; idx++)
-     {
-        if( ! ( _data[idx] == rhs._data[idx]) ) ivarsEqual = false;
-     }
-
+    //  if( ! (_somevalue == rhs._somevalue) ) ivarsEqual = false;
 
     return ivarsEqual;
  }
@@ -74,7 +64,7 @@ int RadarSignalPdu::getMarshalledSize() const
     int marshalSize = 0;
 
     marshalSize = SignalPdu::getMarshalledSize();
-    marshalSize = marshalSize + 1;  // _somevalue
+    // marshalSize = marshalSize + 1;  // _somevalue
 
     return marshalSize;
 }
