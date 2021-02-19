@@ -58,25 +58,25 @@ target_include_directories(ExampleReceiver PRIVATE
 
 # DIS7 example
 # Define ExampleSender Executable
-add_executable(dis7_ExampleSender)
-# Link OpenDIS into ExampleSender
-target_link_libraries(dis7_ExampleSender PRIVATE opendis::dis7 
-                                            example::common)
-target_include_directories(dis7_ExampleSender PRIVATE
-  $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}>
-  $<INSTALL_INTERFACE:${CMAKE_INSTALL_INCLUDEDIR}/examples>
-)
+# add_executable(dis7_ExampleSender)
+# # Link OpenDIS into ExampleSender
+# target_link_libraries(dis7_ExampleSender PRIVATE opendis::dis7 
+#                                             example::common)
+# target_include_directories(dis7_ExampleSender PRIVATE
+#   $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}>
+#   $<INSTALL_INTERFACE:${CMAKE_INSTALL_INCLUDEDIR}/examples>
+# )
 
-# Define ExampleReceiver Executable
-add_executable(dis7_ExampleReceiver)
-# Link OpenDIS into ExampleReceiver
-target_link_libraries(dis7_ExampleReceiver PRIVATE opendis::dis7
-                                              example::common)
-# add src to ExampleSender include directories
-target_include_directories(dis7_ExampleReceiver PRIVATE
-  $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}>
-  $<INSTALL_INTERFACE:${CMAKE_INSTALL_INCLUDEDIR}/examples>
-)
+# # Define ExampleReceiver Executable
+# add_executable(dis7_ExampleReceiver)
+# # Link OpenDIS into ExampleReceiver
+# target_link_libraries(dis7_ExampleReceiver PRIVATE opendis::dis7
+#                                               example::common)
+# # add src to ExampleSender include directories
+# target_include_directories(dis7_ExampleReceiver PRIVATE
+#   $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}>
+#   $<INSTALL_INTERFACE:${CMAKE_INSTALL_INCLUDEDIR}/examples>
+# )
 
 
 # test with dis7 example
@@ -104,9 +104,9 @@ target_include_directories(test_Receiver PRIVATE
 
 add_subdirectory(common)
 add_subdirectory(dis6)
-add_subdirectory(dis7)
+# add_subdirectory(dis7)
 add_subdirectory(test)
-
+add_subdirectory(serialize)
 
 # # the Old way of doing it
 # find_package(SDL2 REQUIRED)
