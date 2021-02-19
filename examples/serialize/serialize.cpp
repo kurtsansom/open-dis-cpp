@@ -15,10 +15,10 @@ int main () {
 
   int int32 = 0x48692100; // 0x48 0x69 0x21 0x00 ("Hi!") 
   
-  ds << int32;
+  ds << int32; // Serialze int into DataStream
   while (ds.GetReadPos() < ds.size()) {
     DIS::OneByteChunk tmp;
-    tmp.unmarshal(ds);
+    tmp.unmarshal(ds); // de-serialize Datastream into the OneByteChunk
     chunks.push_back(tmp);
   } 
   
