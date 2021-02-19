@@ -4,10 +4,6 @@
 
 #include "common/DataStream.h"
 #include "dis7/OneByteChunk.h"
-// using namespace DIS;
-
-
-// using namespace std;
 
 int main () {
   DIS::DataStream ds(DIS::Endian::BIG);

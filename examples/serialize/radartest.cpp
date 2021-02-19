@@ -20,27 +20,29 @@ int main () {
 
   std::cout << tmp_data.getX() << " " << tmp_data.getY() << " " << tmp_data.getZ() << " " << tmp_data.getReflectivity() << std::endl;
   
-  tmp_data.marshal(ds);
+  tmp_data.marshal(ds); // serialize the data
 //   ds << int32; // Serialze int into DataStream
   while (ds.GetReadPos() < ds.size()) {
     DIS::OneByteChunk tmp;
     tmp.unmarshal(ds); // de-serialize Datastream into the OneByteChunk
     chunks.push_back(tmp);
   } 
+  // modify the original to verify its not pointing to the same thing.
   tmp_data.setX(2.0);
   tmp_data.setY(6.0);
   tmp_data.setZ(14.0);
   tmp_data.setReflectivity(42.0);
-//   chunks.unmarshal(out);
 
   std::cout << "chunks (4 bytes): ";
   for (DIS::OneByteChunk chunk : chunks) {
     // Note '*' to dereference from char*
     std::cout << *(chunk.getOtherParameters());
+    // serialize the chunks to a new DataStream
     out << *(chunk.getOtherParameters());
   }
   std::cout << std::endl;
 
+  //de-serialize the new DataStream into a new radarReflectivity type
   tmp_data_2.unmarshal(out);
   std::cout << tmp_data.getX() << " " << tmp_data.getY() << " " << tmp_data.getZ() << " " << tmp_data.getReflectivity() << std::endl;
   std::cout << tmp_data_2.getX() << " " << tmp_data_2.getY() << " " << tmp_data_2.getZ() << " " << tmp_data_2.getReflectivity() << std::endl;

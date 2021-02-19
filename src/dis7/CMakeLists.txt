@@ -130,6 +130,7 @@ target_sources(OpenDIS7
     PointObjectStatePdu.cpp
     PropulsionSystemData.cpp
     ProtocolMode.cpp
+    RadarReflectivity.cpp
     RadioCommunicationsFamilyPdu.cpp
     RadioIdentifier.cpp
     RadioType.cpp
