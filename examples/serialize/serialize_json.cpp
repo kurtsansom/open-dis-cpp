@@ -106,19 +106,6 @@ int main () {
         std::cout << *(byte.getOtherParameters());
     }
     std::cout << std::endl;
-    // ds << j_test.dump(); // Serialze int into DataStream
-    // while (serialized_string.GetReadPos() < ds.size()) {
-    //     DIS::OneByteChunk tmp;
-    //     tmp.unmarshal(ds); // de-serialize Datastream into the OneByteChunk
-    //     chunks.push_back(tmp);
-    // } 
-    
-    // std::cout << "chunks (4 bytes): ";
-    // for (DIS::OneByteChunk chunk : chunks) {
-    //     // Note '*' to dereference from char*
-    //     std::cout << *(chunk.getOtherParameters());
-    // }
-    // std::cout << std::endl;
 
     return 0;
 
