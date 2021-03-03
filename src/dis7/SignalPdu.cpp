@@ -1,4 +1,5 @@
 #include <dis7/SignalPdu.h>
+#include <climits>
 
 using namespace DIS;
 
@@ -55,7 +56,7 @@ unsigned short SignalPdu::getDataLength() const
 void SignalPdu::setDataLength()
 {
     // field is the number of bits
-    _dataLength = (unsigned short)(_data.size() * sizeof(char));
+    _dataLength = (unsigned short)(_data.size() * CHAR_BIT);
 }
 
 unsigned short SignalPdu::getSamples() const
@@ -81,21 +82,28 @@ const std::vector<OneByteChunk> &SignalPdu::getData() const
 void SignalPdu::setData(const std::vector<OneByteChunk> &pX)
 {
     _data = pX;
-    
-    // Do we need to apply padding, the PDU size should be a multiple
-    // of 32 bits / 4 octets.
-    unsigned char padding = _data.size() % 4;
-    if (padding != 0)
+    _data.clear();
+    for (unsigned int i = 0; i < pX.size(); ++i)
     {
-        for( unsigned int i = 0; i < (4 - padding); ++ i )
-        {
-            OneByteChunk temp;
-            _data.push_back( temp );
-        }
+        _data.push_back(pX.at(i));
     }
-
     // Update lengths
     setDataLength();
+    
+    // // Do we need to apply padding, the PDU size should be a multiple
+    // // of 32 bits / 4 octets.
+    // unsigned char padding = getMarshalledSize() % 4;
+    // if (padding != 0)
+    // {
+    //     for( unsigned int i = 0; i < (unsigned int)(4 - padding); ++ i )
+    //     {
+    //         OneByteChunk temp;
+    //         _data.push_back( temp );
+    //     }
+    // }
+
+    // // Update lengths
+    // setDataLength();
 }
 
 void SignalPdu::marshal(DataStream &dataStream) const
@@ -107,7 +115,7 @@ void SignalPdu::marshal(DataStream &dataStream) const
     dataStream << _dataLength;
     dataStream << _samples;
 
-    size_t byte_length = _dataLength / sizeof(char);
+    size_t byte_length = _dataLength / CHAR_BIT;
     for (size_t idx = 0; idx < byte_length; idx++)
     {
         OneByteChunk x = _data[idx];
@@ -125,7 +133,7 @@ void SignalPdu::unmarshal(DataStream &dataStream)
     dataStream >> _samples;
 
     _data.clear();
-    size_t byte_length = _dataLength / sizeof(char);
+    size_t byte_length = _dataLength / CHAR_BIT;
     for (size_t idx = 0; idx < byte_length; idx++)
     {
         OneByteChunk x;
@@ -151,7 +159,7 @@ bool SignalPdu::operator==(const SignalPdu &rhs) const
     if (!(_samples == rhs._samples))
         ivarsEqual = false;
 
-    size_t byte_length = _dataLength / sizeof(char);
+    size_t byte_length = _dataLength / CHAR_BIT;
     for (size_t idx = 0; idx < byte_length; idx++)
     {
         if (!(_data[idx] == rhs._data[idx]))
@@ -172,7 +180,7 @@ int SignalPdu::getMarshalledSize() const
     marshalSize = marshalSize + 2; // _dataLength
     marshalSize = marshalSize + 2; // _samples
 
-    size_t byte_length = _dataLength / sizeof(char);
+    size_t byte_length = _dataLength / CHAR_BIT;
     for (size_t idx = 0; idx < byte_length; idx++)
     {
         OneByteChunk listElement = _data[idx];
