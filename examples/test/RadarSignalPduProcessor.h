@@ -2,7 +2,7 @@
 #define _example_entity_state_pdu_processor_h_
 
 #include "RadarSignalPdu.h"                  // for typedef
-#include <common/IPacketProcessor.h>                // for base class
+#include <common/IPacketProcessor.h>         // for base class
 
 namespace Example
 {

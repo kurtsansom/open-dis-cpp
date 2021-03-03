@@ -82,28 +82,23 @@ const std::vector<OneByteChunk> &SignalPdu::getData() const
 void SignalPdu::setData(const std::vector<OneByteChunk> &pX)
 {
     _data = pX;
-    _data.clear();
-    for (unsigned int i = 0; i < pX.size(); ++i)
+    // Update lengths
+    SignalPdu::setDataLength();
+    
+    // Do we need to apply padding, the PDU size should be a multiple
+    // of 32 bits / 4 octets.
+    unsigned char padding = getMarshalledSize() % 4;
+    if (padding != 0)
     {
-        _data.push_back(pX.at(i));
+        for( unsigned int i = 0; i < (unsigned int)(4 - padding); ++ i )
+        {
+            OneByteChunk temp;
+            _data.push_back( temp );
+        }
     }
+
     // Update lengths
     setDataLength();
-    
-    // // Do we need to apply padding, the PDU size should be a multiple
-    // // of 32 bits / 4 octets.
-    // unsigned char padding = getMarshalledSize() % 4;
-    // if (padding != 0)
-    // {
-    //     for( unsigned int i = 0; i < (unsigned int)(4 - padding); ++ i )
-    //     {
-    //         OneByteChunk temp;
-    //         _data.push_back( temp );
-    //     }
-    // }
-
-    // // Update lengths
-    // setDataLength();
 }
 
 void SignalPdu::marshal(DataStream &dataStream) const
