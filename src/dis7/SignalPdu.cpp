@@ -87,7 +87,7 @@ void SignalPdu::setData(const std::vector<OneByteChunk> &pX)
     unsigned char padding = _data.size() % 4;
     if (padding != 0)
     {
-        for( unsigned int i = 0; i < (4 - padding); ++ i )
+        for( unsigned char i = 0; i < (4 - padding); ++ i )
         {
             OneByteChunk temp;
             _data.push_back( temp );
